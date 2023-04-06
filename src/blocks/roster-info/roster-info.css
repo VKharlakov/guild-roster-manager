@@ -1,0 +1,10 @@
+.roster-info {
+    width: 70%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.roster-info__element {
+    color: var(--text-color);
+}

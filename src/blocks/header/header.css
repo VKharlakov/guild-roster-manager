@@ -1,0 +1,36 @@
+.header {
+    background-color: var(--main-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100px;
+    z-index: 3;
+    position: relative;
+}
+
+.header::before {
+    background: rgba(21,13,9,.8);
+    content: "";
+    position: absolute;
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 5px;
+}
+
+.header__title-container {
+    margin-left: 120px;
+}
+
+.header__title {
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+}
+
+.header__brief {
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+}

@@ -1,13 +1,48 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url(./vendor/normalize.css);
+
+@import url(./vendor/fonts/fonts.css);
+
+@import url(./blocks/root.css);
+@import url(./blocks/page/page.css);
+@import url(./blocks/header/header.css);
+@import url(./blocks/content/content.css);
+@import url(./blocks/error-popup/error-popup.css);
+@import url(./blocks/sidebar/sidebar.css);
+@import url(./blocks/raid/raid.css);
+@import url(./blocks/characters/characters.css);
+@import url(./blocks/form/form.css);
+@import url(./blocks/roster-info/roster-info.css);
+
+.section_hidden {
+  display: none !important;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.other,
+.M {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: calc(100vw - 120px);
+  position: relative;
+}
+
+.other::before,
+.M::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('./images/under-construction.svg');
+  background-position: center;
+  background-size: 600px;
+  background-repeat: no-repeat;
+  opacity: .3;
+}
+
+.M__placeholder,
+.other__placeholder {
+  color: white;
 }

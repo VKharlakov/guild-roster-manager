@@ -1,0 +1,9 @@
+:root {
+    --main-color: hsl(18, 35%, 10%);
+    --main-color-hover: hsl(18, 29%, 14%);
+    --main-color-trans: hsla(18, 35%, 10%, 40%);
+    --secondary-color: hsl(17, 33%, 24%);
+    --text-color: hsl(20, 6%, 90%);
+    --main-light-color: hsl(18, 41%, 39%);
+    --highlight-color: hsl(35, 100%, 55%);
+}

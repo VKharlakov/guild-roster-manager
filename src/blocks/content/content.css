@@ -1,0 +1,15 @@
+.content {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: var(--main-light-color);
+    height: calc(100% - 100px);
+    position: relative;
+    overflow: hidden;
+}
+
+@media screen and (min-width: 1600px) {
+    .content {
+       justify-content: center;
+    }
+}
