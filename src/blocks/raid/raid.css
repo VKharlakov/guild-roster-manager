@@ -13,3 +13,7 @@
 .sidebar.sidebar_hidden ~ .raid {
     width: 100%;
 }
+
+.raid_hidden {
+    display: none;
+}

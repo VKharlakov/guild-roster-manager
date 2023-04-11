@@ -13,7 +13,11 @@
 @import url(./blocks/form/form.css);
 @import url(./blocks/roster-info/roster-info.css);
 
-.section_hidden {
+.M_hidden {
+  display: none !important;
+}
+
+.raid_hidden {
   display: none !important;
 }
 
