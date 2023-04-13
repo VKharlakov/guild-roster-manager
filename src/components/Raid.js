@@ -17,22 +17,17 @@ function Raid({ isVisible }) {
         setIsSecondRosterPopupActive(false)
     }
 
-    //Add cards to Roster(s)
-    function handleAddMainRosterCard(cardData) {
+    //Add characters to Roster(s)
+    function handleAddCard(cardData, roster, rosterSetter) {
         api.getCharacterData(cardData)
-        .then((res) => {
-            setMainRosterCards([res, ...mainRosterCards])
-            console.log(res)
-            console.log("MainRosterCards:", mainRosterCards)
-        })
+            .then((res) => {
+                rosterSetter([res, ...roster])
+            })
     }
 
-    function handleAddSecondRosterCard(cardData) {
-        api.getCharacterData(cardData)
-        .then((res) => {
-            setSecondRosterCards([res, ...secondRosterCards])
-            console.log("SecondRosterCards:", secondRosterCards)
-        })
+    //Delete character from a roster
+    function handleCardDelete(roster, rosterSetter, id) {
+        rosterSetter(roster.filter(card => roster.indexOf(card) !== id))
     }
 
     return (
@@ -42,22 +37,32 @@ function Raid({ isVisible }) {
                 onAddCharacterPopup={setIsMainRosterPopupActive}
                 resetPopupStates={resetPopupStates}
                 title='Main Roster'
+                onCardDelete={handleCardDelete}
+                roster={mainRosterCards}
+                rosterSetter={setMainRosterCards}
             />
             <Roster
                 cards={secondRosterCards}
                 onAddCharacterPopup={setIsSecondRosterPopupActive}
                 resetPopupStates={resetPopupStates}
                 title='Second Group'
+                onCardDelete={handleCardDelete}
+                roster={secondRosterCards}
+                rosterSetter={setSecondRosterCards}
             />
             <AddCharacterPopup
                 isActive={isMainRosterPopupActive}
-                onAddCard={handleAddMainRosterCard}
-                closeOnSubmit={setIsMainRosterPopupActive}
+                onAddCard={handleAddCard}
+                onClose={setIsMainRosterPopupActive}
+                roster={mainRosterCards}
+                rosterSetter={setMainRosterCards}
             />
             <AddCharacterPopup
                 isActive={isSecondRosterPopupActive}
-                onAddCard={handleAddSecondRosterCard}
-                closeOnSubmit={setIsSecondRosterPopupActive}
+                onAddCard={handleAddCard}
+                onClose={setIsSecondRosterPopupActive}
+                roster={secondRosterCards}
+                rosterSetter={setSecondRosterCards}
             />
         </section>
     )

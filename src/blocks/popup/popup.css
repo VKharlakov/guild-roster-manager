@@ -2,8 +2,11 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    transform: translateY(110%);
-    background-color: var(--secondary-color);
+}
+
+.popup_type_add-card {
+    transform: translateY(120%);
+    background-color: var(--main-color);
     height: 100%;
     width: 100%;
     max-height: 300px;
@@ -13,11 +16,34 @@
     align-items: center;
     border-radius: 1.5%;
     box-shadow: 0px 0px 20px 5px rgb(0, 0, 0);
-    transition: .2s;
+    transition: .5s ease-out;
 }
 
 .popup_active {
     transform: unset;
+}
+
+.popup__button-close {
+    width: 25px;
+    height: 25px;
+    text-align: center;
+}
+
+.popup__button-container {
+    box-sizing: border-box;
+    width: 60px;
+    height: 60px;
+    clip-path: polygon(38% 30%, 100% 30%, 100% 100%, 0% 100%);
+    background-color: var(--main-color);
+    position: absolute;
+    top: -55px;
+    right: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-left: 20px;
 }
 
 .popup__form {
@@ -106,13 +132,13 @@
     width: 8px;
 }
 
-.popup__tooltip::-webkit-scrollbar-track  {
+.popup__tooltip::-webkit-scrollbar-track {
     background-color: transparent;
 }
 
 .popup__tooltip::-webkit-scrollbar-thumb {
     background-color: var(--highlight-color);
-  }
+}
 
 .popup__radio {
     height: 15%;
@@ -204,13 +230,18 @@
 .popup__submit-btn {
     user-select: none;
     height: 40px;
-    border: none;
+    border: 2px solid #200a0a;
+    outline: 1px solid #5c5552;
+    box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.75);
     border-radius: 6px;
-    background-color: white;
+    background-color: #740507;
     margin-top: 35px;
     width: 70%;
     transition: .2s linear;
+    color: #f8b700;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
+
 .popup__submit-btn:hover {
     background-color: #ebdec2;
     cursor: pointer;
@@ -228,13 +259,8 @@
     }
 }
 
-@media screen and (max-width: 1300px) {
-    .popup {
-        margin-right: 20px;
-    }
-}
-
 @media screen and (max-width: 1150px) {
+
     .popup__tooltip-container_type_realm,
     .popup__tooltip-container_type_char {
         left: -58%;

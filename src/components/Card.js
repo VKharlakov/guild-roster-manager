@@ -1,9 +1,14 @@
 import React from "react";
 
-function Card({card}) {
+function Card({card, onCardDelete, roster, rosterSetter, id}) {
+    function handleDeleteClick() {
+        console.log(id)
+        onCardDelete(roster, rosterSetter, id)
+    }
+
     return (
         <li className="characters__element">
-            <button className="characters__delete-btn"></button>
+            <button className="characters__delete-btn" onClick={handleDeleteClick} />
             <span className="characters__role"></span>
             <img src={card.thumbnail_url} alt="Char pic" className="characters__avatar" />
             <div className="characters__info">

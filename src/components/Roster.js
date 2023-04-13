@@ -1,15 +1,20 @@
 import React from "react";
 import Card from "./Card";
 
-function Roster({ cards, onAddCharacterPopup, resetPopupStates, title }) {
+function Roster({ cards, onAddCharacterPopup, resetPopupStates, title, onCardDelete, roster, rosterSetter }) {
     return (
         <div className="characters characters_type_raid-one">
             <h2 className="characters__title">{title}</h2>
             <div className="characters__roster-container">
                 <ul className="characters__list">
-                    {cards.map((card) => (
+                    {cards.map((card, index) => (
                         <Card
+                            key={index}
+                            id={index}
                             card={card}
+                            onCardDelete={onCardDelete}
+                            roster={roster}
+                            rosterSetter={rosterSetter}
                         />
                     ))}
                 </ul>

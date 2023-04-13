@@ -1,6 +1,6 @@
 import React from "react";
 
-function AddCharacterPopup({ onAddCard, isActive, closeOnSubmit }) {
+function AddCharacterPopup({ onAddCard, isActive, onClose, roster, rosterSetter }) {
     //Accumulating input values
     const [formValue, setFormValue] = React.useState({ realm: "", name: "", region: "eu" })
 
@@ -17,18 +17,21 @@ function AddCharacterPopup({ onAddCard, isActive, closeOnSubmit }) {
 
     function handleSubmit(e) {
         e.preventDefault()
-            
-        onAddCard(formValue)
+
+        onAddCard(formValue, roster, rosterSetter)
         setFormValue({ realm: "", name: "" })
-        closeOnSubmit(false)
+        onClose(false)
     }
 
     return (
-        <div className={`popup ${isActive ? 'popup_active' : ''}`}>
+        <div className={`popup popup_type_add-card ${isActive ? 'popup_active' : ''}`}>
+            <div className="popup__button-container">
+                <button className="popup__button-close" onClick={() => { onClose(false) }}>x</button>
+            </div>
             <form className="popup__form" name="form" onSubmit={handleSubmit}>
                 <div className="popup__inputs">
                     <input className="popup__input popup__input_type_text popup__input_name_realm" value={formValue.realm} onChange={handleChange} name="realm" placeholder="Enter your realm" minLength="3" required />
-                    <input className="popup__input popup__input_type_text popup__input_name_char"  value={formValue.name} onChange={handleChange} name="name" placeholder="Enter your character name" minLength="3" required />
+                    <input className="popup__input popup__input_type_text popup__input_name_char" value={formValue.name} onChange={handleChange} name="name" placeholder="Enter your character name" minLength="3" required />
                 </div>
                 <button className="popup__submit-btn" type="submit">Submit</button>
                 <div className="popup__tooltip-container popup__tooltip-container_type_realm popup__tooltip_hidden">
