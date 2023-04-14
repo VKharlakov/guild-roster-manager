@@ -1,6 +1,6 @@
 import React from "react";
 
-function AddCharacterPopup({ onAddCard, isActive, onClose, roster, rosterSetter }) {
+function AddCharacterPopup({ onCardAdd, isActive, onClose, roster, rosterSetter }) {
     //Accumulating input values
     const [formValue, setFormValue] = React.useState({ realm: "", name: "", region: "eu" })
 
@@ -15,10 +15,11 @@ function AddCharacterPopup({ onAddCard, isActive, onClose, roster, rosterSetter 
         })
     }
 
+    //Submit handler
     function handleSubmit(e) {
         e.preventDefault()
 
-        onAddCard(formValue, roster, rosterSetter)
+        onCardAdd(formValue, roster, rosterSetter)
         setFormValue({ realm: "", name: "" })
         onClose(false)
     }

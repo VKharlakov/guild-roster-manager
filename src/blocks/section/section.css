@@ -1,0 +1,26 @@
+.section {
+}
+
+.section_type_raid {
+    width: calc(100vw - 90px);
+    height: 100%;
+    max-width: 1600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: 1s;
+    position: relative;
+    overflow: hidden;
+}
+
+.section_type_mythic-plus {
+    width: calc(100vw - 90px);
+    height: 100%;
+    max-width: 1600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    transition: 1s;
+    position: relative;
+    overflow: hidden;
+}

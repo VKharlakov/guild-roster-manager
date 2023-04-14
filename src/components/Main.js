@@ -1,32 +1,44 @@
 import React from "react";
 import Sidebar from "./Sidebar";
 import Raid from "./Raid";
+import api from "../utils/api";
 import MythicPlus from "./MythicPlus";
+import { Route, Routes } from "react-router-dom";
 
 function Main() {
-
-    //Show / Hide sections states
-    const [isRaidActive, setIsRaidActive] = React.useState(false)
-    const [isMythicPlusActive, setIsMythicPlusActive] = React.useState(false)
-
-    function resetSectionStates() {
-        setIsRaidActive(false)
-        setIsMythicPlusActive(false)
+    //Add characters to Roster(s)
+    function handleCardAdd(cardData, roster, rosterSetter) {
+        api.getCharacterData(cardData)
+            .then((res) => {
+                rosterSetter([res, ...roster])
+            })
     }
+
+    //Delete character from a roster
+    function handleCardDelete(roster, rosterSetter, id) {
+        rosterSetter(roster.filter(card => roster.indexOf(card) !== id))
+    }
+
 
     return (
         <main className="content">
-            <Sidebar
-                resetSectionStates={resetSectionStates}
-                onRaidClick={setIsRaidActive}
-                onMythicPlusClick={setIsMythicPlusActive}
-            />
-            <Raid
-                isVisible={isRaidActive}
-            />
-            <MythicPlus
-                isVisible={isMythicPlusActive}
-            />
+            <Sidebar />
+            <Routes>
+                <Route path="/raid" element={
+                    <Raid
+                        onCardAdd={handleCardAdd}
+                        onCardDelete={handleCardDelete}
+                        sectionType='raid'
+                    />}
+                />
+                <Route path="/mythic-plus" element={
+                    <MythicPlus
+                        onCardAdd={handleCardAdd}
+                        onCardDelete={handleCardDelete}
+                        sectionType='mythic-plus'
+                    />}
+                />
+            </Routes>
         </main>
     )
 }

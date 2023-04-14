@@ -55,6 +55,7 @@
     flex-direction: column;
     align-items: center;
     position: relative;
+    justify-content: center;
 }
 
 .popup__tooltip {
@@ -230,20 +231,20 @@
 .popup__submit-btn {
     user-select: none;
     height: 40px;
-    border: 2px solid #200a0a;
-    outline: 1px solid #5c5552;
-    box-shadow: 0px 0px 5px 2px black, inset 0px 0px 10px 0px rgba(0,0,0,0.75);
-    border-radius: 6px;
-    background-color: #740507;
-    margin-top: 35px;
     width: 70%;
+    margin-top: 35px;
+    border: var(--warcraft-button-border);
+    outline: var(--warcraft-button-outline);
+    box-shadow: var(--warcraft-button-box-shadow);
+    background-color: var(--warcraft-button-background-color);
+    color: var(--warcraft-button-text-color);
+    text-shadow: var(--warcraft-button-text-outline);
+    border-radius: 6px;
     transition: .2s linear;
-    color: #f8b700;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .popup__submit-btn:hover {
-    background-color: #ebdec2;
+    background-color: var(--warcraft-button-background-color-highlight);
     cursor: pointer;
 }
 

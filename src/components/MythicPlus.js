@@ -1,9 +1,8 @@
 import React from "react";
 import Roster from "./Roster";
-import api from "../utils/api";
 import AddCharacterPopup from "./AddCharacterPopup";
 
-function MythicPlus({ isVisible }) {
+function MythicPlus({ onCardDelete, onCardAdd, sectionType }) {
     //Roster cards state arrays
     const [firstRosterCards, setFirstRosterCards] = React.useState([])
     const [secondRosterCards, setSecondRosterCards] = React.useState([])
@@ -26,98 +25,90 @@ function MythicPlus({ isVisible }) {
         setIsFifthRosterPopupActive(false)
     }
 
-    //Add characters to Roster(s)
-    function handleAddCard(cardData, roster, rosterSetter) {
-        api.getCharacterData(cardData)
-            .then((res) => {
-                rosterSetter([res, ...roster])
-            })
-    }
-
-    //Delete character from a roster
-    function handleCardDelete(roster, rosterSetter, id) {
-        rosterSetter(roster.filter(card => roster.indexOf(card) !== id))
-    }
-
     return (
-        <section className={`M ${isVisible ? "" : "M_hidden"}`}>
+        <section className={`section section_type_${sectionType}`}>
             <Roster
+                title='First Group'
                 cards={firstRosterCards}
                 onAddCharacterPopup={setIsFirstRosterPopupActive}
                 resetPopupStates={resetPopupStates}
-                title='First Group'
-                onCardDelete={handleCardDelete}
+                onCardDelete={onCardDelete}
                 roster={firstRosterCards}
                 rosterSetter={setFirstRosterCards}
+                rosterType={sectionType}
             />
             <Roster
+                title='Second Group'
                 cards={secondRosterCards}
                 onAddCharacterPopup={setIsSecondRosterPopupActive}
                 resetPopupStates={resetPopupStates}
-                title='Second Group'
-                onCardDelete={handleCardDelete}
+                onCardDelete={onCardDelete}
                 roster={secondRosterCards}
                 rosterSetter={setSecondRosterCards}
+                rosterType={sectionType}
             />
             <Roster
+                title='Third Group'
                 cards={thirdRosterCards}
                 onAddCharacterPopup={setIsThirdRosterPopupActive}
                 resetPopupStates={resetPopupStates}
-                title='Third Group'
-                onCardDelete={handleCardDelete}
+                onCardDelete={onCardDelete}
                 roster={thirdRosterCards}
                 rosterSetter={setThirdRosterCards}
+                rosterType={sectionType}
             />
             <Roster
+                title='Fourth Group'
                 cards={fourthRosterCards}
                 onAddCharacterPopup={setIsFourthRosterPopupActive}
                 resetPopupStates={resetPopupStates}
-                title='Fourth Group'
-                onCardDelete={handleCardDelete}
+                onCardDelete={onCardDelete}
                 roster={fourthRosterCards}
                 rosterSetter={setFourthRosterCards}
+                rosterType={sectionType}
             />
             <Roster
+                title='Fifth Group'
                 cards={fifthRosterCards}
                 onAddCharacterPopup={setIsFifthRosterPopupActive}
                 resetPopupStates={resetPopupStates}
-                title='Fifth Group'
-                onCardDelete={handleCardDelete}
+                onCardDelete={onCardDelete}
                 roster={fifthRosterCards}
                 rosterSetter={setFifthRosterCards}
+                rosterType={sectionType}
             />
             <AddCharacterPopup
                 isActive={isFirstRosterPopupActive}
-                onAddCard={handleAddCard}
                 onClose={setIsFirstRosterPopupActive}
+                onCardAdd={onCardAdd}
                 roster={firstRosterCards}
                 rosterSetter={setFirstRosterCards}
             />
             <AddCharacterPopup
                 isActive={isSecondRosterPopupActive}
-                onAddCard={handleAddCard}
                 onClose={setIsSecondRosterPopupActive}
+                onCardAdd={onCardAdd}
                 roster={secondRosterCards}
                 rosterSetter={setSecondRosterCards}
             />
             <AddCharacterPopup
                 isActive={isThirdRosterPopupActive}
-                onAddCard={handleAddCard}
                 onClose={setIsThirdRosterPopupActive}
+                onCardAdd={onCardAdd}
                 roster={thirdRosterCards}
                 rosterSetter={setThirdRosterCards}
             />
             <AddCharacterPopup
                 isActive={isFourthRosterPopupActive}
-                onAddCard={handleAddCard}
                 onClose={setIsFourthRosterPopupActive}
+                onCardAdd={onCardAdd}
                 roster={fourthRosterCards}
                 rosterSetter={setFourthRosterCards}
             />
             <AddCharacterPopup
                 isActive={isFifthRosterPopupActive}
-                onAddCard={handleAddCard}
                 onClose={setIsFifthRosterPopupActive}
+                onCardAdd={onCardAdd}
                 roster={fifthRosterCards}
                 rosterSetter={setFifthRosterCards}
             />
