@@ -27,7 +27,7 @@ function AddCharacterPopup({ onCardAdd, isActive, onClose, roster, rosterSetter 
     return (
         <div className={`popup popup_type_add-card ${isActive ? 'popup_active' : ''}`}>
             <div className="popup__button-container">
-                <button className="popup__button-close" onClick={() => { onClose(false) }}>x</button>
+                <button className="popup__button-close" onClick={() => { onClose(false) }}>&#128473;</button>
             </div>
             <form className="popup__form" name="form" onSubmit={handleSubmit}>
                 <div className="popup__inputs">

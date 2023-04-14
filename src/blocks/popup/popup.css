@@ -24,9 +24,22 @@
 }
 
 .popup__button-close {
-    width: 25px;
-    height: 25px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    margin: 0;
+    border: none;
     text-align: center;
+    background-color: var(--warcraft-button-background-color);
+    box-shadow: var(--warcraft-button-box-shadow-S);
+    color: white;
+    transition: .2s;
+    border-radius: 3px;
+}
+
+.popup__button-close:hover {
+    background-color: var(--warcraft-button-background-color-highlight);
+    cursor: pointer;
 }
 
 .popup__button-container {
@@ -293,5 +306,10 @@
     .popup__inputs {
         margin-top: 5px;
         gap: 15px;
+    }
+
+    .popup__button-close {
+        width: 27px;
+        height: 27px;
     }
 }

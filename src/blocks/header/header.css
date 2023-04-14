@@ -1,4 +1,6 @@
 .header {
+    width: 100%;
+    max-width: 1920px;
     background-color: var(--main-color);
     display: flex;
     flex-direction: column;
