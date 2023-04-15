@@ -4,13 +4,22 @@ import Raid from "./Raid";
 import api from "../utils/api";
 import MythicPlus from "./MythicPlus";
 import { Route, Routes } from "react-router-dom";
+import { compareByRole, roles } from "../utils/utils";
 
 function Main() {
     //Add characters to Roster(s)
     function handleCardAdd(cardData, roster, rosterSetter) {
         api.getCharacterData(cardData)
             .then((res) => {
-                rosterSetter([res, ...roster])
+                rosterSetter([{
+                    name: res.name,
+                    class: res.class,
+                    realm: res.realm,
+                    role: res.active_spec_role.toLowerCase(),
+                    role_id: roles.indexOf(res.active_spec_role.toLowerCase()),
+                    ilvl: res.gear.item_level_equipped,
+                    avatar: res.thumbnail_url,
+                }, ...roster].sort(compareByRole))
             })
     }
 

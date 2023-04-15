@@ -6,6 +6,9 @@
 
 .popup_type_add-card {
     transform: translateY(120%);
+    position: fixed;
+    bottom: 0;
+    right: 0;
     background-color: var(--main-color);
     height: 100%;
     width: 100%;
@@ -254,6 +257,10 @@
     text-shadow: var(--warcraft-button-text-outline);
     border-radius: 6px;
     transition: .2s linear;
+}
+
+.popup__submit-btn:disabled {
+    opacity: .5;
 }
 
 .popup__submit-btn:hover {

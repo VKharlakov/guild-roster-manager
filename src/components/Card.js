@@ -1,19 +1,23 @@
 import React from "react";
+import { classColorList }  from "../utils/constants";
 
 function Card({card, onCardDelete, roster, rosterSetter, id}) {
+    const classColor = classColorList[`${card.class}`]
+    const role = card.role
+
+    //Delete card handlerS
     function handleDeleteClick() {
-        console.log(id)
         onCardDelete(roster, rosterSetter, id)
     }
 
     return (
-        <li className="characters__element">
-            <button className="characters__delete-btn" onClick={handleDeleteClick} />
-            <span className="characters__role"></span>
-            <img src={card.thumbnail_url} alt="Char pic" className="characters__avatar" />
-            <div className="characters__info">
-                <p className="characters__name">{card.name}</p>
-                <p className="characters__ilvl">{card.gear.item_level_equipped}</p>
+        <li className="roster__element">
+            <button className="roster__delete-btn" onClick={handleDeleteClick} />
+            <span className={`roster__role roster__role_type_${role}`}/>
+            <img src={card.avatar} alt="Char pic" className="roster__avatar" />
+            <div className="roster__info" style={{backgroundColor: classColor}}>
+                <p className="roster__name">{card.name}</p>
+                <p className="roster__ilvl">{card.ilvl}</p>
             </div>
         </li>
     )

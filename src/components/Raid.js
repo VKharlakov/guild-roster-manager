@@ -11,6 +11,7 @@ function Raid({ onCardDelete, onCardAdd, sectionType }) {
     const [isMainRosterPopupActive, setIsMainRosterPopupActive] = React.useState(false)
     const [isSecondRosterPopupActive, setIsSecondRosterPopupActive] = React.useState(false)
 
+    //Close all popups
     function resetPopupStates() {
         setIsMainRosterPopupActive(false)
         setIsSecondRosterPopupActive(false)
@@ -19,7 +20,6 @@ function Raid({ onCardDelete, onCardAdd, sectionType }) {
     return (
         <section className={`section section_type_${sectionType}`}>
             <Roster
-                cards={mainRosterCards}
                 onAddCharacterPopup={setIsMainRosterPopupActive}
                 resetPopupStates={resetPopupStates}
                 title='Main Roster'
@@ -29,7 +29,6 @@ function Raid({ onCardDelete, onCardAdd, sectionType }) {
                 rosterType={sectionType}
             />
             <Roster
-                cards={secondRosterCards}
                 onAddCharacterPopup={setIsSecondRosterPopupActive}
                 resetPopupStates={resetPopupStates}
                 title='Second Group'
@@ -44,6 +43,7 @@ function Raid({ onCardDelete, onCardAdd, sectionType }) {
                 onClose={setIsMainRosterPopupActive}
                 roster={mainRosterCards}
                 rosterSetter={setMainRosterCards}
+                rosterMaxLength='20'
             />
             <AddCharacterPopup
                 isActive={isSecondRosterPopupActive}
@@ -51,6 +51,7 @@ function Raid({ onCardDelete, onCardAdd, sectionType }) {
                 onClose={setIsSecondRosterPopupActive}
                 roster={secondRosterCards}
                 rosterSetter={setSecondRosterCards}
+                rosterMaxLength='20'
             />
         </section>
     )

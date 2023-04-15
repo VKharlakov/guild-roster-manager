@@ -29,7 +29,6 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType }) {
         <section className={`section section_type_${sectionType}`}>
             <Roster
                 title='First Group'
-                cards={firstRosterCards}
                 onAddCharacterPopup={setIsFirstRosterPopupActive}
                 resetPopupStates={resetPopupStates}
                 onCardDelete={onCardDelete}
@@ -39,7 +38,6 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType }) {
             />
             <Roster
                 title='Second Group'
-                cards={secondRosterCards}
                 onAddCharacterPopup={setIsSecondRosterPopupActive}
                 resetPopupStates={resetPopupStates}
                 onCardDelete={onCardDelete}
@@ -49,7 +47,6 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType }) {
             />
             <Roster
                 title='Third Group'
-                cards={thirdRosterCards}
                 onAddCharacterPopup={setIsThirdRosterPopupActive}
                 resetPopupStates={resetPopupStates}
                 onCardDelete={onCardDelete}
@@ -59,7 +56,6 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType }) {
             />
             <Roster
                 title='Fourth Group'
-                cards={fourthRosterCards}
                 onAddCharacterPopup={setIsFourthRosterPopupActive}
                 resetPopupStates={resetPopupStates}
                 onCardDelete={onCardDelete}
@@ -69,7 +65,6 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType }) {
             />
             <Roster
                 title='Fifth Group'
-                cards={fifthRosterCards}
                 onAddCharacterPopup={setIsFifthRosterPopupActive}
                 resetPopupStates={resetPopupStates}
                 onCardDelete={onCardDelete}
@@ -83,6 +78,7 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType }) {
                 onCardAdd={onCardAdd}
                 roster={firstRosterCards}
                 rosterSetter={setFirstRosterCards}
+                rosterMaxLength='5'
             />
             <AddCharacterPopup
                 isActive={isSecondRosterPopupActive}
@@ -90,6 +86,7 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType }) {
                 onCardAdd={onCardAdd}
                 roster={secondRosterCards}
                 rosterSetter={setSecondRosterCards}
+                rosterMaxLength='5'
             />
             <AddCharacterPopup
                 isActive={isThirdRosterPopupActive}
@@ -97,6 +94,7 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType }) {
                 onCardAdd={onCardAdd}
                 roster={thirdRosterCards}
                 rosterSetter={setThirdRosterCards}
+                rosterMaxLength='5'
             />
             <AddCharacterPopup
                 isActive={isFourthRosterPopupActive}
@@ -104,6 +102,7 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType }) {
                 onCardAdd={onCardAdd}
                 roster={fourthRosterCards}
                 rosterSetter={setFourthRosterCards}
+                rosterMaxLength='5'
             />
             <AddCharacterPopup
                 isActive={isFifthRosterPopupActive}
@@ -111,6 +110,7 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType }) {
                 onCardAdd={onCardAdd}
                 roster={fifthRosterCards}
                 rosterSetter={setFifthRosterCards}
+                rosterMaxLength='5'
             />
         </section>
     )
