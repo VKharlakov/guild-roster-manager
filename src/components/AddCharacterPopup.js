@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { euServerList as servers } from "../utils/constants";
 import ToolTip from "./ToolTip";
+import { CurrentGuildContext } from "../contexts/CurrentGuildContext";
 
-function AddCharacterPopup({ onCardAdd, isActive, onClose, roster, rosterSetter, rosterMaxLength, members }) {
+function AddCharacterPopup({ onCardAdd, isActive, onClose, roster, rosterSetter, rosterMaxLength }) {
+    //Using useContext to get current guild data
+    const currentGuild = useContext(CurrentGuildContext)
+
     //Accumulating input values
     const [formValue, setFormValue] = React.useState({ realm: "", name: "", region: "eu" })
 
@@ -12,7 +16,7 @@ function AddCharacterPopup({ onCardAdd, isActive, onClose, roster, rosterSetter,
     //ToolTip-related states
     const [isToolTipOpen, setIsToolTipOpen] = React.useState(false)
     const [currentToolTipArray, setCurrentToolTipArray] = React.useState('')
-    const memberList = members.active_members.map((member) => member.character)
+    const memberList = currentGuild.active_members.map((member) => member.character)
 
     //Function when an input is focused
     function onInputFocus(toolTipArray) {

@@ -6,6 +6,7 @@ import MythicPlus from './MythicPlus';
 import api from '../utils/api'
 import { compareByRole, roles } from "../utils/utils";
 import { Route, Routes } from 'react-router-dom';
+import { CurrentGuildContext } from '../contexts/CurrentGuildContext';
 
 function App() {
   const [activeGuildData, setActiveGuildData] = React.useState({ name: '', active_members: '' })
@@ -48,27 +49,27 @@ function App() {
 
   return (
     <div className="page">
-      <Header activeGuildData={activeGuildData} />
-      <Routes>
-        <Route path='/' element={<Main />}>
-          <Route path="raid" element={
-            <Raid
-              onCardAdd={handleCardAdd}
-              onCardDelete={handleCardDelete}
-              sectionType='raid'
-              activeGuildData={activeGuildData}
-            />}
-          />
-          <Route path="mythic-plus" element={
-            <MythicPlus
-              onCardAdd={handleCardAdd}
-              onCardDelete={handleCardDelete}
-              sectionType='mythic-plus'
-              activeGuildData={activeGuildData}
-            />}
-          />
-        </Route>
-      </Routes>
+      <CurrentGuildContext.Provider value={activeGuildData}>
+        <Header />
+        <Routes>
+          <Route path='/' element={<Main />}>
+            <Route path="raid" element={
+              <Raid
+                onCardAdd={handleCardAdd}
+                onCardDelete={handleCardDelete}
+                sectionType='raid'
+              />}
+            />
+            <Route path="mythic-plus" element={
+              <MythicPlus
+                onCardAdd={handleCardAdd}
+                onCardDelete={handleCardDelete}
+                sectionType='mythic-plus'
+              />}
+            />
+          </Route>
+        </Routes>
+      </CurrentGuildContext.Provider>
     </div>
   );
 }
