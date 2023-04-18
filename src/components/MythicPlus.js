@@ -2,7 +2,7 @@ import React from "react";
 import Roster from "./Roster";
 import AddCharacterPopup from "./AddCharacterPopup";
 
-function MythicPlus({ onCardDelete, onCardAdd, sectionType }) {
+function MythicPlus({ onCardDelete, onCardAdd, sectionType, activeGuildData }) {
     //Roster cards state arrays
     const [firstRosterCards, setFirstRosterCards] = React.useState([])
     const [secondRosterCards, setSecondRosterCards] = React.useState([])
@@ -79,6 +79,7 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType }) {
                 roster={firstRosterCards}
                 rosterSetter={setFirstRosterCards}
                 rosterMaxLength='5'
+                members={activeGuildData}
             />
             <AddCharacterPopup
                 isActive={isSecondRosterPopupActive}
@@ -87,6 +88,7 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType }) {
                 roster={secondRosterCards}
                 rosterSetter={setSecondRosterCards}
                 rosterMaxLength='5'
+                members={activeGuildData}
             />
             <AddCharacterPopup
                 isActive={isThirdRosterPopupActive}
@@ -95,6 +97,7 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType }) {
                 roster={thirdRosterCards}
                 rosterSetter={setThirdRosterCards}
                 rosterMaxLength='5'
+                members={activeGuildData}
             />
             <AddCharacterPopup
                 isActive={isFourthRosterPopupActive}
@@ -103,6 +106,7 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType }) {
                 roster={fourthRosterCards}
                 rosterSetter={setFourthRosterCards}
                 rosterMaxLength='5'
+                members={activeGuildData}
             />
             <AddCharacterPopup
                 isActive={isFifthRosterPopupActive}
@@ -111,6 +115,7 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType }) {
                 roster={fifthRosterCards}
                 rosterSetter={setFifthRosterCards}
                 rosterMaxLength='5'
+                members={activeGuildData}
             />
         </section>
     )

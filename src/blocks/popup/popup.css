@@ -22,6 +22,12 @@
     transition: .5s ease-out;
 }
 
+@media all and (min-width: 1920px) {
+    .popup_type_add-card {
+        right: calc((100vw - 1920px)/2);
+    }
+}
+
 .popup_active {
     transform: unset;
 }

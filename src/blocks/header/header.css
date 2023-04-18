@@ -3,9 +3,7 @@
     max-width: 1920px;
     background-color: var(--main-color);
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 100px;
+    min-height: var(--header-height);
     z-index: 3;
     position: relative;
 }
@@ -21,18 +19,44 @@
     height: 5px;
 }
 
+.header__logo {
+    width: 40px;
+    height: 40px;
+    margin: auto 25px;
+    background-image: url('../../images/icons8-orc-48.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: .2s;
+}
+
+.header__logo:hover {
+    opacity: .7;
+}
+
 .header__title-container {
-    margin-left: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .header__title {
     margin: 0;
+    margin-bottom: 5px;
     padding: 0;
+    line-height: 100%;
     color: var(--text-color);
 }
 
 .header__brief {
     margin: 0;
     padding: 0;
+    line-height: 100%;
     color: var(--text-color);
+}
+
+@media all and (max-width:1340px) {
+    .header__title {
+        margin-bottom: 2px;
+    }
 }

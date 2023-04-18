@@ -1,7 +1,10 @@
 .content {
     width: 100%;
     max-width: 1920px;
-    height: calc(100% - 100px);
+    min-height: calc(100vh - var(--header-height));
     display: flex;
     position: relative;
+    background-color: var(--main-light-color);
+    box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.75);
+    overflow: hidden;
 }

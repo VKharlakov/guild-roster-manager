@@ -2,7 +2,7 @@ import React from "react";
 import Roster from "./Roster";
 import AddCharacterPopup from "./AddCharacterPopup";
 
-function Raid({ onCardDelete, onCardAdd, sectionType }) {
+function Raid({ onCardDelete, onCardAdd, sectionType, activeGuildData }) {
     //Roster cards state arrays
     const [mainRosterCards, setMainRosterCards] = React.useState([])
     const [secondRosterCards, setSecondRosterCards] = React.useState([])
@@ -44,6 +44,7 @@ function Raid({ onCardDelete, onCardAdd, sectionType }) {
                 roster={mainRosterCards}
                 rosterSetter={setMainRosterCards}
                 rosterMaxLength='20'
+                members={activeGuildData}
             />
             <AddCharacterPopup
                 isActive={isSecondRosterPopupActive}
@@ -52,6 +53,7 @@ function Raid({ onCardDelete, onCardAdd, sectionType }) {
                 roster={secondRosterCards}
                 rosterSetter={setSecondRosterCards}
                 rosterMaxLength='20'
+                members={activeGuildData}
             />
         </section>
     )
