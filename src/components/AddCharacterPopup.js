@@ -1,29 +1,37 @@
 import React from "react";
-import { euServerList as servers} from "../utils/constants";
+import { euServerList as servers } from "../utils/constants";
 import ToolTip from "./ToolTip";
 
 function AddCharacterPopup({ onCardAdd, isActive, onClose, roster, rosterSetter, rosterMaxLength, members }) {
     //Accumulating input values
     const [formValue, setFormValue] = React.useState({ realm: "", name: "", region: "eu" })
-    
+
     //Disable button state
     const [isDisabled, setIsDisabled] = React.useState(false)
-   
+
     //ToolTip-related states
     const [isToolTipOpen, setIsToolTipOpen] = React.useState(false)
     const [currentToolTipArray, setCurrentToolTipArray] = React.useState('')
     const memberList = members.active_members.map((member) => member.character)
 
-    //Handler when an input if focused
+    //Function when an input is focused
     function onInputFocus(toolTipArray) {
         setIsToolTipOpen(true)
         setCurrentToolTipArray(toolTipArray)
     }
-    
-    //Rewriting input values
-    function handleChange(e) {
-        const { name, value } = e.target
 
+    //Function that searches for matching names from array
+    function search(value, toolTipArray) {
+        setCurrentToolTipArray(toolTipArray.filter(item => item.name.toLowerCase().startsWith(value.toLowerCase())))
+    }
+
+    //Function when typing inside of an input
+    function onChange(e, toolTipArray) {
+        const { name, value } = e.target
+        //Searching for matching items
+        search(value, toolTipArray)
+
+        //Rewriting input values
         setFormValue({
             ...formValue,
             region: 'eu',
@@ -31,8 +39,8 @@ function AddCharacterPopup({ onCardAdd, isActive, onClose, roster, rosterSetter,
         })
     }
 
-    //Submit handler
-    function handleSubmit(e) {
+    //Function when Submit
+    function onSubmit(e) {
         e.preventDefault()
 
         onCardAdd(formValue, roster, rosterSetter)
@@ -56,10 +64,30 @@ function AddCharacterPopup({ onCardAdd, isActive, onClose, roster, rosterSetter,
             <div className="popup__button-container">
                 <button className="popup__button-close" onClick={() => { onClose(false) }}>&#128473;</button>
             </div>
-            <form className="popup__form" name="form" onSubmit={handleSubmit}>
+            <form className="popup__form" name="form" onSubmit={onSubmit}>
                 <div className="popup__inputs">
-                    <input className="popup__input popup__input_type_text popup__input_name_realm" onFocus={() => {onInputFocus(servers)}} onBlur={() => {setIsToolTipOpen(false)}} value={formValue.realm} onChange={handleChange} name="realm" placeholder="Enter your realm" minLength="3" required />
-                    <input className="popup__input popup__input_type_text popup__input_name_char"  onFocus={() => {onInputFocus(memberList)}} onBlur={() => {setIsToolTipOpen(false)}} value={formValue.name} onChange={handleChange} name="name" placeholder="Enter your character name" minLength="3" required />
+                    <input
+                        onFocus={() => { onInputFocus(servers) }}
+                        onBlur={() => { setIsToolTipOpen(false) }}
+                        onChange={(event) => { onChange(event, servers) }}
+                        className="popup__input popup__input_type_text"
+                        name="realm"
+                        placeholder="Enter your realm"
+                        value={formValue.realm}
+                        minLength="3"
+                        required
+                    />
+                    <input
+                        onFocus={() => { onInputFocus(memberList) }}
+                        onBlur={() => { setIsToolTipOpen(false) }}
+                        onChange={(event) => { onChange(event, memberList) }}
+                        className="popup__input popup__input_type_text"
+                        name="name"
+                        placeholder="Enter your character name"
+                        value={formValue.name}
+                        minLength="3"
+                        required
+                    />
                 </div>
                 <button className="popup__submit-btn" type="submit" disabled={isDisabled}>Submit</button>
             </form>
