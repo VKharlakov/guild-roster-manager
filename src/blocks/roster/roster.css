@@ -12,6 +12,7 @@
     margin-bottom: 20px;
     color: var(--highlight-color);
     text-shadow: var(--warcraft-button-text-outline);
+    font-size: var(--h2-font-size);
 }
 
 .roster__characters-container {
@@ -20,6 +21,7 @@
     display: flex;
     border-radius: 6px;
     outline: var(--warcraft-button-outline);
+    transition: .2s;
 }
 
 .roster__characters-container_type_raid {
@@ -201,7 +203,7 @@
 }
 
 .roster__info-number {
-    font-size: 18px;
+    font-size: var(--p-font-size);
     color: var(--text-color);
 }
 
@@ -212,6 +214,28 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+@media all and (max-width:1230px) {
+    .roster__title {
+        margin-bottom: 10px;
+    }
+    
+    .roster__add-btn {
+        width: 50px;
+    }
+
+    .roster__info-role-icon {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media all and (max-width:1030px) {
+    .roster__info-role-icon {
+        width: 25px;
+        height: 25px;
+    }
 }
 
 .roster__role_type_tank {

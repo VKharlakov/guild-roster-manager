@@ -16,17 +16,18 @@ function AddCharacterPopup({ onCardAdd, isActive, onClose, roster, rosterSetter,
     //ToolTip-related states
     const [isToolTipOpen, setIsToolTipOpen] = React.useState(false)
     const [currentToolTipArray, setCurrentToolTipArray] = React.useState('')
-    const memberList = currentGuild.active_members.map((member) => member.character)
+    const [memberList, setMemberList] = React.useState([]) 
 
     //Function when an input is focused
     function onInputFocus(toolTipArray) {
+        if(toolTipArray === memberList) {setMemberList(currentGuild.active_members.map((member) => member.character))}
         setIsToolTipOpen(true)
         setCurrentToolTipArray(toolTipArray)
     }
 
     //Function that searches for matching names from array
     function search(value, toolTipArray) {
-        setCurrentToolTipArray(toolTipArray.filter(item => item.name.toLowerCase().startsWith(value.toLowerCase())))
+        setCurrentToolTipArray(toolTipArray.filter(item => item.name.toLowerCase().startsWith(value.trim().toLowerCase())))
     }
 
     //Function when typing inside of an input
@@ -95,7 +96,7 @@ function AddCharacterPopup({ onCardAdd, isActive, onClose, roster, rosterSetter,
                 </div>
                 <button className="popup__submit-btn" type="submit" disabled={isDisabled}>Submit</button>
             </form>
-            {isToolTipOpen && <ToolTip array={currentToolTipArray} />}
+            {isToolTipOpen && currentToolTipArray.length >= 1 && <ToolTip array={currentToolTipArray} />}
         </div>
     )
 }

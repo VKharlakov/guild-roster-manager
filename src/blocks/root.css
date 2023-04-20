@@ -31,11 +31,42 @@
     --card-height: 120px;
 }
 
-@media all and (max-width:1340px) {
+@media all and (max-width: 1600px) {
     :root {
-        --header-height: 80px;
+        --header-height: 90px;
 
-        --card-width: 80px;
-        --card-height: 100px;
+        --card-width: 90px;
+        --card-height: 110px;
+    }
+}
+
+@media all and (max-width:1360px) {
+    :root {
+        --h1-font-size: 28px;
+        --h2-font-size: 20px;
+    }
+}
+
+@media all and (max-width:1230px) {
+    :root {
+        --h1-font-size: 24px;
+        --p-font-size: 14px;
+
+        --header-height: 80px;
+        
+        --card-width: 70px;
+        --card-height: 90px;
+    }
+}
+
+@media all and (max-width:1030px) {
+    :root {
+        --h1-font-size: 22px;
+        --p-font-size: 12px;
+
+        --header-height: 70px;
+        
+        --card-width: 60px;
+        --card-height: 80px;
     }
 }

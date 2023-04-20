@@ -7,7 +7,7 @@ function Main() {
 
     return (
         <main className="content">
-            <Sidebar isActive={isSidebarActive}/>
+            <Sidebar isOpen={isSidebarActive}/>
             <Outlet />
         </main>
     )
