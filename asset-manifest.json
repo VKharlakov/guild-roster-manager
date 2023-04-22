@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/guild-roster-manager/static/css/main.3c65035a.css",
+    "main.js": "/guild-roster-manager/static/js/main.89e8fa25.js",
+    "static/media/Lato-BoldItalic.woff": "/guild-roster-manager/static/media/Lato-BoldItalic.443bd94393f9d73446c8.woff",
+    "static/media/Lato-Italic.woff": "/guild-roster-manager/static/media/Lato-Italic.251de5f48806485e4c5a.woff",
+    "static/media/Lato-BlackItalic.woff": "/guild-roster-manager/static/media/Lato-BlackItalic.c329db2ef5efedb87a8e.woff",
+    "static/media/Lato-Regular.woff": "/guild-roster-manager/static/media/Lato-Regular.77ca2742388f408c3be7.woff",
+    "static/media/Lato-Bold.woff": "/guild-roster-manager/static/media/Lato-Bold.ba3a83adcb94357fc42f.woff",
+    "static/media/Lato-Black.woff": "/guild-roster-manager/static/media/Lato-Black.efe7c183457352448e1e.woff",
+    "static/media/Lato-Light.woff": "/guild-roster-manager/static/media/Lato-Light.91308c0216b40aad1603.woff",
+    "static/media/Lato-BoldItalic.woff2": "/guild-roster-manager/static/media/Lato-BoldItalic.84607fcdf9af8784aa6e.woff2",
+    "static/media/Lato-Italic.woff2": "/guild-roster-manager/static/media/Lato-Italic.d9364c880eec4d4fea78.woff2",
+    "static/media/Lato-BlackItalic.woff2": "/guild-roster-manager/static/media/Lato-BlackItalic.3061b5464316d87f5dbc.woff2",
+    "static/media/Lato-Regular.woff2": "/guild-roster-manager/static/media/Lato-Regular.39ac38d8a27bed2a16e4.woff2",
+    "static/media/Lato-Bold.woff2": "/guild-roster-manager/static/media/Lato-Bold.ea8a923ec6d3ea7cf7bc.woff2",
+    "static/media/Lato-LightItalic.woff": "/guild-roster-manager/static/media/Lato-LightItalic.6876f3b2e440df8eab71.woff",
+    "static/media/Lato-Black.woff2": "/guild-roster-manager/static/media/Lato-Black.9280d87f151e453d884c.woff2",
+    "static/media/Lato-Light.woff2": "/guild-roster-manager/static/media/Lato-Light.7e323674c33b3939aba5.woff2",
+    "static/media/Lato-LightItalic.woff2": "/guild-roster-manager/static/media/Lato-LightItalic.0ea7656d6a58e3f9853b.woff2",
+    "static/media/swords-icon.svg": "/guild-roster-manager/static/media/swords-icon.a28fb6767afa15cab788.svg",
+    "static/media/arrow.svg": "/guild-roster-manager/static/media/arrow.f0450961073f51d2633a.svg",
+    "static/media/delete.svg": "/guild-roster-manager/static/media/delete.83102c1e3ab6b5c99291.svg",
+    "index.html": "/guild-roster-manager/index.html",
+    "static/media/mythic-plus-icon.svg": "/guild-roster-manager/static/media/mythic-plus-icon.85be45ee88fe76257836.svg",
+    "main.3c65035a.css.map": "/guild-roster-manager/static/css/main.3c65035a.css.map",
+    "main.89e8fa25.js.map": "/guild-roster-manager/static/js/main.89e8fa25.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3c65035a.css",
+    "static/js/main.89e8fa25.js"
+  ]
+}
