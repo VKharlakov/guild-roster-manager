@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/guild-roster-manager/static/css/main.3c65035a.css",
-    "main.js": "/guild-roster-manager/static/js/main.89e8fa25.js",
+    "main.js": "/guild-roster-manager/static/js/main.0011d206.js",
     "static/media/Lato-BoldItalic.woff": "/guild-roster-manager/static/media/Lato-BoldItalic.443bd94393f9d73446c8.woff",
     "static/media/Lato-Italic.woff": "/guild-roster-manager/static/media/Lato-Italic.251de5f48806485e4c5a.woff",
     "static/media/Lato-BlackItalic.woff": "/guild-roster-manager/static/media/Lato-BlackItalic.c329db2ef5efedb87a8e.woff",
@@ -24,10 +24,10 @@
     "index.html": "/guild-roster-manager/index.html",
     "static/media/mythic-plus-icon.svg": "/guild-roster-manager/static/media/mythic-plus-icon.85be45ee88fe76257836.svg",
     "main.3c65035a.css.map": "/guild-roster-manager/static/css/main.3c65035a.css.map",
-    "main.89e8fa25.js.map": "/guild-roster-manager/static/js/main.89e8fa25.js.map"
+    "main.0011d206.js.map": "/guild-roster-manager/static/js/main.0011d206.js.map"
   },
   "entrypoints": [
     "static/css/main.3c65035a.css",
-    "static/js/main.89e8fa25.js"
+    "static/js/main.0011d206.js"
   ]
 }
