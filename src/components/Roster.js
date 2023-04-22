@@ -9,7 +9,6 @@ function Roster({ onAddCharacterPopup, resetPopupStates, title, onCardDelete, ro
     //Count amount of each role
     function countRoles(role) {
         let amount = 0
-        console.log('counting roles')
         roster.forEach((item) => {
             if (item.role === role) {
                 amount++
@@ -31,7 +30,6 @@ function Roster({ onAddCharacterPopup, resetPopupStates, title, onCardDelete, ro
     //Count raiting score
     function countRaiting() {
         let amount = 0
-        console.log('counting raiting')
         roster.forEach((item) => {
             amount += item.mythic_plus_raiting
         })

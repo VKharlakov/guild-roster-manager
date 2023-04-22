@@ -10,12 +10,13 @@ import { CurrentGuildContext } from '../contexts/CurrentGuildContext';
 
 function App() {
   const [activeGuildData, setActiveGuildData] = React.useState({name: '', active_members: []})
+  const [isErrorPopupOpen, setIsErrorPopupOpen] = React.useState(false)
+  const [errorText, setErrorText] = React.useState('')
 
   //Add characters to Roster(s)
   function handleCardAdd(cardData, roster, rosterSetter) {
     api.getCharacterData(cardData)
       .then((res) => {
-        console.log(res)
         rosterSetter([{
           name: res.name,
           class: res.class,
@@ -26,6 +27,12 @@ function App() {
           ilvl: res.gear.item_level_equipped,
           avatar: res.thumbnail_url,
         }, ...roster].sort(compareByRole))
+      })
+      .catch((err) => {
+        setIsErrorPopupOpen(true)
+        if(err.includes('400')) {
+          setErrorText(`Couldn't find your character, please check if the name and realm are correct and try again.`)
+        }
       })
   }
 
@@ -50,7 +57,7 @@ function App() {
       <CurrentGuildContext.Provider value={activeGuildData}>
         <Header />
         <Routes>
-          <Route path='/' element={<Main />}>
+          <Route path='/' element={<Main isErrorPopupOpen={isErrorPopupOpen} setIsErrorPopupOpen={setIsErrorPopupOpen} errorText={errorText}/>}>
             <Route path="raid" element={
               <Raid
                 onCardAdd={handleCardAdd}
