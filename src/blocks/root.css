@@ -62,11 +62,25 @@
 @media all and (max-width:1030px) {
     :root {
         --h1-font-size: 22px;
+        --h2-font-size: 18px;
         --p-font-size: 12px;
 
         --header-height: 70px;
         
         --card-width: 60px;
         --card-height: 80px;
+    }
+}
+
+@media all and (max-width: 800px) {
+    :root {
+        --h1-font-size: 20px;
+        --h2-font-size: 16px;
+        --p-font-size: 10px;
+
+        --header-height: 60px;
+        
+        --card-width: 50px;
+        --card-height: 70px;
     }
 }

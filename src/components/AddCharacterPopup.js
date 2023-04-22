@@ -15,12 +15,11 @@ function AddCharacterPopup({ onCardAdd, isActive, onClose, roster, rosterSetter,
 
     //ToolTip-related states
     const [isToolTipOpen, setIsToolTipOpen] = React.useState(false)
-    const [currentToolTipArray, setCurrentToolTipArray] = React.useState('')
-    const [memberList, setMemberList] = React.useState([]) 
+    const [currentToolTipArray, setCurrentToolTipArray] = React.useState()
+    const [memberList, setMemberList] = React.useState([])
 
     //Function when an input is focused
     function onInputFocus(toolTipArray) {
-        if(toolTipArray === memberList) {setMemberList(currentGuild.active_members.map((member) => member.character))}
         setIsToolTipOpen(true)
         setCurrentToolTipArray(toolTipArray)
     }
@@ -44,6 +43,15 @@ function AddCharacterPopup({ onCardAdd, isActive, onClose, roster, rosterSetter,
         })
     }
 
+    //Check if roster reached its limit of characters
+    function disableButtonOnLimit() {
+        if (roster.length >= rosterMaxLength) {
+            setIsDisabled(true)
+        } else {
+            setIsDisabled(false)
+        }
+    }
+
     //Function when Submit
     function onSubmit(e) {
         e.preventDefault()
@@ -54,15 +62,13 @@ function AddCharacterPopup({ onCardAdd, isActive, onClose, roster, rosterSetter,
     }
 
     React.useEffect(() => {
-
         //Prevent from overflowing roster; check if it hit max amount of characters
-        if (roster.length >= rosterMaxLength) {
-            setIsDisabled(true)
-        } else {
-            setIsDisabled(false)
-        }
-
+        disableButtonOnLimit()
     }, [roster])
+
+    React.useEffect(() => {
+        setMemberList(currentGuild.active_members.map((member) => member.character))
+    }, [currentGuild])
 
     return (
         <div className={`popup popup_type_add-card ${isActive ? 'popup_active' : ''}`}>

@@ -22,10 +22,13 @@
     border-radius: 6px;
     outline: var(--warcraft-button-outline);
     transition: .2s;
+    background-color: var(--secondary-color);
+    box-shadow: 0px 0px 20px 5px rgb(0, 0, 0);
+
 }
 
 .roster__characters-container_type_raid {
-    height: calc((var(--card-height) + 5px) * 4);
+    height: calc(((var(--card-height) + 3px) * 4) - 3px);
 }
 .roster__characters-container_type_mythic-plus {
     height: var(--card-height);
@@ -36,15 +39,13 @@
     width: 60px;
     height: 100%;
     background-color: var(--main-color);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
     border: var(--warcraft-button-border);
     outline: var(--warcraft-button-outline);
     box-shadow: var(--warcraft-button-box-shadow);
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
     transition: .2s ease-out;
+    font-size: calc(var(--p-font-size));
     color: var(--warcraft-button-text-color);
     text-shadow: var(--warcraft-button-text-outline);
 }
@@ -57,40 +58,15 @@
 .roster__list {
     margin: 0;
     padding: 0;
-    width: calc((var(--card-width) + 2px) * 5);
-    height: 100%;
+    width: calc((var(--card-width) + 3px) * 5);
     position: relative;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(var(--card-width), 1fr));
     grid-auto-rows: max-content;
     list-style: none;
-    gap: 5px 2px;
-    box-shadow: 0px 0px 20px 5px rgb(0, 0, 0);
-    background-color: var(--secondary-color);
+    gap: 3px;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
-}
-
-.roster__list::before {
-    width: 2px;
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: -2px;
-    background: rgba(135, 89, 69, 0.441);
-    z-index: 1;
-}
-
-.roster__list::after {
-    width: 2px;
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: -4px;
-    background: rgba(0, 0, 0, 0.567);
-    z-index: 1;
 }
 
 .roster__element {
@@ -105,12 +81,14 @@
     box-sizing: border-box;
     transition: .2s;
     z-index: 2;
+    border-radius: 3px;
 }
 
 .roster__element:hover {
     z-index: 3;
     scale: 1.2;
     border-radius: 6px;
+    outline: var(--warcraft-button-outline);
     box-shadow: 0px 0px 20px 5px rgb(0, 0, 0);
 }
 
@@ -158,14 +136,13 @@
 .roster__avatar {
     object-fit: cover;
     object-position: center;
-    max-width: 100px;
-    height: 80px;
-    object-position: 0 20%;
+    width: 100%;
+    height: 70%;
 }
 
 .roster__info {
     width: 100%;
-    height: 100%;
+    height: 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -177,13 +154,13 @@
     margin: 0;
     padding: 0;
     font-weight: bold;
-    font-size: 20px;
+    font-size: calc(var(--p-font-size) + 1px);
 }
 
 .roster__ilvl {
     margin: 0;
     padding: 0;
-    font-size: 14px;
+    font-size: calc(var(--p-font-size) - 2px);
 }
 
 .roster__info-panel {
@@ -203,6 +180,11 @@
 }
 
 .roster__info-number {
+    font-size: var(--p-font-size);
+    color: var(--text-color);
+}
+
+.roster__info-text {
     font-size: var(--p-font-size);
     color: var(--text-color);
 }
@@ -235,6 +217,36 @@
     .roster__info-role-icon {
         width: 25px;
         height: 25px;
+    }
+    .roster__role {
+        width: 20px;
+        height: 20px;
+    }
+
+    .roster__delete-btn {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media all and (max-width: 800px) {
+    .roster__add-btn {
+        width: 35px;
+    }
+
+    .roster__role {
+        width: 15px;
+        height: 15px;
+    }
+
+    .roster__info-role-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .roster__delete-btn {
+        width: 10px;
+        height: 10px;
     }
 }
 

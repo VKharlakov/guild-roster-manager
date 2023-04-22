@@ -9,7 +9,7 @@ import { Route, Routes } from 'react-router-dom';
 import { CurrentGuildContext } from '../contexts/CurrentGuildContext';
 
 function App() {
-  const [activeGuildData, setActiveGuildData] = React.useState({ name: '', active_members: '' })
+  const [activeGuildData, setActiveGuildData] = React.useState({name: '', active_members: []})
 
   //Add characters to Roster(s)
   function handleCardAdd(cardData, roster, rosterSetter) {
@@ -34,8 +34,7 @@ function App() {
     rosterSetter(roster.filter(card => roster.indexOf(card) !== id))
   }
 
-  React.useEffect(() => {
-
+  React.useEffect(() => {   
     api.getGuildData('eu', 'aerie-peak', 'together')
       .then((res) => {
         setActiveGuildData({
@@ -44,7 +43,6 @@ function App() {
         })
       })
       .catch((err) => console.log(err))
-
   }, [])
 
   return (

@@ -29,7 +29,7 @@ function InfoPanel({ rosterType, counter, array, roster }) {
             }
             {(rosterType === 'mythic-plus') &&
                 <div className="roster__info-element">
-                    <h4>M+ score:</h4>
+                    <p className="roster__info-text">M+ score:</p>
                     <p className="roster__info-number">{array || 0}</p>
                 </div>
             }

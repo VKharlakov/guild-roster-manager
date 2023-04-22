@@ -222,7 +222,14 @@
 }
 
 @media screen and (max-width: 1150px) {
-
+    .popup__button-container {
+        width: 40px;
+        height: 40px;
+        top: -35px;
+        padding-top: 15px;
+        padding-left: 10px;
+    }
+    
     .popup__submit-btn {
         width: 60%;
         margin-top: 25px;
@@ -234,7 +241,19 @@
     }
 
     .popup__button-close {
-        width: 27px;
-        height: 27px;
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media all and (max-width: 800px) {
+    .popup_type_add-card {
+        max-width: 200px;
+        max-height: 170px;
+    }
+
+    .popup__submit-btn {
+        margin-top: 15px;
+        height: 30px;
     }
 }
