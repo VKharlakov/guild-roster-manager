@@ -57,7 +57,7 @@ function App() {
       <CurrentGuildContext.Provider value={activeGuildData}>
         <Header />
         <Routes>
-          <Route path='/' element={<Main isErrorPopupOpen={isErrorPopupOpen} setIsErrorPopupOpen={setIsErrorPopupOpen} errorText={errorText}/>}>
+          <Route path='*' element={<Main isErrorPopupOpen={isErrorPopupOpen} setIsErrorPopupOpen={setIsErrorPopupOpen} errorText={errorText}/>}>
             <Route path="raid" element={
               <Raid
                 onCardAdd={handleCardAdd}
