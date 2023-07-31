@@ -1,0 +1,40 @@
+.page-not-found {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.page-not-found__title {
+    margin: 0;
+    padding: 0;
+    font-size: 60px;
+
+}
+
+.page-not-foud__brief {
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+    font-size: 24px;
+}
+
+.page-not-found__link {
+    margin: 0;
+    margin-top: 100px;
+    padding: 15px;
+    text-decoration: none;
+    color: #000;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+
+    background: linear-gradient(to left, lightgray 50%, transparent 50%) right;
+    background-size: 200% 100%;
+    transition:all .5s ease-out
+}
+
+.page-not-found__link:hover {
+    cursor: pointer;
+    background-position: left;
+}

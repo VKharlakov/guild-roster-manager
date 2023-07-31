@@ -1,0 +1,116 @@
+.header {
+    z-index: 3;
+    width: 100%;
+    max-width: 1920px;
+    min-height: var(--header-height);
+    display: flex;
+    background-color: var(--main-color);
+    position: relative;
+    grid-area: header;
+}
+
+.header::before {
+    content: "";
+    position: absolute;
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 5px;
+    background: rgba(21, 13, 9, .8);
+}
+
+.header__logo {
+    width: 40px;
+    height: 40px;
+    margin: auto 25px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: .2s;
+}
+
+.header__logo_type_default {
+    background-image: url('../../images/header__logo_type_default.png');
+    width: 100px;
+    height: 100px;
+    margin: 0;
+}
+
+.header__logo_type_guild {
+    background-image: url('../../images/icons8-orc-48.png');
+}
+
+.header__logo:hover {
+    opacity: .7;
+}
+
+.header__title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header__title {
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 0;
+    line-height: 100%;
+    font-size: var(--h1-font-size);
+    color: var(--text-color);
+}
+
+.header__add {
+    margin-left: auto;
+    display: flex;
+    transition: .1s;
+}
+
+.header__add:hover {
+    opacity: .5;
+    cursor: pointer;
+}
+
+.header__add-label {
+    margin: 0;
+    padding: 0;
+    padding-right: 5px;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+}
+
+.header__add-button {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    background-color: unset;
+    background-image: url('../../images/add-guild.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+    margin-left: auto;
+    width: 35px;
+    height: 100%;
+    cursor: pointer;
+}
+
+.header__brief {
+    margin: 0;
+    padding: 0;
+    line-height: 100%;
+    color: var(--text-color);
+    font-size: var(--p-font-size);
+}
+
+@media all and (max-width:1030px) {
+    .header__logo {
+        width: 30px;
+        height: 30px;
+        margin: auto 20px;
+    }
+}

@@ -1,0 +1,45 @@
+.guilds {
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.guilds__list {
+    margin: 0;
+    padding: 0;
+    min-height: calc(100vh - var(--header-height));
+    background-color: var(--main-light-color);
+    box-sizing: border-box;
+}
+
+.guilds__item {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    width: 100%;
+    color: black;
+    transition: .2s;
+    box-sizing: border-box;
+}
+
+.guilds__item:hover {
+    transform: scale(103%);
+    box-shadow: var(--warcraft-button-box-shadow-S);
+    opacity: .7;
+}
+
+.guilds__item:nth-of-type(even) {
+    background-color: var(--secondary-color);
+}
+.guilds__item:nth-of-type(odd) {
+    background-color: var(--highlight-color);
+}
+
+.guilds__link {
+    text-decoration: none;
+    color: #000;
+    display: inline-block;
+    width: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}

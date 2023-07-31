@@ -1,0 +1,86 @@
+:root {
+    /*Basic color palette*/
+    --main-color: hsl(18, 35%, 10%);
+    --main-color-hover: hsl(18, 29%, 14%);
+    --main-color-trans: hsla(18, 35%, 10%, 40%);
+    --secondary-color: hsl(17, 33%, 24%);
+    --text-color: hsl(20, 6%, 90%);
+    --main-light-color: hsl(18, 41%, 39%);
+    --highlight-color: hsl(35, 100%, 55%);
+
+    /*Warcraft button styles*/
+    --warcraft-button-border: 2px solid #200a0a;
+    --warcraft-button-outline: 1px solid #5c5552;
+    --warcraft-button-background-color: #740507;
+    --warcraft-button-box-shadow: 0px 0px 10px 0px black, inset 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    --warcraft-button-box-shadow-S: 0px 0px 3px 0px black, inset 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
+    --warcraft-button-text-color: #f8b700;
+    --warcraft-button-text-outline: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    --warcraft-button-background-color-highlight: #970a0c;
+
+    /*Font sizes*/
+    --h1-font-size: 32px;
+    --h2-font-size: 24px;
+    --p-font-size: 16px;
+
+    /*header height*/
+    --header-height: 100px;
+
+    /*сharacters__element width and height*/
+    --card-width: 100px;
+    --card-height: 120px;
+}
+
+@media all and (max-width: 1600px) {
+    :root {
+        --header-height: 90px;
+
+        --card-width: 90px;
+        --card-height: 110px;
+    }
+}
+
+@media all and (max-width:1360px) {
+    :root {
+        --h1-font-size: 28px;
+        --h2-font-size: 20px;
+    }
+}
+
+@media all and (max-width:1230px) {
+    :root {
+        --h1-font-size: 24px;
+        --p-font-size: 14px;
+
+        --header-height: 80px;
+        
+        --card-width: 70px;
+        --card-height: 90px;
+    }
+}
+
+@media all and (max-width:1030px) {
+    :root {
+        --h1-font-size: 22px;
+        --h2-font-size: 18px;
+        --p-font-size: 12px;
+
+        --header-height: 70px;
+        
+        --card-width: 60px;
+        --card-height: 80px;
+    }
+}
+
+@media all and (max-width: 800px) {
+    :root {
+        --h1-font-size: 20px;
+        --h2-font-size: 16px;
+        --p-font-size: 10px;
+
+        --header-height: 60px;
+        
+        --card-width: 50px;
+        --card-height: 70px;
+    }
+}
