@@ -1,3 +1,6 @@
+[На русском](#guildverse-русский)
+[English version](#guildverse-english)
+
 ## GuildVerse (English)
 
 GuildVerse is a website that allows tracking detailed information about the participants of upcoming events in the guilds of the online game World of Warcraft. It helps guild leaders to better understand the strength and composition of their groups or raids, including power, role, class, and more.
