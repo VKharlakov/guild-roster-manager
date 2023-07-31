@@ -4,7 +4,7 @@
 
 ## GuildVerse (English)
 
-GuildVerse is a website that allows tracking detailed information about the participants of upcoming events in the guilds of the online game World of Warcraft. It helps guild leaders to better understand the strength and composition of their groups or raids, including power, role, class, and more.
+GuildVerse is a website that allows the tracking of detailed information about the participants of upcoming events in the guilds of the online game World of Warcraft. It helps guild leaders better understand the strength and composition of their groups or raids, including power, role, class, and more.
 
 ### Functionality:
 - Add/remove guilds to the list of tracked guilds
@@ -26,7 +26,7 @@ Character and guild data are fetched from the open API resource [raider.io](http
 
 ## GuildVerse (Русский)
 
-GuildVerse - это сайт, позволяющий отслеживать подробную информацию об участниках предстоящих мероприятий в гильдиях онлайн-игры World of Warcraft. Он помогает лидерам гильдий лучше понять силу и состав своих групп или рейдов, включая мощность, роль, класс и другие характеристики.
+GuildVerse - это сайт, позволяющий отслеживать подробную информацию об участниках предстоящих мероприятий в гильдиях онлайн-игры World of Warcraft. Он помогает лидерам гильдий лучше понять силу и состав своих групп или рейдов, включая силу персонажей, роль, класс и другие характеристики.
 
 ### Функциональность:
 - Добавлять/удалять гильдии в список отслеживаемых
