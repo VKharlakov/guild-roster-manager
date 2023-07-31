@@ -1,4 +1,5 @@
 [На русском](#guildverse-русский)
+
 [English version](#guildverse-english)
 
 ## GuildVerse (English)
