@@ -1,0 +1,253 @@
+.popup {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.popup_type_add-card {
+    transform: translateY(120%);
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: var(--main-color);
+    height: 100%;
+    width: 100%;
+    max-width: 400px;
+    max-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1.5%;
+    box-shadow: 0px 0px 20px 5px rgb(0, 0, 0);
+    transition: .5s ease-out;
+}
+
+.popup_active {
+    transform: unset;
+}
+
+.popup__button-close {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    text-align: center;
+    background-color: var(--warcraft-button-background-color);
+    box-shadow: var(--warcraft-button-box-shadow-S);
+    color: white;
+    transition: .2s;
+    border-radius: 3px;
+}
+
+.popup__button-close:hover {
+    background-color: var(--warcraft-button-background-color-highlight);
+    cursor: pointer;
+}
+
+.popup__button-container {
+    box-sizing: border-box;
+    width: 60px;
+    height: 60px;
+    clip-path: polygon(38% 30%, 100% 30%, 100% 100%, 0% 100%);
+    background-color: var(--main-color);
+    position: absolute;
+    top: -55px;
+    right: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.popup__form {
+    color: var(--text-color);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    justify-content: space-evenly;
+}
+
+.popup__inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+    height: 40%;
+    width: 100%;
+    max-width: 70%;
+}
+
+.popup__radio-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup__radio {
+    display: none;
+}
+
+.popup__radio-label {
+    display: flex;
+    position: relative;
+    background-color: aliceblue;
+    border-radius: 5%;
+    padding: 5px;
+    align-items: center;
+    font-size: calc(var(--p-font-size) - 2px);
+    color: var(--warcraft-button-text-color);
+    text-shadow: var(--warcraft-button-text-outline);
+}
+
+.popup__radio-label:first-of-type {
+    margin-right: 30px;
+}
+
+.popup__custom-radio {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 120%;
+    width: 14px;
+    height: 14px;
+    border: 3px solid white;
+    background-color: white;
+    border-radius: 50%;
+    transition: .2s;
+    box-sizing: border-box;
+}
+
+.popup__radio:checked + .popup__custom-radio {
+    background-color: transparent;
+}
+
+.popup__input_type_text {
+    background-color: var(--text-color);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 5px;
+    border-bottom: 1px solid rgb(204, 204, 204);
+    font-size: var(--p-font-size);
+    transition: .2s;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.popup__title {
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+    font-size: var(--p-font-size);
+    color: var(--text-color);
+}
+
+.popup__title-highlight {
+    color: var(--highlight-color);
+}
+
+.popup__input_type_text:focus {
+    box-shadow: 0px 0px 20px 1px var(--highlight-color);
+    outline: none;
+}
+
+.popup__input_type_text::placeholder {
+    font-size: calc(var(--p-font-size) - 2px);
+}
+
+.popup__submit-btn {
+    user-select: none;
+    height: 30px;
+    width: 70%;
+    border: var(--warcraft-button-border);
+    outline: var(--warcraft-button-outline);
+    box-shadow: var(--warcraft-button-box-shadow);
+    background-color: var(--warcraft-button-background-color);
+    color: var(--warcraft-button-text-color);
+    text-shadow: var(--warcraft-button-text-outline);
+    border-radius: 6px;
+    transition: .2s linear;
+    font-size: calc(var(--p-font-size) - 1px);
+}
+
+.popup__submit-btn:disabled {
+    opacity: .5;
+}
+
+.popup__submit-btn:hover {
+    background-color: var(--warcraft-button-background-color-highlight);
+    cursor: pointer;
+}
+
+@media all and (min-width: 1920px) {
+    .popup_type_add-card {
+        right: calc((100vw - 1920px)/2);
+    }
+}
+
+@media all and (max-width: 1600px) {
+    .popup_type_add-card {
+        max-width: 300px;
+        max-height: 250px;
+    }
+}
+
+@media screen and (max-width: 1270px) {
+    .popup_type_add-card {
+        max-width: 250px;
+        max-height: 230px;
+    }
+
+    .popup__tooltip-container {
+        max-width: 120px;
+    }
+}
+
+@media screen and (max-width: 1170px) {
+    .popup_type_add-card {
+        max-width: 230px;
+        max-height: 200px;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .popup__button-container {
+        width: 40px;
+        height: 40px;
+        top: -35px;
+        padding-top: 15px;
+        padding-left: 10px;
+    }
+
+    .popup__submit-btn {
+        width: 60%;
+    }
+
+    .popup__inputs {
+        margin-top: 5px;
+        gap: 15px;
+    }
+
+    .popup__button-close {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media all and (max-width: 800px) {
+    .popup_type_add-card {
+        max-width: 200px;
+        max-height: 170px;
+    }
+
+    .popup__submit-btn {
+        height: 30px;
+    }
+}

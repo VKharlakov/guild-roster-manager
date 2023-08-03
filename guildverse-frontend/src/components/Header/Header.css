@@ -1,23 +1,10 @@
 .header {
-    z-index: 3;
-    width: 100%;
+    width: 90%;
+    justify-self: center;
     max-width: 1920px;
-    min-height: var(--header-height);
+    height: var(--header-height);
     display: flex;
-    background-color: var(--main-color);
-    position: relative;
     grid-area: header;
-}
-
-.header::before {
-    content: "";
-    position: absolute;
-    top: auto;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 5px;
-    background: rgba(21, 13, 9, .8);
 }
 
 .header__logo {
@@ -32,8 +19,8 @@
 
 .header__logo_type_default {
     background-image: url('../../images/header__logo_type_default.png');
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     margin: 0;
 }
 
@@ -92,7 +79,6 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    margin-right: 10px;
     margin-left: auto;
     width: 35px;
     height: 100%;

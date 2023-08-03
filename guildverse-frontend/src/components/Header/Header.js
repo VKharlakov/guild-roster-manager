@@ -1,9 +1,9 @@
-import React from "react";
 import './Header.css'
+import React from "react";
 import { Link } from "react-router-dom";
 import { CurrentGuildContext } from "../../contexts/CurrentGuildContext";
 
-function Header({ isGuildHeader }) {
+function Header({ isGuildHeader, handleAddGuild }) {
     //Using useContext to get current guild data
     const currentGuild = React.useContext(CurrentGuildContext)
 
@@ -16,7 +16,7 @@ function Header({ isGuildHeader }) {
                 </div>
                 <div className="header__add">
                     <label className="header__add-label" htmlFor='add'>Add</label>
-                    <button className="header__add-button" id='add'></button>
+                    <button className="header__add-button" id='add' onClick={() => { handleAddGuild(true) }}></button>
                 </div>
             </header>
         )

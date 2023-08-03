@@ -47,8 +47,13 @@ function App() {
   React.useEffect(() => {
     api.getGuildData('eu', 'aerie-peak', 'together')
       .then((res) => {
+        console.log(res)
         setActiveGuildData({
           name: res.name,
+          faction: res.faction,
+          realm: res.realm,
+          region: res.region,
+          rio_profile: res.profile_url,
           active_members: res.members
         })
       })

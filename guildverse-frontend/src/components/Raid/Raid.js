@@ -1,7 +1,7 @@
 import React from "react";
 import './Raid.css'
-import Roster from "../Roster";
-import AddCharacterPopup from "../AddCharacterPopup";
+import Roster from "../Roster/Roster";
+import AddCharacterPopup from "../Popup/AddCharacterPopup";
 
 function Raid({ onCardDelete, onCardAdd, sectionType }) {
     //Roster cards state arrays

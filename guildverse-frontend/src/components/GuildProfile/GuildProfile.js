@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "../Sidebar/Sidebar";
-import ErrorPopup from "../ErrorPopup";
+import ErrorPopup from "../ErrorPopup/ErrorPopup";
 import './GuildProfile.css'
 import { Outlet } from "react-router-dom";
 import Header from "../Header/Header";
