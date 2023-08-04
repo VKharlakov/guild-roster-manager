@@ -4,13 +4,14 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: var(--dark-color);
 }
 
 .page-not-found__title {
     margin: 0;
     padding: 0;
     font-size: 60px;
-
+    color: var(--text-emph-color);
 }
 
 .page-not-foud__brief {
@@ -18,6 +19,8 @@
     margin-top: 10px;
     padding: 0;
     font-size: 24px;
+    color: var(--text-emph-color);
+    opacity: .5;
 }
 
 .page-not-found__link {
@@ -25,16 +28,17 @@
     margin-top: 100px;
     padding: 15px;
     text-decoration: none;
-    color: #000;
-    border: 1px solid lightgray;
+    color: var(--dark-color);
     border-radius: 6px;
+    border: 4px solid var(--text-emph-color);
 
-    background: linear-gradient(to left, lightgray 50%, transparent 50%) right;
-    background-size: 200% 100%;
-    transition:all .5s ease-out
+    background: linear-gradient(to left, var(--text-emph-color) 50%, transparent 50%) right;
+    background-size: 205% 100%;
+    transition: all .5s ease-out;
 }
 
 .page-not-found__link:hover {
     cursor: pointer;
     background-position: left;
+    color: var(--text-emph-color);
 }

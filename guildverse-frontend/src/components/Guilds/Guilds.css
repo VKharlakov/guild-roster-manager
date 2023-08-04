@@ -10,7 +10,25 @@
     width: 100%;
     min-height: calc(100vh - var(--header-height));
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.guilds__content::after {
+    content: '';
+    pointer-events: none;
+    width: 100%;
+    height: 24px;
+    box-shadow: 0 0 32px 32px var(--dark-color);
+    position: sticky;
+    bottom: 0;
+    opacity: 1;
+    background-color: var(--dark-color);
+    transition: opacity .2s;
+    border-top-left-radius: 20%;
+    border-top-right-radius: 20%;
+    z-index: 1;
 }
 
 .guilds__list {

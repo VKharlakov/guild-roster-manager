@@ -64,15 +64,15 @@ function App() {
     <section className="app">
       <CurrentGuildContext.Provider value={activeGuildData}>
         <Routes>
-          <Route path='/' element={<Home />}/>
-          <Route path='/guilds' element={<Guilds />}/>
-          <Route path={`/${activeGuildData.name}`} element={
-              <GuildProfile
-                isErrorPopupOpen={isErrorPopupOpen}
-                setIsErrorPopupOpen={setIsErrorPopupOpen}
-                errorText={errorText}
-              />
-            }>
+          <Route path='/' element={<Home />} />
+          <Route path='/guilds' element={<Guilds />} />
+          <Route path={`/guilds/${activeGuildData.name}`} element={
+            <GuildProfile
+              isErrorPopupOpen={isErrorPopupOpen}
+              setIsErrorPopupOpen={setIsErrorPopupOpen}
+              errorText={errorText}
+            />
+          }>
             <Route path='raid' element={
               <Raid
                 onCardAdd={handleCardAdd}
@@ -88,7 +88,7 @@ function App() {
               />}
             />
           </Route>
-          <Route path='*' element={<PageNotFound />}/>
+          <Route path='*' element={<PageNotFound />} />
         </Routes>
       </CurrentGuildContext.Provider>
     </section>

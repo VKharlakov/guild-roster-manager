@@ -1,8 +1,9 @@
 :root {
     /*Harbor palette*/
     --dark-color:  hsl(218, 23%, 16%);
-    --dark-emph-color: hsl(218, 23%, 20%);
-    
+    --dark-emph-color: hsl(218, 24%, 20%);
+    --text-emph-color: #F1FFFA;
+    --highlight-color: #F28123;
     /*Basic color palette*/
     --main-color: hsl(18, 35%, 10%);
     --main-color-hover: hsl(18, 29%, 14%);
