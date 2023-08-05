@@ -1,12 +1,14 @@
 const mongoose = require('mongoose')
-const character = require('./character')
 
 const mythicPlusRosterSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
     },
-    characters: [character.schema]
+    characters: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'character'
+    }]
 })
 
 module.exports = mongoose.model('mythicPlusRoster', mythicPlusRosterSchema)

@@ -1,7 +1,6 @@
 const router = require('express').Router()
+const guildRouter = require('./guildRouter')
 
-const guildsRoutes = require('./guilds')
-
-router.use('/guilds', guildsRoutes)
+router.use('/guilds', guildRouter)
 
 module.exports = router

@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const character = require('./character')
 
 const raidRosterSchema = new mongoose.Schema({
     name: {
@@ -11,7 +10,10 @@ const raidRosterSchema = new mongoose.Schema({
         type: Number,
         enum: [20, 40]
     },
-    characters: [character.schema]
+    characters: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'character'
+    }],
 })
 
 module.exports = mongoose.model('raidRoster', raidRosterSchema)

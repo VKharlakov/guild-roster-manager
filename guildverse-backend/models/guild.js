@@ -1,6 +1,4 @@
 const mongoose = require('mongoose')
-const raidRoster = require('./raidRoster')
-const mythicPlusRoster = require('./mythicPlusRoster')
 
 const guildSchema = new mongoose.Schema({
     name: {
@@ -21,9 +19,19 @@ const guildSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    rioProfile: {
+        type: String,
+        required: true,
+    },
     members: [],
-    raid: [raidRoster.schema],
-    mythicPlus: [mythicPlusRoster.schema],
+    raid: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'raidRoster'
+    }],
+    mythicPlus: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'mythicPlusRoster'
+    }],
 })
 
 module.exports = mongoose.model('guild', guildSchema)
