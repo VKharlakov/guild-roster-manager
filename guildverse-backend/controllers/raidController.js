@@ -1,7 +1,8 @@
+const Character = require('../models/character');
 const Guild = require('../models/guild')
 const Raid = require('../models/raidRoster')
 
-// Add raid roster
+// Add Raid roster
 module.exports.addRaidRoster = (req, res) => {
     Guild.findById(req.params.guildId)
         .populate('raid')
@@ -13,10 +14,11 @@ module.exports.addRaidRoster = (req, res) => {
             Raid.create(req.body)
                 .then((raidRoster) => {
                     guild.raid.push(raidRoster);
-                    return guild.save();
+                    guild.save();
+                    return raidRoster
                 })
-                .then((updatedGuild) => {
-                    res.status(200).send(updatedGuild);
+                .then((raidRoster) => {
+                    res.status(200).send(raidRoster);
                 })
                 .catch((err) => {
                     res.status(500).send({ message: 'Could not create and add a raid roster', err });
@@ -27,7 +29,7 @@ module.exports.addRaidRoster = (req, res) => {
         });
 }
 
-// Delete raid roster
+// Delete Raid roster
 module.exports.deleteRaidRoster = async (req, res) => {
     try {
         const guild = await Guild.findByIdAndUpdate(
@@ -35,18 +37,29 @@ module.exports.deleteRaidRoster = async (req, res) => {
             { $pull: { raid: req.params.raidId } },
             { new: true }
         ).populate('raid');
-
         if (!guild) {
             return res.status(404).send({ message: 'Guild not found' });
         }
 
-        const deletedRaid = await Raid.findByIdAndDelete(req.params.raidId);
-
-        if (!deletedRaid) {
+        const raid = await Raid.findById(req.params.raidId)
+        if (!raid) {
             return res.status(404).send({ message: 'Raid not found' });
         }
 
-        res.status(200).send(guild);
+        const deleteCharactersPromises = raid.characters.map(async (character) => {
+            try {
+                await Character.findByIdAndDelete(character)
+            } catch (err) {
+                console.error('Error deleting roster:', err)
+            }
+        })
+
+        await Promise.all(deleteCharactersPromises)
+
+        await Raid.deleteOne(raid)
+            .then(() => res.status(200).send(guild.raid))
+            .catch((err) => res.status(500).send({ message: 'Roster not deleted', err }));
+
     } catch (err) {
         res.status(500).send({ message: 'Could not delete a raid roster', err });
     }

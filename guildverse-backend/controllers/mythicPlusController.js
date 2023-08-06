@@ -1,7 +1,8 @@
 const Guild = require('../models/guild')
-const mythicPlus = require('../models/mythicPlusRoster')
+const MythicPlus = require('../models/mythicPlusRoster')
+const Character = require('../models/character')
 
-// Add mythic plus roster
+// Add MythicPlus roster
 module.exports.addMythicPlusRoster = (req, res) => {
     Guild.findById(req.params.guildId)
         .populate('mythicPlus')
@@ -10,13 +11,14 @@ module.exports.addMythicPlusRoster = (req, res) => {
                 return res.status(404).send({ message: 'Guild not found' });
             }
 
-            mythicPlus.create(req.body)
+            MythicPlus.create(req.body)
                 .then((mythicPlusRoster) => {
                     guild.mythicPlus.push(mythicPlusRoster);
-                    return guild.save();
+                    guild.save();
+                    return mythicPlusRoster
                 })
-                .then((updatedGuild) => {
-                    res.status(200).send(updatedGuild);
+                .then((mythicPlusRoster) => {
+                    res.status(200).send(mythicPlusRoster);
                 })
                 .catch((err) => {
                     res.status(500).send({ message: 'Could not create and add a m+ roster', err });
@@ -27,7 +29,7 @@ module.exports.addMythicPlusRoster = (req, res) => {
         });
 }
 
-// Delete mythic plus roster
+// Delete MythicPlus roster
 module.exports.deleteMythicPlusRoster = async (req, res) => {
     try {
         const guild = await Guild.findByIdAndUpdate(
@@ -35,19 +37,30 @@ module.exports.deleteMythicPlusRoster = async (req, res) => {
             { $pull: { mythicPlus: req.params.mythicPlusId } },
             { new: true }
         ).populate('mythicPlus');
-
         if (!guild) {
             return res.status(404).send({ message: 'Guild not found' });
         }
 
-        const deletedMythicPlus = await mythicPlus.findByIdAndDelete(req.params.mythicPlusId);
-
-        if (!deletedMythicPlus) {
+        const mythicPlus = await MythicPlus.findById(req.params.mythicPlusId)
+        if (!mythicPlus) {
             return res.status(404).send({ message: 'M+ not found' });
         }
 
-        res.status(200).send(guild);
+        const deleteCharactersPromises = mythicPlus.characters.map(async (character) => {
+            try {
+                await Character.findByIdAndDelete(character)
+            } catch (err) {
+                console.error('Error deleting roster:', err)
+            }
+        })
+
+        await Promise.all(deleteCharactersPromises)
+
+        await MythicPlus.deleteOne(mythicPlus)
+            .then(() => res.status(200).send(guild.mythicPlus))
+            .catch((err) => res.status(500).send({ message: 'Roster not deleted', err }));
+
     } catch (err) {
-        res.status(500).send({ message: 'Could not delete a m+ roster', err });
+        res.status(500).send({ message: 'Could not delete a M+ roster', err });
     }
 }
