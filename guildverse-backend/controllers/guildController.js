@@ -1,6 +1,6 @@
 const Guild = require('../models/guild')
-const Raid = require('../models/raidRoster')
-const MythicPlus = require('../models/mythicPlusRoster')
+const Raid = require('../models/raid')
+const MythicPlus = require('../models/mythicPlus')
 const Character = require('../models/character')
 
 // Get Guilds
@@ -30,69 +30,12 @@ module.exports.createGuild = (req, res) => {
 
 // Delete Guild
 module.exports.deleteGuild = async (req, res) => {
-    try {
-        const guild = await Guild.findById(req.params.guildId)
-
-        if (!guild) {
-            return res.status(404).send({ message: 'Guild not found' });
-        }
-
-        // Deleteing all Characters from Raids
-        const deleteRaidCharacterPromises = guild.raid.map(async (roster) => {
-            const deletePromises = roster.characters.map(async (character) => {
-                try {
-                    await Character.findByIdAndDelete(character);
-                } catch (err) {
-                    console.error('Error deleting character:', err);
-                }
-            });
-            await Promise.all(deletePromises);
-        });
-
-        // Deleting all Characters from MythicPlus
-        const deleteMythicPlusCharacterPromises = guild.mythicPlus.map(async (roster) => {
-            const deletePromises = roster.characters.map(async (character) => {
-                try {
-                    await Character.findByIdAndDelete(character);
-                } catch (err) {
-                    console.error('Error deleting character:', err);
-                }
-            });
-            await Promise.all(deletePromises);
-        });
-
-        // Deleting all Raids
-        const deleteRaidPromises = guild.raid.map(async (roster) => {
-            try {
-                await Raid.findByIdAndDelete(roster);
-            } catch (err) {
-                console.error('Error deleting roster:', err);
-            }
-        });
-
-        // Deleting all MythicPlus
-        const deleteMythicPlusPromises = guild.mythicPlus.map(async (roster) => {
-            try {
-                await MythicPlus.findByIdAndDelete(roster);
-            } catch (err) {
-                console.error('Error deleting roster:', err);
-            }
-        });
-
-        // Waiting for completing operations above
-        await Promise.all([
-            deleteRaidCharacterPromises,
-            deleteMythicPlusCharacterPromises,
-            deleteRaidPromises,
-            deleteMythicPlusPromises
-        ]);
-
-        // Deleting the Guild
-        await Guild.deleteOne(guild)
-            .then(() => res.status(200).send({ message: 'Guild and associated documents deleted successfully' }))
-            .catch((err) => res.status(500).send({ message: 'Guild not deleted', err }))
-
-    } catch (err) {
-        res.status(500).send({ message: 'Error deleting guild and associated documents', err });
+    const guild = await Guild.findById(req.params.guildId)
+    if (!guild) {
+        return res.status(404).send({ message: 'Guild not found' })
     }
+
+    await guild.deleteOne()
+
+    res.status(200).send({ message: 'Guild deleted successfully' })
 };

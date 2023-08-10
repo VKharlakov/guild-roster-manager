@@ -1,5 +1,5 @@
-const Raid = require('../models/raidRoster')
-const MythicPlus = require('../models/mythicPlusRoster')
+const Raid = require('../models/raid')
+const MythicPlus = require('../models/mythicPlus')
 const Character = require('../models/character')
 
 //  Add Character to Raid
