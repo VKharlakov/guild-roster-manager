@@ -10,6 +10,7 @@ import { Route, Routes } from 'react-router-dom';
 import { CurrentGuildContext } from '../../contexts/CurrentGuildContext';
 import Home from '../Home/Home';
 import Guilds from '../Guilds/Guilds';
+import Header from '../Header/Header';
 
 function App() {
   const [activeGuildData, setActiveGuildData] = React.useState({ name: '', active_members: [] })
@@ -63,6 +64,7 @@ function App() {
   return (
     <section className="app">
       <CurrentGuildContext.Provider value={activeGuildData}>
+        <Header />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/guilds' element={<Guilds />} />

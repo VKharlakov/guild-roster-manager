@@ -1,5 +1,4 @@
 import './Guilds.css'
-import Header from "../Header/Header"
 import React, { useContext } from 'react'
 import { CurrentGuildContext } from '../../contexts/CurrentGuildContext'
 import AddGuildPopup from '../Popup/AddGuildPopup'
@@ -12,7 +11,6 @@ function Guilds() {
 
     return (
         <section className="guilds">
-            <Header isGuildHeader={false} handleAddGuild={setIsPopupActive} />
             <main className='guilds__content'>
                 <ul className="guilds__list">
                     <GuildBanner currentGuild={currentGuild} />

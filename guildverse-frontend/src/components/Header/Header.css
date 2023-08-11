@@ -6,10 +6,12 @@
     grid-area: header;
     box-sizing: border-box;
     align-items: center;
+    justify-content: unset;
 }
 
 .header__nav {
     display: flex;
+    width: 50%;
     gap: 10px;
     align-items: baseline;
     height: max-content;
@@ -18,16 +20,22 @@
 .header__link {
     margin: 0;
     padding: 0;
+    scale: 1;
     height: min-content;
     font-size: 24px;
     font-weight: 700;
     text-decoration: none;
     color: white;
-    transition: .2s;
+    transition: color .2s, opacity .2s, scale .2s, margin 1s ease-in-out;
     opacity: .5;
 }
 
-.header__link:hover ~ .header__link_active {
+.header__link_type_home {
+    scale: 1.5;
+    margin-left: 25% !important;
+}
+
+.header__link:hover~.header__link_active {
     color: white;
     opacity: .5;
 }
@@ -42,6 +50,11 @@
     opacity: 1;
 }
 
+.header__link_hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
 .header__link:first-of-type {
     font-size: 32px;
     line-height: 1;
@@ -50,6 +63,8 @@
 .header__link-arrow {
     margin: 0;
     padding: 0;
+    opacity: 1;
+    visibility: visible;
     width: 20px;
     height: 20px;
     background-image: url('../../images/arrow-right-svgrepo-com.svg');
@@ -57,6 +72,12 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
+.header__link-arrow_hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
 
 .header__logo {
     width: 40px;
@@ -131,9 +152,9 @@
     transition: .2s;
 }
 
-.header__add:hover
-.header__add-button {
-    opacity: 1;;
+.header__add:hover .header__add-button {
+    opacity: 1;
+    ;
 }
 
 .header__brief {
