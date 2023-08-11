@@ -31,7 +31,12 @@ const characterSchema = new mongoose.Schema({
     roleId: {
         type: Number,
         enum: [0, 1, 2]
+    },
+    parentId: {
+        type: String,
+        required: true
     }
 })
+
 
 module.exports = mongoose.model('character', characterSchema)

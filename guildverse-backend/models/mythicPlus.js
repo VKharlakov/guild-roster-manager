@@ -9,14 +9,21 @@ const mythicPlusSchema = new mongoose.Schema({
     characters: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'character'
-    }]
+    }],
+    parentId: {
+        type: String,
+        required: true
+    }
 })
 
 // Deleting all Character before the delition of MythicPlus
 mythicPlusSchema.pre('deleteOne', { query: false, document: true }, async function () {
 
     if (this.characters.length > 0) {
-        await Character.deleteMany({ _id: { $in: this.characters } })
+        this.characters.forEach(async (item) => {
+            const character = await Character.findById(item)
+            character.deleteOne()
+        })
     }
 
 })

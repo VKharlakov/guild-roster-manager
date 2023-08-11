@@ -1,7 +1,4 @@
 const Guild = require('../models/guild')
-const Raid = require('../models/raid')
-const MythicPlus = require('../models/mythicPlus')
-const Character = require('../models/character')
 
 // Get Guilds
 module.exports.getGuilds = (req, res) => {

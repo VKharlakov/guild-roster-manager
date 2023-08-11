@@ -1,10 +1,10 @@
 const Guild = require('../models/guild')
 const MythicPlus = require('../models/mythicPlus')
-const Character = require('../models/character')
 
 // Add MythicPlus roster
 module.exports.addMythicPlusRoster = (req, res) => {
-    Guild.findById(req.params.guildId)
+    const { parentId } = req.body
+    Guild.findById(parentId)
         .populate('mythicPlus')
         .then((guild) => {
             if (!guild) {
@@ -31,9 +31,10 @@ module.exports.addMythicPlusRoster = (req, res) => {
 
 // Delete MythicPlus roster
 module.exports.deleteMythicPlusRoster = async (req, res) => {
+    const { parentId } = req.body
     try {
         const guild = await Guild.findByIdAndUpdate(
-            req.params.guildId,
+            parentId,
             { $pull: { mythicPlus: req.params.mythicPlusId } },
             { new: true }
         )
@@ -47,7 +48,7 @@ module.exports.deleteMythicPlusRoster = async (req, res) => {
         }
 
         await mythicPlus.deleteOne()
-        res.status(200).send({ message: 'Kaifariki' })
+        res.status(200).send({ message: 'MythicPlus roster deleted' })
 
     } catch (err) {
         res.status(500).send({ message: 'Could not delete a M+ roster', err });

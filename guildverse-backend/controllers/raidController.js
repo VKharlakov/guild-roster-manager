@@ -1,10 +1,10 @@
-const Character = require('../models/character');
 const Guild = require('../models/guild')
 const Raid = require('../models/raid')
 
 // Add Raid roster
 module.exports.addRaidRoster = (req, res) => {
-    Guild.findById(req.params.guildId)
+    const { parentId } = req.body
+    Guild.findById(parentId)
         .populate('raid')
         .then((guild) => {
             if (!guild) {
@@ -18,7 +18,7 @@ module.exports.addRaidRoster = (req, res) => {
                     return raidRoster
                 })
                 .then((raidRoster) => {
-                    res.status(200).send(raidRoster);
+                    res.status(201).send(raidRoster);
                 })
                 .catch((err) => {
                     res.status(500).send({ message: 'Could not create and add a raid roster', err });
@@ -31,9 +31,10 @@ module.exports.addRaidRoster = (req, res) => {
 
 // Delete Raid roster
 module.exports.deleteRaidRoster = async (req, res) => {
+    const { parentId } = req.body
     try {
         const guild = await Guild.findByIdAndUpdate(
-            req.params.guildId,
+            parentId,
             { $pull: { raid: req.params.raidId } },
             { new: true }
         )
@@ -47,7 +48,7 @@ module.exports.deleteRaidRoster = async (req, res) => {
         }
 
         await raid.deleteOne()
-        res.status(200).send({ message: 'Kaifariki' })
+        res.status(200).send({ message: 'Raid roster deleted' })
 
     } catch (err) {
         res.status(500).send({ message: 'Could not delete a M+ roster', err });

@@ -4,7 +4,8 @@ const Character = require('../models/character')
 
 //  Add Character to Raid
 module.exports.addRaidCharacter = (req, res) => {
-    Raid.findById(req.params.rosterId)
+    const { parentId } = req.body
+    Raid.findById(parentId)
         .populate('characters')
         .then((roster) => {
             if (!roster) {
@@ -29,7 +30,8 @@ module.exports.addRaidCharacter = (req, res) => {
 
 //  Add Character to MythicPlus
 module.exports.addMythicPlusCharacter = (req, res) => {
-    MythicPlus.findById(req.params.rosterId)
+    const { parentId } = req.body
+    MythicPlus.findById(parentId)
         .populate('characters')
         .then((roster) => {
             if (!roster) {
@@ -54,9 +56,10 @@ module.exports.addMythicPlusCharacter = (req, res) => {
 
 // Delete Character from Raid
 module.exports.deleteRaidCharacter = async (req, res) => {
+    const { parentId } = req.body
     try {
         const roster = await Raid.findByIdAndUpdate(
-            req.params.rosterId,
+            parentId,
             { $pull: { characters: req.params.characterId } },
             { new: true }
         ).populate('characters');
@@ -79,9 +82,10 @@ module.exports.deleteRaidCharacter = async (req, res) => {
 
 // Delete Character from MythicPlus
 module.exports.deleteMythicPlusCharacter = async (req, res) => {
+    const { parentId } = req.body
     try {
         const roster = await MythicPlus.findByIdAndUpdate(
-            req.params.rosterId,
+            parentId,
             { $pull: { characters: req.params.characterId } },
             { new: true }
         ).populate('characters');
