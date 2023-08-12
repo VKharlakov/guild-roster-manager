@@ -78,25 +78,6 @@
     visibility: hidden;
 }
 
-
-.header__logo {
-    width: 40px;
-    height: 40px;
-    margin: auto 25px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: .2s;
-}
-
-.header__logo_type_guild {
-    background-image: url('../../images/icons8-orc-48.png');
-}
-
-.header__logo:hover {
-    opacity: .7;
-}
-
 .header__title-container {
     display: flex;
     flex-direction: column;
@@ -163,12 +144,4 @@
     line-height: 100%;
     color: var(--text-color);
     font-size: var(--p-font-size);
-}
-
-@media all and (max-width:1030px) {
-    .header__logo {
-        width: 30px;
-        height: 30px;
-        margin: auto 20px;
-    }
 }

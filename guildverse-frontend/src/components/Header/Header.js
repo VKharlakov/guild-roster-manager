@@ -1,9 +1,9 @@
 import './Header.css'
 import React from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { CurrentGuildContext } from "../../contexts/CurrentGuildContext";
 
-function Header({ isGuildHeader, handleAddGuild }) {
+function Header({ guildname, handleAddGuild }) {
     //Using useContext to get current guild data
     const currentGuild = React.useContext(CurrentGuildContext)
     const currentPath = useLocation().pathname
@@ -31,7 +31,6 @@ function Header({ isGuildHeader, handleAddGuild }) {
     function guildHeader() {
         return (
             <header className="header">
-                <Link to={'/guilds'} className="header__logo header__logo_type_guild" />
                 <div className="header__title-container">
                     <h1 className="header__title">{currentGuild.name || 'GuildManager'}</h1>
                     <p className="header__brief">{`${currentGuild.active_members.length} active members` || ''}</p>
@@ -41,7 +40,11 @@ function Header({ isGuildHeader, handleAddGuild }) {
     }
 
     return (
-        isGuildHeader ? guildHeader() : defaultHeader()
+        currentPath === `/guilds/${currentGuild.name}`
+            || currentPath === `/guilds/${currentGuild.name}/raid`
+            || currentPath === `/guilds/${currentGuild.name}/mythic-plus`
+            ? guildHeader()
+            : defaultHeader()
     )
 }
 
