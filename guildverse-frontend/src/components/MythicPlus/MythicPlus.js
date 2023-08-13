@@ -2,8 +2,9 @@ import React from "react";
 import './MythicPlus.css'
 import Roster from "../Roster/Roster";
 import AddCharacterPopup from "../Popup/AddCharacterPopup";
+import AddRoster from "../AddRoster/AddRoster";
 
-function MythicPlus({ onCardDelete, onCardAdd, sectionType, activeGuildData }) {
+function MythicPlus({ onCardDelete, onCardAdd, sectionType, activeGuildData, rosterMaxAmount }) {
     //Roster cards state arrays
     const [firstRosterCards, setFirstRosterCards] = React.useState([])
     const [secondRosterCards, setSecondRosterCards] = React.useState([])
@@ -17,6 +18,8 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType, activeGuildData }) {
     const [isThirdRosterPopupActive, setIsThirdRosterPopupActive] = React.useState(false)
     const [isFourthRosterPopupActive, setIsFourthRosterPopupActive] = React.useState(false)
     const [isFifthRosterPopupActive, setIsFifthRosterPopupActive] = React.useState(false)
+
+    const [rosterList, setRosterList] = React.useState([])
 
     function resetPopupStates() {
         setIsFirstRosterPopupActive(false)
@@ -78,6 +81,11 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType, activeGuildData }) {
                 rosterType={sectionType}
                 rosterMaxLength='5'
             />
+            {rosterList.length < rosterMaxAmount &&
+                <AddRoster
+                    rosterType={sectionType}
+                />
+            }
             <AddCharacterPopup
                 isActive={isFirstRosterPopupActive}
                 onClose={setIsFirstRosterPopupActive}

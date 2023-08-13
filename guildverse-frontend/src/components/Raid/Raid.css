@@ -1,20 +1,12 @@
 .raid {
-    display: flex;
-    justify-content: space-evenly;
+    display: grid;
     width: 100%;
+    min-height: calc(100vh - var(--header-height) - 120px);
+    grid-template-columns: repeat(auto-fit, calc((var(--card-width) + 3px) * 5));
+    justify-content: space-evenly;
+    align-content: center;
     position: relative;
     align-items: center;
+    row-gap: 40px;
     margin: 40px 0;
-}
-
-@media all and (max-width: 700px) {
-    .raid {
-        gap: 15px;
-    }
-}
-
-@media all and (max-width: 645px) {
-    .section_type_raid {
-        flex-direction: column;
-    }
 }

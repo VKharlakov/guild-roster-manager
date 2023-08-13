@@ -80,6 +80,7 @@ function App() {
                 onCardAdd={handleCardAdd}
                 onCardDelete={handleCardDelete}
                 sectionType='raid'
+                rosterMaxAmount='4'
               />}
             />
             <Route path='mythic-plus' element={
@@ -87,6 +88,7 @@ function App() {
                 onCardAdd={handleCardAdd}
                 onCardDelete={handleCardDelete}
                 sectionType='mythic-plus'
+                rosterMaxAmount='6'
               />}
             />
           </Route>

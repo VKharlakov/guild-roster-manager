@@ -2,8 +2,9 @@ import React from "react";
 import './Raid.css'
 import Roster from "../Roster/Roster";
 import AddCharacterPopup from "../Popup/AddCharacterPopup";
+import AddRoster from "../AddRoster/AddRoster";
 
-function Raid({ onCardDelete, onCardAdd, sectionType }) {
+function Raid({ onCardDelete, onCardAdd, sectionType, rosterMaxAmount }) {
     //Roster cards state arrays
     const [mainRosterCards, setMainRosterCards] = React.useState([])
     const [secondRosterCards, setSecondRosterCards] = React.useState([])
@@ -11,6 +12,8 @@ function Raid({ onCardDelete, onCardAdd, sectionType }) {
     //Show / Hide AddCharacterPopup states
     const [isMainRosterPopupActive, setIsMainRosterPopupActive] = React.useState(false)
     const [isSecondRosterPopupActive, setIsSecondRosterPopupActive] = React.useState(false)
+
+    const [rosterList, setRosterList] = React.useState([])
 
     //Close all popups
     function resetPopupStates() {
@@ -40,6 +43,21 @@ function Raid({ onCardDelete, onCardAdd, sectionType }) {
                 rosterType={sectionType}
                 rosterMaxLength='20'
             />
+            <Roster
+                onAddCharacterPopup={setIsSecondRosterPopupActive}
+                resetPopupStates={resetPopupStates}
+                title='Reset Group'
+                onCardDelete={onCardDelete}
+                roster={secondRosterCards}
+                rosterSetter={setSecondRosterCards}
+                rosterType={sectionType}
+                rosterMaxLength='20'
+            />
+            {rosterList.length < rosterMaxAmount &&
+                <AddRoster
+                    rosterType={sectionType}
+                />
+            }
             <AddCharacterPopup
                 isActive={isMainRosterPopupActive}
                 onCardAdd={onCardAdd}
