@@ -28,6 +28,7 @@ function Raid({ onCardDelete, onCardAdd, sectionType }) {
                 roster={mainRosterCards}
                 rosterSetter={setMainRosterCards}
                 rosterType={sectionType}
+                rosterMaxLength='20'
             />
             <Roster
                 onAddCharacterPopup={setIsSecondRosterPopupActive}
@@ -37,6 +38,7 @@ function Raid({ onCardDelete, onCardAdd, sectionType }) {
                 roster={secondRosterCards}
                 rosterSetter={setSecondRosterCards}
                 rosterType={sectionType}
+                rosterMaxLength='20'
             />
             <AddCharacterPopup
                 isActive={isMainRosterPopupActive}

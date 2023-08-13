@@ -1,11 +1,13 @@
 .roster-info-panel {
-    width: 100%;
+    grid-area: infopanel;
+    margin-top: 20px;
+    width: calc((var(--card-width) + 3px) * 5);
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
-    background-color: var(--main-color-trans);
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
+    background-color: var(--dark-emph-color);
+    box-shadow: 0px 10px 15px 4px rgba(0, 0, 0, .2);
+    border-radius: 20px;
 }
 
 .roster-info-panel__element {
@@ -25,14 +27,23 @@
 }
 
 .roster-info-panel__role {
-    width: 35px;
-    height: 35px;
-    background-image: url(../../images/role_undefined.png);
-    background-size: cover;
+    width: 30px;
+    height: 30px;
+    background-image: url('../../images//RosterInfoPanel-images/all-icon.svg');
+    background-size: 90%;
     background-position: center;
     background-repeat: no-repeat;
+    box-sizing: border-box;
 }
 
-.roster-info-panel__role_type_tanks {background-image: url('../../images/role_tank.png');}
-.roster-info-panel__role_type_healers {background-image: url('../../images/role_healer.png');}
-.roster-info-panel__role_type_dps {background-image: url('../../images/role_dps.png');}
+.roster-info-panel__role_type_tanks {
+    background-image: url('../../images/RosterInfoPanel-images/tank-icon.svg');
+}
+
+.roster-info-panel__role_type_healers {
+    background-image: url('../../images/RosterInfoPanel-images/healing-icon.svg');
+}
+
+.roster-info-panel__role_type_dps {
+    background-image: url('../../images/RosterInfoPanel-images/dps-icon.svg');
+}

@@ -36,6 +36,7 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType, activeGuildData }) {
                 roster={firstRosterCards}
                 rosterSetter={setFirstRosterCards}
                 rosterType={sectionType}
+                rosterMaxLength='5'
             />
             <Roster
                 title='Second Group'
@@ -45,6 +46,7 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType, activeGuildData }) {
                 roster={secondRosterCards}
                 rosterSetter={setSecondRosterCards}
                 rosterType={sectionType}
+                rosterMaxLength='5'
             />
             <Roster
                 title='Third Group'
@@ -54,6 +56,7 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType, activeGuildData }) {
                 roster={thirdRosterCards}
                 rosterSetter={setThirdRosterCards}
                 rosterType={sectionType}
+                rosterMaxLength='5'
             />
             <Roster
                 title='Fourth Group'
@@ -63,6 +66,7 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType, activeGuildData }) {
                 roster={fourthRosterCards}
                 rosterSetter={setFourthRosterCards}
                 rosterType={sectionType}
+                rosterMaxLength='5'
             />
             <Roster
                 title='Fifth Group'
@@ -72,6 +76,7 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType, activeGuildData }) {
                 roster={fifthRosterCards}
                 rosterSetter={setFifthRosterCards}
                 rosterType={sectionType}
+                rosterMaxLength='5'
             />
             <AddCharacterPopup
                 isActive={isFirstRosterPopupActive}

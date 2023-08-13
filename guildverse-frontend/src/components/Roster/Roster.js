@@ -3,10 +3,10 @@ import React from "react";
 import Character from "../Character/Character";
 import RosterInfoPanel from "../RosterInfoPanel/RosterInfoPanel";
 
-function Roster({ onAddCharacterPopup, resetPopupStates, title, onCardDelete, roster, rosterSetter, rosterType }) {
-    const [roles, setRoles] = React.useState({tanks: 0, healers: 0, dps: 0, total: 0})
+function Roster({ onAddCharacterPopup, resetPopupStates, title, onCardDelete, roster, rosterSetter, rosterType, rosterMaxLength }) {
+    const [roles, setRoles] = React.useState({ tanks: 0, healers: 0, dps: 0, total: 0 })
     const [raiting, setRaiting] = React.useState(0)
-    
+
     //Count amount of each role
     function countRoles(role) {
         let amount = 0
@@ -17,7 +17,7 @@ function Roster({ onAddCharacterPopup, resetPopupStates, title, onCardDelete, ro
         })
         return amount
     }
-    
+
     //Handle add roles to roles array
     function handleSetRoles() {
         setRoles({
@@ -44,37 +44,39 @@ function Roster({ onAddCharacterPopup, resetPopupStates, title, onCardDelete, ro
     }
 
     return (
-        <div className="roster">
+        <div className={`roster roster_type_${rosterType}`}>
             <h2 className="roster__title">{title}</h2>
-            <div className={`roster__characters-container roster__characters-container_type_${rosterType}`}>
-                <ul className="roster__list">
-                    {roster.map((card, index) => (
-                        <Character
-                            key={index}
-                            id={index}
-                            card={card}
-                            onCardDelete={onCardDelete}
-                            roster={roster}
-                            rosterSetter={rosterSetter}
-                        />
-                    ))}
-                </ul>
-                <button className="roster__add-btn" onClick={() => { resetPopupStates(); onAddCharacterPopup(true) }}>Add</button>
-            </div>
+            <button className='roster__delete-button'/>
+            <ul className="roster__characters">
+                {roster.map((card, index) => (
+                    <Character
+                        key={index}
+                        id={index}
+                        card={card}
+                        onCardDelete={onCardDelete}
+                        roster={roster}
+                        rosterSetter={rosterSetter}
+                    />
+                ))}
+                {roster.length < rosterMaxLength &&
+                    <button className='roster__add-character-button' onClick={() => onAddCharacterPopup(true)} />
+                }
+            </ul>
+            {/* <button className="roster__add-btn" onClick={() => { resetPopupStates(); onAddCharacterPopup(true) }}>Add</button> */}
             {(rosterType === 'raid') &&
-                <RosterInfoPanel 
-                counter={handleSetRoles} 
-                array={roles} 
-                rosterType={rosterType} 
-                roster={roster}>
+                <RosterInfoPanel
+                    counter={handleSetRoles}
+                    array={roles}
+                    rosterType={rosterType}
+                    roster={roster}>
                 </RosterInfoPanel>
             }
             {(rosterType === 'mythic-plus') &&
-                <RosterInfoPanel 
-                counter={handleSetRaiting}
-                array={raiting}
-                rosterType={rosterType}
-                roster={roster}>
+                <RosterInfoPanel
+                    counter={handleSetRaiting}
+                    array={raiting}
+                    rosterType={rosterType}
+                    roster={roster}>
                 </RosterInfoPanel>
             }
         </div>
