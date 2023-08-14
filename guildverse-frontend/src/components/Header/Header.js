@@ -3,7 +3,7 @@ import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { CurrentGuildContext } from "../../contexts/CurrentGuildContext";
 
-function Header({ guildname, handleAddGuild }) {
+function Header({ handleAddGuildPopup }) {
     //Using useContext to get current guild data
     const currentGuild = React.useContext(CurrentGuildContext)
     const currentPath = useLocation().pathname
@@ -21,7 +21,7 @@ function Header({ guildname, handleAddGuild }) {
                 {currentPath === '/guilds' &&
                     <div className="header__add">
                         <label className="header__add-label" htmlFor='add'>Add</label>
-                        <button className="header__add-button" id='add' onClick={() => { handleAddGuild(true) }}></button>
+                        <button className="header__add-button" id='add' onClick={() => { handleAddGuildPopup(true) }}></button>
                     </div>
                 }
             </header>

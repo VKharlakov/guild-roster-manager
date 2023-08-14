@@ -22,7 +22,7 @@
     grid-area: title;
     margin: 0;
     padding: 0;
-    color: var(--text-emph-color);
+    color: white;
     margin-bottom: 10px;
     font-size: var(--h2-font-size);
 }

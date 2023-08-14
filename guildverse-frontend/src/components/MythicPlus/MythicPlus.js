@@ -1,7 +1,7 @@
 import React from "react";
 import './MythicPlus.css'
 import Roster from "../Roster/Roster";
-import AddCharacterPopup from "../Popup/AddCharacterPopup";
+import AddPopup from "../AddPopup/AddPopup";
 import AddRoster from "../AddRoster/AddRoster";
 
 function MythicPlus({ onCardDelete, onCardAdd, sectionType, activeGuildData, rosterMaxAmount }) {
@@ -86,7 +86,7 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType, activeGuildData, ros
                     rosterType={sectionType}
                 />
             }
-            <AddCharacterPopup
+            <AddPopup
                 isActive={isFirstRosterPopupActive}
                 onClose={setIsFirstRosterPopupActive}
                 onCardAdd={onCardAdd}
@@ -94,8 +94,9 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType, activeGuildData, ros
                 rosterSetter={setFirstRosterCards}
                 rosterMaxLength='5'
                 rosterTitle={'First Group'}
+                popupType='character'
             />
-            <AddCharacterPopup
+            <AddPopup
                 isActive={isSecondRosterPopupActive}
                 onClose={setIsSecondRosterPopupActive}
                 onCardAdd={onCardAdd}
@@ -103,8 +104,9 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType, activeGuildData, ros
                 rosterSetter={setSecondRosterCards}
                 rosterMaxLength='5'
                 rosterTitle={'Second Group'}
+                popupType='character'
             />
-            <AddCharacterPopup
+            <AddPopup
                 isActive={isThirdRosterPopupActive}
                 onClose={setIsThirdRosterPopupActive}
                 onCardAdd={onCardAdd}
@@ -112,8 +114,9 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType, activeGuildData, ros
                 rosterSetter={setThirdRosterCards}
                 rosterMaxLength='5'
                 rosterTitle={'Third Group'}
+                popupType='character'
             />
-            <AddCharacterPopup
+            <AddPopup
                 isActive={isFourthRosterPopupActive}
                 onClose={setIsFourthRosterPopupActive}
                 onCardAdd={onCardAdd}
@@ -121,8 +124,9 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType, activeGuildData, ros
                 rosterSetter={setFourthRosterCards}
                 rosterMaxLength='5'
                 rosterTitle={'Fourth Group'}
+                popupType='character'
             />
-            <AddCharacterPopup
+            <AddPopup
                 isActive={isFifthRosterPopupActive}
                 onClose={setIsFifthRosterPopupActive}
                 onCardAdd={onCardAdd}
@@ -130,6 +134,7 @@ function MythicPlus({ onCardDelete, onCardAdd, sectionType, activeGuildData, ros
                 rosterSetter={setFifthRosterCards}
                 rosterMaxLength='5'
                 rosterTitle={'Fifth Group'}
+                popupType='character'
             />
         </section>
     )

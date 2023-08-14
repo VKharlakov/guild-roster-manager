@@ -61,13 +61,15 @@ function App() {
       .catch((err) => console.log(err))
   }, [])
 
+  const [isAddGuildPopupActive, setIsAddGuildPopupActive] = React.useState(false)
+
   return (
     <section className="app">
       <CurrentGuildContext.Provider value={activeGuildData}>
-        <Header />
+        <Header handleAddGuildPopup={setIsAddGuildPopupActive}/>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/guilds' element={<Guilds />} />
+          <Route path='/guilds' element={<Guilds isPopupOpen={isAddGuildPopupActive} handleClose={setIsAddGuildPopupActive}/>} />
           <Route path={`/guilds/${activeGuildData.name}`} element={
             <GuildProfile
               isErrorPopupOpen={isErrorPopupOpen}

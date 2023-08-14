@@ -1,12 +1,11 @@
 import './Guilds.css'
 import React, { useContext } from 'react'
 import { CurrentGuildContext } from '../../contexts/CurrentGuildContext'
-import AddGuildPopup from '../Popup/AddGuildPopup'
 import GuildBanner from '../GuildBanner/GuildBanner'
+import AddPopup from '../AddPopup/AddPopup'
 
-function Guilds() {
+function Guilds({isPopupOpen, handleClose}) {
     const currentGuild = useContext(CurrentGuildContext)
-    const [isPopupActive, setIsPopupActive] = React.useState(false)
 
 
     return (
@@ -34,7 +33,7 @@ function Guilds() {
                     <GuildBanner currentGuild={currentGuild} />
                 </ul>
             </main>
-            <AddGuildPopup isActive={isPopupActive} onClose={setIsPopupActive} />
+            <AddPopup isActive={isPopupOpen} onClose={handleClose} popupType='guild'/>
         </section>
     )
 }

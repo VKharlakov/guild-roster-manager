@@ -1,7 +1,7 @@
 import React from "react";
 import './Raid.css'
 import Roster from "../Roster/Roster";
-import AddCharacterPopup from "../Popup/AddCharacterPopup";
+import AddPopup from "../AddPopup/AddPopup";
 import AddRoster from "../AddRoster/AddRoster";
 
 function Raid({ onCardDelete, onCardAdd, sectionType, rosterMaxAmount }) {
@@ -58,7 +58,7 @@ function Raid({ onCardDelete, onCardAdd, sectionType, rosterMaxAmount }) {
                     rosterType={sectionType}
                 />
             }
-            <AddCharacterPopup
+            <AddPopup
                 isActive={isMainRosterPopupActive}
                 onCardAdd={onCardAdd}
                 onClose={setIsMainRosterPopupActive}
@@ -66,8 +66,9 @@ function Raid({ onCardDelete, onCardAdd, sectionType, rosterMaxAmount }) {
                 rosterSetter={setMainRosterCards}
                 rosterMaxLength='20'
                 rosterTitle={'Main Roster'}
+                popupType='character'
             />
-            <AddCharacterPopup
+            <AddPopup
                 isActive={isSecondRosterPopupActive}
                 onCardAdd={onCardAdd}
                 onClose={setIsSecondRosterPopupActive}
@@ -75,6 +76,7 @@ function Raid({ onCardDelete, onCardAdd, sectionType, rosterMaxAmount }) {
                 rosterSetter={setSecondRosterCards}
                 rosterMaxLength='20'
                 rosterTitle={'Second Group'}
+                popupType='character'
             />
         </section>
     )

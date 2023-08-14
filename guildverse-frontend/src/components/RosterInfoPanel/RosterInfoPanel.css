@@ -18,12 +18,12 @@
 
 .roster-info-panel__number {
     font-size: var(--p-font-size);
-    color: var(--text-color);
+    color: white;
 }
 
 .roster-info-panel__text {
     font-size: var(--p-font-size);
-    color: var(--text-color);
+    color: white;
 }
 
 .roster-info-panel__role {
