@@ -121,7 +121,7 @@ function AddPopup({ popupType, onCardAdd, isActive, onClose, roster, rosterSette
                             type="radio"
                             name="region"
                             className="popup__radio-input"
-                            checked
+                            defaultChecked
                         />
                         <span className="popup__radio-input-custom" />
                     </label>
