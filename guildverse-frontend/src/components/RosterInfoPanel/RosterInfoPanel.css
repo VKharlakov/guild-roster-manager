@@ -47,3 +47,14 @@
 .roster-info-panel__role_type_dps {
     background-image: url('../../images/RosterInfoPanel-images/dps-icon.svg');
 }
+
+@media screen and (max-width: 800px) {
+    .roster-info-panel {
+        margin-top: 15px;
+    }
+
+    .roster-info-panel__role {
+        width: 20px;
+        height: 20px;
+    }
+}

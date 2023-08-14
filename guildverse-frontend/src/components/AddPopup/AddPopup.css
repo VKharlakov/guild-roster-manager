@@ -1,7 +1,4 @@
 .popup {
-    --_close-button-width: 32px;
-    --_close-button-height: 32px;
-
     transform: translateY(120%);
     position: fixed;
     bottom: 0;
@@ -13,8 +10,8 @@
     transition: .5s ease-out;
     display: grid;
     align-items: center;
-    grid-template-columns: var(--_close-button-width) 1fr var(--_close-button-width);
-    grid-template-rows: var(--_close-button-height) 1fr;
+    grid-template-columns: var(--close-button-width) 1fr var(--close-button-width);
+    grid-template-rows: var(--close-button-height) 1fr;
     grid-template-areas: 
     '... title close-button'
     'form form form';
@@ -39,8 +36,8 @@
 }
 
 .popup__close-button {
-    width: var(--_close-button-width);
-    height: var(--_close-button-height);
+    width: var(--close-button-width);
+    height: var(--close-button-height);
     padding: 0;
     margin: 0;
     border: none;
@@ -200,7 +197,7 @@
     }
 }
 
-@media screen and (max-width: 1270px) {
+@media screen and (max-width: 1260px) {
     .popup {
         max-width: 250px;
         max-height: 230px;
@@ -211,16 +208,14 @@
     }
 }
 
-@media screen and (max-width: 1170px) {
+@media screen and (max-width: 1030px) {
     .popup {
         max-width: 230px;
         max-height: 200px;
     }
-}
 
-@media screen and (max-width: 1150px) {
-    .popup__submit-btn {
-        width: 60%;
+    .popup__inputs {
+        gap: 10px;
     }
 }
 

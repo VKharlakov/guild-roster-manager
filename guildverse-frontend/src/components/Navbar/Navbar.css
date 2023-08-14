@@ -1,5 +1,6 @@
 .navbar {
-    width: 90%;
+    margin-top: 20px;
+    width: 100%;
     height: 40px;
     display: flex;
     align-items: center;
@@ -91,4 +92,23 @@
 
 .navbar__back-link:focus {
     background-color: var(--highlight-color);
+}
+
+@media all and (max-width: 800px) {
+    .navbar {
+        height: 25px;
+    }
+
+    .navbar__link-list {
+        gap: 25px;
+    }
+
+    .navbar__link-container {
+        width: 50px;
+    }
+
+    .navbar__back-link {
+        width: 25px;
+        height: 25px;
+    }
 }

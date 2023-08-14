@@ -136,9 +136,15 @@ function AddPopup({ popupType, onCardAdd, isActive, onClose, roster, rosterSette
                     </label>
                 </div>
                 <input
+                    className="popup__input popup__input_type_text"
+                    name="realm"
+                    placeholder="Enter guild realm"
+                    autoComplete="off"
+                />
+                <input
                     className='popup__input popup__input_type_text'
                     name='title'
-                    placeholder='Enter your guild title'
+                    placeholder='Enter guild title'
                     autoComplete='off'
                 />
             </>

@@ -1,6 +1,6 @@
 :root {
     /*Harbor palette*/
-    --dark-color:  #1f2632;
+    --dark-color: #1f2632;
     --dark-emph-color: #27303f;
     --text-emph-color: #F5DDDD;
     --highlight-color: #f27f21;
@@ -12,6 +12,10 @@
 
     /*header height*/
     --header-height: 100px;
+
+    /*close-button sizes*/
+    --close-button-width: 32px;
+    --close-button-height: 32px;
 
     /*сharacters__element width and height*/
     --card-width: 100px;
@@ -34,13 +38,13 @@
     }
 }
 
-@media all and (max-width:1230px) {
+@media all and (max-width:1260px) {
     :root {
         --h1-font-size: 24px;
         --p-font-size: 14px;
 
         --header-height: 80px;
-        
+
         --card-width: 70px;
         --card-height: 90px;
     }
@@ -53,7 +57,7 @@
         --p-font-size: 12px;
 
         --header-height: 70px;
-        
+
         --card-width: 60px;
         --card-height: 80px;
     }
@@ -66,8 +70,27 @@
         --p-font-size: 10px;
 
         --header-height: 60px;
-        
+
         --card-width: 50px;
         --card-height: 70px;
+
+        --close-button-width: 23px;
+        --close-button-height: 23px
+    }
+}
+
+@media all and (max-width: 500px) {
+    :root {
+        --h1-font-size: 16px;
+        --h2-font-size: 14px;
+        --p-font-size: 10px;
+
+        --header-height: 40px;
+
+        --card-width: 50px;
+        --card-height: 70px;
+
+        --close-button-width: 23px;
+        --close-button-height: 23px
     }
 }

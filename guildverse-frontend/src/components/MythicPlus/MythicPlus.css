@@ -2,16 +2,20 @@
     margin: 40px 0;
     display: grid;
     width: 100%;
-    justify-content: space-evenly;
+    min-height: calc(100vh - var(--header-height) - 120px);
+    justify-content: center;
+    align-content: space-around;
     grid-template-columns: repeat(auto-fill, calc((var(--card-width) + 3px) * 5));
-    gap: 30px;
+    grid-auto-rows: max-content;
+    gap: 50px;
+    transition: .2s;
     position: relative;
+    grid-auto-rows: minmax(150px, max-content);
+
 }
 
-@media all and (max-width: 700px) {
+@media all and (max-width: 1030px) {
     .mythic-plus {
-        gap: 15px;
-        padding: 15px 0;
-        align-items: center;
+        gap: 30px;
     }
 }

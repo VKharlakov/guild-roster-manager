@@ -91,3 +91,10 @@
     cursor: pointer;
     background-size: 80%;
 }
+
+@media screen and (max-width: 800px) {
+    .roster__delete-button {
+        width: 20px;
+        height: 20px;
+    }
+}

@@ -9,8 +9,8 @@ function Guilds({isPopupOpen, handleClose}) {
 
 
     return (
-        <section className="guilds">
-            <main className='guilds__content'>
+        <main className="guilds">
+            <div className='guilds__content'>
                 <ul className="guilds__list">
                     <GuildBanner currentGuild={currentGuild} />
                     <GuildBanner currentGuild={{name: 'TEST', faction: 'horde', active_members: [{},{},{}]}} />
@@ -32,9 +32,9 @@ function Guilds({isPopupOpen, handleClose}) {
                     <GuildBanner currentGuild={currentGuild} />
                     <GuildBanner currentGuild={currentGuild} />
                 </ul>
-            </main>
+            </div>
             <AddPopup isActive={isPopupOpen} onClose={handleClose} popupType='guild'/>
-        </section>
+        </main>
     )
 }
 

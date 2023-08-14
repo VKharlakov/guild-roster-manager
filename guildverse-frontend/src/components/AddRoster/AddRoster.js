@@ -12,6 +12,7 @@ function AddRoster({ rosterType }) {
                 onClick={() => setIsFormActive(true)}>
             </button>
             <form className={`add-roster__form add-roster__form_type_${rosterType}${isFormActive ? ' add-roster__form_active' : ''}`}>
+                <button className='add-roster__close-button' type='button' onClick={() => setIsFormActive(false)}/>
                 {rosterType === 'raid' &&
                     <div className="add-roster__radio-container">
                         <label className="add-roster__radio-title">Group size</label>
@@ -43,6 +44,7 @@ function AddRoster({ rosterType }) {
                         className="add-roster__text-input"
                         type='text'
                         name='title'
+                        placeholder='Enter roster title'
                     />
                 </label>
                 <button

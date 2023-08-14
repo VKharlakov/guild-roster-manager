@@ -6,12 +6,12 @@ import { Outlet } from "react-router-dom";
 
 function GuildProfile({ isErrorPopupOpen, setIsErrorPopupOpen, errorText }) {
     return (
-        <section className="guild-profile" >
+        <main className="guild-profile" >
             <Navbar />
             <ErrorPopup isOpen={isErrorPopupOpen} onClose={setIsErrorPopupOpen} errorText={errorText} />
 
             <Outlet />
-        </section>
+        </main>
     )
 }
 
