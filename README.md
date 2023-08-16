@@ -1,10 +1,19 @@
-[На русском](#guildverse-русский)
+[На русском](#guild-roster-manager-русский)
 
-[English version](#guildverse-english)
+[English version](#guild-roster-manager-english)
 
-## GuildVerse (English)
+## Guild Roster Manager (English)
 
-GuildVerse is a website that allows the tracking of detailed information about the participants of upcoming events in the guilds of the online game World of Warcraft. It helps guild leaders better understand the strength and composition of their groups or raids, including power, role, class, and more.
+GuildRM is a website that allows the tracking of detailed information about the participants of upcoming events in the guilds of the online game World of Warcraft. It helps guild leaders better understand the strength and composition of their groups or raids, including power, role, class, and more.
+
+Link to the website: [GuildRM.com](https://guildrm.com/)
+
+**important!** Website that is availiable on GitHub Pages is **NOT up-to-date**, it's its earliest version kept just for memories. New website with up-to-date features is avaliable by the link above!
+
+**important!** As I am currently actively working on the website, some functionality and **features are not availiable**, such as:
+ - adding/removing rosters
+ - adding/removing guilds
+ - buttons 'about us' and 'how to use' are currently disabled
 
 ### Functionality:
 - Add/remove guilds to the list of tracked guilds
@@ -24,9 +33,18 @@ Character and guild data are fetched from the open API resource [raider.io](http
 
 ---
 
-## GuildVerse (Русский)
+## Guild Roster Manager (Русский)
 
-GuildVerse - это сайт, позволяющий отслеживать подробную информацию об участниках предстоящих мероприятий в гильдиях онлайн-игры World of Warcraft. Он помогает лидерам гильдий лучше понять силу и состав своих групп или рейдов, включая силу персонажей, роль, класс и другие характеристики.
+GuildRM - это сайт, позволяющий отслеживать подробную информацию об участниках предстоящих мероприятий в гильдиях онлайн-игры World of Warcraft. Он помогает лидерам гильдий лучше понять силу и состав своих групп или рейдов, включая силу персонажей, роль, класс и другие характеристики.
+
+Ссылка на сайт: [GuildRM.com](https://guildrm.com/)
+
+**ВАЖНО:** Сайт, доступный на GitHub Pages, **не обновляется**, это его самая ранняя версия, оставленная для памяти. Новый сайт с актуальными функциями доступен по ссылке выше!
+
+**ВАЖНО:** Поскольку я в настоящее время активно работаю над веб-сайтом, некоторые функции и возможности **не доступны**, такие как:
+- добавление/удаление составов
+- добавление/удаление гильдий
+- кнопки "about us" и "how to use" в настоящее время отключены
 
 ### Функциональность:
 - Добавлять/удалять гильдии в список отслеживаемых
