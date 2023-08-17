@@ -68,7 +68,7 @@
     visibility: visible;
     width: 20px;
     height: 20px;
-    background-image: url('../../images/arrow-right-svgrepo-com.svg');
+    background-image: url('../../images/arrow-right.svg');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -123,7 +123,7 @@
     outline: none;
     border: none;
     background-color: unset;
-    background-image: url('../../images/add-guild.svg');
+    background-image: url('../../images/add-button-highlighted.svg');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;

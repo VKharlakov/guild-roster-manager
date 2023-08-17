@@ -31,7 +31,7 @@
     padding: 0;
     border: none;
     background-color: unset;
-    background-image: url('../../images/delete.svg');
+    background-image: url('../../images/Character-images/remove-character.svg');
     background-position: center;
     background-size: cover;
     opacity: 0;
@@ -54,12 +54,24 @@
     position: absolute;
     top: 2px;
     left: 2px;
-    background-image: url('../../images/role_undefined.png');
+    background-image: url('../../images/Character-images/role_undefined.png');
     width: 25px;
     height: 25px;
     background-size: cover;
     background-repeat: no-repeat;
     display: inline-block;
+}
+
+.character__role_type_tank {
+    background-image: url('../../images/Character-images/role_tank.png');
+}
+
+.character__role_type_healing {
+    background-image: url('../../images/Character-images/role_healer.png')
+}
+
+.character__role_type_dps {
+    background-image: url('../../images/Character-images/role_dps.png')
 }
 
 .character__avatar {
@@ -142,16 +154,4 @@
         width: 10px;
         height: 10px;
     }
-}
-
-.character__role_type_tank {
-    background-image: url('../../images/role_tank.png');
-}
-
-.character__role_type_healing {
-    background-image: url('../../images/role_healer.png')
-}
-
-.character__role_type_dps {
-    background-image: url('../../images/role_dps.png')
 }

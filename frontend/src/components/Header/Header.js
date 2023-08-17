@@ -12,7 +12,7 @@ function Header({ handleAddGuildPopup }) {
         return (
             <header className='header'>
                 <nav className={`header__nav ${currentPath === '/' ? 'header__nav_type_home' : ''}`}>
-                    <NavLink className={({ isActive }) => isActive ? 'header__link header__link_type_home header__link_active' : 'header__link'} to={'/'}>GuildVerse</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? 'header__link header__link_type_home header__link_active' : 'header__link'} to={'/'}>GuildRM</NavLink>
                     <>
                         <span className={`header__link-arrow ${currentPath === '/' ? 'header__link-arrow_hidden' : ''}`} />
                         <NavLink className={({ isActive }) => isActive ? 'header__link header__link_active' : 'header__link header__link_hidden'} to={'/guilds'}>Guilds</NavLink>

@@ -34,7 +34,7 @@
     right: 0;
     opacity: .2;
     scale: 1;
-    background-image: url('../../images/alliance-banner.jpg');
+    background-image: url('../../images/GuildBanner-images/alliance-banner.jpg');
     background-position-y: 0%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -51,7 +51,7 @@
     right: 0;
     opacity: .2;
     scale: 1.3;
-    background-image: url('../../images/horde-banner.png');
+    background-image: url('../../images/GuildBanner-images/horde-banner.png');
     background-position-y: 30%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -92,7 +92,7 @@
 .guild-banner__icon {
     margin-right: 10px;
     width: 15px;
-    background-image: url('../../images/banner-members.svg');
+    background-image: url('../../images/GuildBanner-images/members.svg');
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -135,7 +135,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-image: url('../../images/arrow-right-svgrepo-com.svg');
+    background-image: url('../../images/arrow-right.svg');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
