@@ -5,7 +5,6 @@ import { classColorList }  from "../../utils/constants";
 function Card({card, onCardDelete, roster, rosterSetter, id}) {
     const classColor = classColorList[`${card.class}`]
     const role = card.role
-    console.log(card)
     //Delete card handlerS
     function handleDeleteClick() {
         onCardDelete(roster, rosterSetter, id)

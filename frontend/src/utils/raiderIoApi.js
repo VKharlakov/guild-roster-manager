@@ -1,7 +1,4 @@
-class Api {
-    constructor() {
-    }
-
+class RaiderIoApi {
     _parseResponse(res) {
         if (res.ok) {
             return res.json()
@@ -21,6 +18,6 @@ class Api {
     }
 }
 
-const api = new Api()
+const raiderIoApi = new RaiderIoApi()
 
-export default api
+export default raiderIoApi

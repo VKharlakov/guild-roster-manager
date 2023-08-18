@@ -1,10 +1,10 @@
+import './App.css'
 import React from 'react';
 import GuildProfile from '../GuildProfile/GuildProfile';
 import Raid from '../Raid/Raid';
 import MythicPlus from '../MythicPlus/MythicPlus';
 import PageNotFound from '../PageNotFound/PageNotFound';
-import './App.css'
-import api from '../../utils/api'
+import raiderIoApi from '../../utils/raiderIoApi'
 import { compareByRole, roles } from "../../utils/utils";
 import { Route, Routes } from 'react-router-dom';
 import { CurrentGuildContext } from '../../contexts/CurrentGuildContext';
@@ -19,7 +19,7 @@ function App() {
 
   //Add characters to Roster(s)
   function handleCardAdd(cardData, roster, rosterSetter) {
-    api.getCharacterData(cardData)
+    raiderIoApi.getCharacterData(cardData)
       .then((res) => {
         rosterSetter([{
           name: res.name,
@@ -46,9 +46,8 @@ function App() {
   }
 
   React.useEffect(() => {
-    api.getGuildData('eu', 'aerie-peak', 'together')
+    raiderIoApi.getGuildData('eu', 'aerie-peak', 'together')
       .then((res) => {
-        console.log(res)
         setActiveGuildData({
           name: res.name,
           faction: res.faction,
