@@ -35,6 +35,9 @@ Link to the website: [GuildRM.com](https://guildrm.com/)
 
 ### Structure:
 Character and guild data are fetched from the open API resource [raider.io](https://raider.io/). When a guild is added to the "tracked" list on the website, a custom API request creates a file in the database with the guild's information. Subsequently, when various groups with characters are added, all this data is stored in the specific guild's file on my server in the database.
+<p align="center">
+  <img src="./frontend/src/images/README-images/structure.png" alt="project's roadmap" style="max-width: 100%; height: auto;">
+</p>
 
 ---
 
@@ -70,3 +73,6 @@ GuildRM - это сайт, позволяющий отслеживать под�
 
 ### Структура:
 Данные о персонажах и гильдиях берутся с открытого API ресурса [raider.io](https://raider.io/). При добавлении гильдии в список "отслеживаемых" на сайте, через кастомный запрос API создается файл в базе данных с информацией о гильдии. Затем, при добавлении различных групп с персонажами, всё это записывается в файл конкретной гильдии на моем сервере в базу данных.
+<p align="center">
+  <img src="./frontend/src/images/README-images/structure.png" alt="структура сайта" style="max-width: 100%; height: auto;">
+</p>
