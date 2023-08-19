@@ -15,6 +15,11 @@ Link to the website: [GuildRM.com](https://guildrm.com/)
  - adding/removing guilds
  - buttons 'about us' and 'how to use' are currently disabled
 
+### Roadmap
+<p align="center">
+  <img src="./frontend/src/images/README-images/roadmap.png" alt="project's roadmap" style="max-width: 50%; height: auto;">
+</p>
+
 ### Functionality:
 - Add/remove guilds to the list of tracked guilds
 - Add/remove rosters (groups) for raid activities and dungeon runs
@@ -45,6 +50,10 @@ GuildRM - это сайт, позволяющий отслеживать под�
 - добавление/удаление составов
 - добавление/удаление гильдий
 - кнопки "about us" и "how to use" в настоящее время отключены
+### Дорожная карта
+<p align="center">
+  <img src="./frontend/src/images/README-images/roadmap.png" alt="дорожная карта сайта" style="max-width: 50%; height: auto;">
+</p>
 
 ### Функциональность:
 - Добавлять/удалять гильдии в список отслеживаемых
