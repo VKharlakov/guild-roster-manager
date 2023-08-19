@@ -34,5 +34,5 @@ module.exports.deleteGuild = async (req, res) => {
 
     await guild.deleteOne()
 
-    res.status(200).send({ message: 'Guild deleted successfully' })
+    res.status(200).send(guild);
 };

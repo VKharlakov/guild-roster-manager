@@ -74,7 +74,7 @@ module.exports.deleteRaidCharacter = async (req, res) => {
             return res.status(404).send({ message: 'Char not found' });
         }
 
-        res.status(200).send(roster);
+        res.status(200).send(deletedCharacter);
     } catch (err) {
         res.status(500).send({ message: 'Could not delete a character', err });
     }
@@ -100,7 +100,7 @@ module.exports.deleteMythicPlusCharacter = async (req, res) => {
             return res.status(404).send({ message: 'Char not found' });
         }
 
-        res.status(200).send(roster);
+        res.status(200).send(deletedCharacter);
     } catch (err) {
         res.status(500).send({ message: 'Could not delete a character', err });
     }

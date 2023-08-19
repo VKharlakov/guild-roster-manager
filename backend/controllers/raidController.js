@@ -48,9 +48,9 @@ module.exports.deleteRaidRoster = async (req, res) => {
         }
 
         await raid.deleteOne()
-        res.status(200).send({ message: 'Raid roster deleted' })
+        res.status(200).send(raid);
 
     } catch (err) {
-        res.status(500).send({ message: 'Could not delete a M+ roster', err });
+        res.status(500).send({ message: 'Could not delete a Raid roster', err });
     }
 }

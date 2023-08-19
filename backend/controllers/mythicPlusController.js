@@ -48,7 +48,7 @@ module.exports.deleteMythicPlusRoster = async (req, res) => {
         }
 
         await mythicPlus.deleteOne()
-        res.status(200).send({ message: 'MythicPlus roster deleted' })
+        res.status(200).send(mythicPlus);
 
     } catch (err) {
         res.status(500).send({ message: 'Could not delete a M+ roster', err });
