@@ -1,6 +1,14 @@
 const Guild = require('../models/guild')
 const MythicPlus = require('../models/mythicPlus')
 
+// Get MythicPlus rosters
+module.exports.getMythicPlusRosters = (req, res) => {
+    const { parentId } = req.body
+    MythicPlus.find({ parentId: parentId })
+        .then((rosters) => res.status(200).send(rosters))
+        .catch((err) => res.status(500).send({ message: 'err', err }))
+}
+
 // Add MythicPlus roster
 module.exports.addMythicPlusRoster = (req, res) => {
     const { parentId } = req.body

@@ -1,6 +1,14 @@
 const Guild = require('../models/guild')
 const Raid = require('../models/raid')
 
+// Get Raid rosters
+module.exports.getRaidRosters = (req, res) => {
+    const { parentId } = req.body
+    Raid.find({ parentId: parentId })
+        .then((rosters) => res.status(200).send(rosters))
+        .catch((err) => res.status(500).send({ message: 'err', err }))
+}
+
 // Add Raid roster
 module.exports.addRaidRoster = (req, res) => {
     const { parentId } = req.body

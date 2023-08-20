@@ -2,6 +2,14 @@ const Raid = require('../models/raid')
 const MythicPlus = require('../models/mythicPlus')
 const Character = require('../models/character')
 
+// Get Characters
+module.exports.getCharacters = (req, res) => {
+    const { parentId } = req.body
+    Character.find({ parentId: parentId })
+        .then((characters) => res.status(200).send(characters))
+        .catch((err) => res.status(500).send({ message: 'err', err }))
+}
+
 //  Add Character to Raid
 module.exports.addRaidCharacter = (req, res) => {
     const { parentId } = req.body
