@@ -3,8 +3,9 @@ const Raid = require('../models/raid')
 
 // Get Raid rosters
 module.exports.getRaidRosters = (req, res) => {
-    const { parentId } = req.body
+    const parentId = req.params.parentId
     Raid.find({ parentId: parentId })
+        .populate('characters')
         .then((rosters) => res.status(200).send(rosters))
         .catch((err) => res.status(500).send({ message: 'err', err }))
 }

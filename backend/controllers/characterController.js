@@ -4,7 +4,7 @@ const Character = require('../models/character')
 
 // Get Characters
 module.exports.getCharacters = (req, res) => {
-    const { parentId } = req.body
+    const parentId = req.params.parentId
     Character.find({ parentId: parentId })
         .then((characters) => res.status(200).send(characters))
         .catch((err) => res.status(500).send({ message: 'err', err }))

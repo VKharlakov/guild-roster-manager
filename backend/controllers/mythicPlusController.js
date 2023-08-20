@@ -3,8 +3,9 @@ const MythicPlus = require('../models/mythicPlus')
 
 // Get MythicPlus rosters
 module.exports.getMythicPlusRosters = (req, res) => {
-    const { parentId } = req.body
+    const parentId = req.params.parentId
     MythicPlus.find({ parentId: parentId })
+        .populate('characters')
         .then((rosters) => res.status(200).send(rosters))
         .catch((err) => res.status(500).send({ message: 'err', err }))
 }
