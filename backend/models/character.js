@@ -35,6 +35,10 @@ const characterSchema = new mongoose.Schema({
     parentId: {
         type: String,
         required: true
+    },
+    rioProfile: {
+        type: String,
+        required: true
     }
 })
 
