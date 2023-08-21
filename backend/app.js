@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const router = require('./routes/router')
 
-const { PORT = 4000 } = process.env
+const { PORT = 3000 } = process.env
 
 const app = express()
 
