@@ -1,7 +1,7 @@
 .roster-info-panel {
     grid-area: infopanel;
     margin-top: 20px;
-    width: calc((var(--card-width) + 3px) * 5);
+    width: calc(((var(--card-width) + 3px) * 5) + 12px);
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
@@ -51,6 +51,7 @@
 @media screen and (max-width: 800px) {
     .roster-info-panel {
         margin-top: 15px;
+        width: calc(((var(--card-width) + 3px) * 5) + 6px);
     }
 
     .roster-info-panel__role {

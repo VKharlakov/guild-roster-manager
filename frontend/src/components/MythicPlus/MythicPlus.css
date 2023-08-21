@@ -2,10 +2,10 @@
     margin: 40px 0;
     display: grid;
     width: 100%;
-    min-height: calc(100vh - var(--header-height) - 120px);
+    min-height: calc(100vh - var(--header-height) - 140px);
     justify-content: center;
     align-content: space-around;
-    grid-template-columns: repeat(auto-fill, calc((var(--card-width) + 3px) * 5));
+    grid-template-columns: repeat(auto-fit, calc((var(--card-width) + 3px) * 5));
     grid-auto-rows: max-content;
     gap: 50px;
     transition: .2s;

@@ -1,26 +1,42 @@
 import './Character.css'
 import React from "react";
-import { classColorList }  from "../../utils/constants";
+import { classColorList } from "../../utils/constants";
+// import Preloader from '../Preloader/Preloader';
 
-function Card({card, onCardDelete, roster, rosterSetter, id}) {
-    const classColor = classColorList[`${card.class}`]
-    const role = card.role
-    //Delete card handlerS
-    function handleDeleteClick() {
-        onCardDelete(roster, rosterSetter, id)
+function Character({
+    parentId,
+    character,
+    // isUpdatingCharacter,
+    handleDeleteCharacter,
+}) {
+    const classColor = classColorList[`${character.class}`]
+    // const [isPreloader, setIsPreloader] = React.useState(false)
+
+    function onDelete(event) {
+        event.preventDefault()
+
+        handleDeleteCharacter({ characterId: character._id, parentId: parentId })
     }
+
+    // React.useEffect(() => {
+    //     setIsPreloader(isUpdatingCharacter)
+    // }, [isUpdatingCharacter])
+
 
     return (
         <li className="character">
-            <button className="character__delete-btn" onClick={handleDeleteClick} />
-            <span className={`character__role character__role_type_${role}`}/>
-            <img src={card.avatar} alt="Char pic" className="character__avatar" />
-            <div className="character__info" style={{backgroundColor: classColor}}>
-                <p className="character__name">{card.name}</p>
-                <p className="character__ilvl">{card.ilvl}</p>
-            </div>
+            <a className='character__link' href={`${character.rioProfile}`} target='_blank' rel='noreferrer'>
+                <button className="character__delete-btn" onClick={(event) => onDelete(event)} />
+                <span className={`character__role character__role_type_${character.role}`} />
+                <img src={character.avatar} alt="Char pic" className="character__avatar" />
+                <div className="character__info" style={{ backgroundColor: classColor }}>
+                    <p className="character__name">{character.name}</p>
+                    <p className="character__ilvl">{character.ilvl}</p>
+                </div>
+            </a>
+            {/* <Preloader isActive={isPreloader} /> */}
         </li>
     )
 }
 
-export default Card
+export default Character

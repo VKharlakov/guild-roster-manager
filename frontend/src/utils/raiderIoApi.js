@@ -3,18 +3,22 @@ class RaiderIoApi {
         if (res.ok) {
             return res.json()
         } else {
-            return Promise.reject(`Произошла ошибка: ${res.status}`)
+            return res.json().then(data => {
+                const error = new Error(data.message || 'An unknown error occurred.');
+                error.status = res.status;
+                throw error;
+            });
         }
     }
 
     getCharacterData(data) {
         return fetch(`https://raider.io/api/v1/characters/profile?region=${data.region}&realm=${data.realm}&name=${data.name}&fields=gear%2Cmythic_plus_scores_by_season%3Acurrent`)
-        .then((res) => this._parseResponse(res))
+            .then((res) => this._parseResponse(res))
     }
 
-    getGuildData(region, realm, name) {
-        return fetch(`https://raider.io/api/v1/guilds/profile?region=${region}&realm=${realm}&name=${name}&fields=members`)
-        .then((res) => this._parseResponse(res))
+    getGuildData(data) {
+        return fetch(`https://raider.io/api/v1/guilds/profile?region=${data.region}&realm=${data.realm}&name=${data.name}&fields=members`)
+            .then((res) => this._parseResponse(res))
     }
 }
 

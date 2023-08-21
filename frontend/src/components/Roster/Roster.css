@@ -1,5 +1,7 @@
 .roster {
+    position: relative;
     display: grid;
+    width: max-content;
     grid-template-columns: 1fr max-content;
     grid-template-areas:
         'title delete-button'
@@ -9,13 +11,13 @@
 
 .roster_type_raid {
     grid-template-rows:
-        max-content calc(((var(--card-height) + 3px) * 4) - 3px) max-content;
+        max-content calc(((var(--card-height) + 3px) * 4) + 9px) max-content;
 
 }
 
 .roster_type_mythic-plus {
     grid-template-rows:
-        max-content var(--card-height) max-content;
+        max-content calc(var(--card-height) + 12px) max-content;
 }
 
 .roster__title {
@@ -30,7 +32,7 @@
 .roster__characters {
     grid-area: characters;
     margin: 0;
-    padding: 0;
+    padding: 6px;
     width: calc((var(--card-width) + 3px) * 5);
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(var(--card-width), 1fr));
@@ -73,7 +75,7 @@
     border: 0;
     outline: 0;
     background-color: transparent;
-    background-image: url('../../images/remove-roster.svg');
+    background-image: url('../../images/remove-icon.svg');
     background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -94,7 +96,24 @@
 
 @media screen and (max-width: 800px) {
     .roster__delete-button {
-        width: 20px;
-        height: 20px;
+        width: 17px;
+        height: 17px;
+        opacity: .5;
+        visibility: visible;
+    }
+
+    .roster_type_raid {
+        grid-template-rows:
+            max-content calc(((var(--card-height) + 3px) * 4) + 3px) max-content;
+    
+    }
+    
+    .roster_type_mythic-plus {
+        grid-template-rows:
+            max-content calc(var(--card-height) + 6px) max-content;
+    }
+
+    .roster__characters {
+        padding: 3px;
     }
 }

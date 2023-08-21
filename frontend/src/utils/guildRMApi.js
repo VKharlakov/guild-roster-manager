@@ -10,7 +10,12 @@ class GuildRMApi {
         if (res.ok) {
             return res.json()
         } else {
-            return Promise.reject(`Error: ${res.status}`)
+            return res.json().then(data => {
+                const error = new Error(data.message || 'An unknown error occurred.')
+                error.status = res.status
+                error.code = data.err.code || null
+                throw error
+            })
         }
     }
 
@@ -29,7 +34,7 @@ class GuildRMApi {
 
     // Get current Guild
     getCurrentGuild(data) {
-        return fetch(`${this._url}/guilds/${data.guildId}`, {
+        return fetch(`${this._url}/guilds/${data._id}`, {
             method: 'GET',
             headers: this._headers
         })
@@ -66,6 +71,15 @@ class GuildRMApi {
     // RAID
     // 
 
+    // Get Raid rosters
+    getRaidRosters(data) {
+        return fetch(`${this._url}/raid/${data.parentId}`, {
+            method: 'GET',
+            headers: this._headers,
+        })
+            .then((res) => this._parseResponse(res))
+    }
+
     // Add Raid roster
     addRaidRoster(data) {
         return fetch(`${this._url}/raid`, {
@@ -82,7 +96,7 @@ class GuildRMApi {
 
     // Delete Raid roster
     deleteRaidRoster(data) {
-        return fetch(`${this._url}/raid/${data.raidId}`, {
+        return fetch(`${this._url}/raid/${data._id}`, {
             method: 'DELETE',
             headers: this._headers,
             body: JSON.stringify({
@@ -95,6 +109,15 @@ class GuildRMApi {
     // 
     // MYTHIC PLUS
     // 
+
+    // Get MythicPlus rosters
+    getMythicPlusRosters(data) {
+        return fetch(`${this._url}/mythic-plus/${data.parentId}`, {
+            method: 'GET',
+            headers: this._headers,
+        })
+            .then((res) => this._parseResponse(res))
+    }
 
     // Add MythicPlus roster
     addMythicPlusRoster(data) {
@@ -111,7 +134,7 @@ class GuildRMApi {
 
     // Delete MythicPlus roster
     deleteMythicPlusRoster(data) {
-        return fetch(`${this._url}/mythic-plus/${data.mythicPlusId}`, {
+        return fetch(`${this._url}/mythic-plus/${data._id}`, {
             method: 'DELETE',
             headers: this._headers,
             body: JSON.stringify({
@@ -124,6 +147,15 @@ class GuildRMApi {
     // 
     // CHARACTER
     // 
+
+    // Get Characters
+    getCharacters(data) {
+        return fetch(`${this._url}/character/${data.parentId}`, {
+            method: 'GET',
+            headers: this._headers,
+        })
+            .then((res) => this._parseResponse(res))
+    }
 
     // Add Character to Raid
     addRaidCharacter(data) {
@@ -139,7 +171,8 @@ class GuildRMApi {
                 realm: data.realm,
                 role: data.active_spec_role.toLowerCase(),
                 roleId: roles.indexOf(data.active_spec_role.toLowerCase()),
-                parentId: data.parentId
+                parentId: data.parentId,
+                rioProfile: data.profile_url
             })
         })
             .then((res) => this._parseResponse(res))
@@ -159,7 +192,8 @@ class GuildRMApi {
                 realm: data.realm,
                 role: data.active_spec_role.toLowerCase(),
                 roleId: roles.indexOf(data.active_spec_role.toLowerCase()),
-                parentId: data.parentId
+                parentId: data.parentId,
+                rioProfile: data.profile_url
             })
         })
             .then((res) => this._parseResponse(res))
@@ -191,10 +225,12 @@ class GuildRMApi {
 }
 
 const guildRMApi = new GuildRMApi({
-    baseUrl: 'https://guildrm.com/api',
+    baseUrl: 'http://localhost:4000',
     headers: {
         'Content-Type': 'application/json',
     }
 })
+
+// 'https://guildrm.com/api'
 
 export default guildRMApi

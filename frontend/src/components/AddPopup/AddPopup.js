@@ -4,21 +4,29 @@ import { euServerList as servers } from "../../utils/constants";
 import Tooltip from "../Tooltip/Tooltip";
 import { CurrentGuildContext } from "../../contexts/CurrentGuildContext";
 
-function AddPopup({ popupType, onCardAdd, isActive, onClose, roster, rosterSetter, rosterMaxLength, rosterTitle }) {
+function AddPopup({
+    isActive,
+    rosterId,
+    rosterName,
+    rosterSize,
+    popupType,
+    setIsAddPopup,
+    handleAddGuild,
+    isUpdatingRoster,
+    handleAddCharacter,
+}) {
     //Using useContext to get current guild data
     const currentGuild = useContext(CurrentGuildContext)
 
     //Accumulating input values
     const [formValue, setFormValue] = React.useState({ realm: "", name: "", region: "eu" })
 
-    //Disable button state
-    const [isDisabled, setIsDisabled] = React.useState(false)
-
     //ToolTip-related states
     const [isToolTipOpen, setIsToolTipOpen] = React.useState(false)
     const [currentToolTipArray, setCurrentToolTipArray] = React.useState()
     const [currentInputType, setCurrentInputType] = React.useState('')
     const [memberList, setMemberList] = React.useState([])
+    const [isButtonDisabled, setIsButtonDisabled] = React.useState(false)
 
     //Function when an input is focused
     function onInputFocus(toolTipArray, inputType) {
@@ -53,120 +61,121 @@ function AddPopup({ popupType, onCardAdd, isActive, onClose, roster, rosterSette
         }
     }
 
-    // //Check if roster reached its limit of characters
-    // function disableButtonOnLimit() {
-    //     if (roster.length >= rosterMaxLength) {
-    //         setIsDisabled(true)
-    //     } else {
-    //         setIsDisabled(false)
-    //     }
-    // }
+    // Function when Submit
+    function onCharacterSubmit(event) {
+        event.preventDefault()
 
-    //Function when Submit
-    function onSubmit(e) {
-        e.preventDefault()
-
-        onCardAdd(formValue, roster, rosterSetter)
-        setFormValue({ ...formValue, realm: "", name: "" })
-        onClose(false)
+        handleAddCharacter({ ...formValue, parentId: rosterId, rosterSize: rosterSize})
     }
 
-    // //Prevent from overflowing roster; check if it hit max amount of characters
-    // React.useEffect(() => {
-    //     disableButtonOnLimit()
-    // }, [roster])
+    //Function when Submit
+    function onGuildSubmit(event) {
+        event.preventDefault()
+
+        handleAddGuild(formValue)
+    }
 
     //Set array of members
     React.useEffect(() => {
         setFormValue({ ...formValue, realm: "", name: "" })
-        setMemberList(currentGuild.active_members.map((member) => member.character))
+        if (currentGuild.members.length > 0) {
+            setMemberList(currentGuild.members.map((member) => member.character))
+        }
     }, [currentGuild, isActive])
 
-    function addCharacterInputs() {
+    function addCharacterForm() {
         return (
-            <>
-                <input
-                    onFocus={() => { onInputFocus(servers, 'realm') }}
-                    onChange={(event) => { onChange(event, servers) }}
-                    className="popup__input popup__input_type_text"
-                    name="realm"
-                    placeholder="Enter your realm"
-                    value={formValue.realm}
-                    minLength="3"
-                    required
-                    autoComplete="off"
-                />
-                <input
-                    onFocus={() => { onInputFocus(memberList, 'name') }}
-                    onChange={(event) => { onChange(event, memberList) }}
-                    className="popup__input popup__input_type_text"
-                    name="name"
-                    placeholder="Enter your character name"
-                    value={formValue.name}
-                    minLength="3"
-                    required
-                    autoComplete="off"
-                />
-            </>
+            <form className="add-popup__form add-popup__form_type_character" name="form" onSubmit={(event) => { onCharacterSubmit(event) }}>
+                <div className="add-popup__inputs">
+                    <input
+                        onFocus={() => { onInputFocus(servers, 'realm') }}
+                        onChange={(event) => { onChange(event, servers) }}
+                        className="add-popup__input add-popup__input_type_text"
+                        name="realm"
+                        placeholder="Enter your realm"
+                        value={formValue.realm}
+                        minLength="3"
+                        required
+                        autoComplete="off"
+                    />
+                    <input
+                        onFocus={() => { onInputFocus(memberList, 'name') }}
+                        onChange={(event) => { onChange(event, memberList) }}
+                        className="add-popup__input add-popup__input_type_text"
+                        name="name"
+                        placeholder="Enter your character name"
+                        value={formValue.name}
+                        minLength="3"
+                        required
+                        autoComplete="off"
+                    />
+                </div>
+                <button className="add-popup__submit-button" type="submit" disabled={isUpdatingRoster || isButtonDisabled}>{!isUpdatingRoster ? 'Submit' : 'Please wait...'}</button>
+            </form>
         )
     }
 
-    function addGuildInputs() {
+    function addGuildForm() {
         return (
-            <>
-                <div className="popup__radio-container">
-                    <label className="popup__radio-label">
-                        EU
-                        <input
-                            type="radio"
-                            name="region"
-                            className="popup__radio-input"
-                            defaultChecked
-                        />
-                        <span className="popup__radio-input-custom" />
-                    </label>
-                    <label className="popup__radio-label">
-                        US
-                        <input
-                            type="radio"
-                            name="region"
-                            className="popup__radio-input"
-                        />
-                        <span className="popup__radio-input-custom" />
-                    </label>
+            <form className="add-popup__form add-popup__form_type_guild" name="form" onSubmit={(event) => onGuildSubmit(event)}>
+                <div className="add-popup__inputs">
+                    <div className="add-popup__radio-container">
+                        <label className="add-popup__radio-label">
+                            EU
+                            <input
+                                type="radio"
+                                name="region"
+                                className="add-popup__radio-input"
+                                defaultChecked
+                            />
+                            <span className="add-popup__radio-input-custom" />
+                        </label>
+                        {/* <label className="add-popup__radio-label">
+                            US
+                            <input
+                                type="radio"
+                                name="region"
+                                className="add-popup__radio-input"
+                            />
+                            <span className="add-popup__radio-input-custom" />
+                        </label> */}
+                    </div>
+                    <input
+                        className="add-popup__input add-popup__input_type_text"
+                        name="realm"
+                        value={formValue.realm}
+                        onChange={(event) => onChange(event, [])}
+                        placeholder="Enter guild realm"
+                        autoComplete="off"
+                        required
+                    />
+                    <input
+                        className='add-popup__input add-popup__input_type_text'
+                        name='name'
+                        onChange={(event) => onChange(event, [])}
+                        value={formValue.name}
+                        placeholder='Enter guild title'
+                        autoComplete='off'
+                        required
+                    />
                 </div>
-                <input
-                    className="popup__input popup__input_type_text"
-                    name="realm"
-                    placeholder="Enter guild realm"
-                    autoComplete="off"
-                />
-                <input
-                    className='popup__input popup__input_type_text'
-                    name='title'
-                    placeholder='Enter guild title'
-                    autoComplete='off'
-                />
-            </>
+                <button className="add-popup__submit-button" type="submit">Submit</button>
+            </form>
         )
     }
 
     return (
-        <div className={`popup${isActive ? ' popup_active' : ''}`}>
-            <button className="popup__close-button" onClick={() => { onClose(false) }} />
+        <div className={`add-popup${isActive ? ' add-popup_active' : ''}`}>
+            <button className="add-popup__close-button" onClick={() => { setIsAddPopup(false) }} />
             {popupType === 'character'
-                ? <h2 className="popup__title">Add to <span className="popup__title-highlight">{rosterTitle}</span></h2>
-                : <h2 className='popup__title'>Add your Guild</h2>
+                ? <h2 className="add-popup__title">Add to <span className="add-popup__title-highlight">{rosterName}</span></h2>
+                : <h2 className='add-popup__title'>Add your Guild</h2>
             }
-            <form className="popup__form popup__form_type_character" name="form" onSubmit={onSubmit}>
-                <div className="popup__inputs">
-                    {popupType === 'character'
-                        ? addCharacterInputs()
-                        : addGuildInputs()
-                    }
-                </div>
-                <button className="popup__submit-button" type="submit" disabled={isDisabled}>Submit</button>
-            </form>
+            {popupType === 'character'
+                ? addCharacterForm()
+                : addGuildForm()
+            }
+
             {isToolTipOpen && currentToolTipArray.length >= 1 && <Tooltip array={currentToolTipArray} input={currentInputType} onClick={handleToolTipClick} onClose={setIsToolTipOpen} />}
         </div>
     )

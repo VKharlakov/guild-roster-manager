@@ -1,12 +1,17 @@
 import './Header.css'
 import React from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { CurrentGuildContext } from "../../contexts/CurrentGuildContext";
+import Home from '../Home/Home';
 
-function Header({ handleAddGuildPopup }) {
+function Header({ setIsAddPopup }) {
     //Using useContext to get current guild data
     const currentGuild = React.useContext(CurrentGuildContext)
-    const currentPath = useLocation().pathname
+    const currentPath = decodeURIComponent(useLocation().pathname)
+
+    function onAdd() {
+        setIsAddPopup(true)
+    }
 
     function defaultHeader() {
         return (
@@ -21,7 +26,7 @@ function Header({ handleAddGuildPopup }) {
                 {currentPath === '/guilds' &&
                     <div className="header__add">
                         <label className="header__add-label" htmlFor='add'>Add</label>
-                        <button className="header__add-button" id='add' onClick={() => { handleAddGuildPopup(true) }}></button>
+                        <button className="header__add-button" id='add' onClick={() => onAdd()}></button>
                     </div>
                 }
             </header>
@@ -33,18 +38,26 @@ function Header({ handleAddGuildPopup }) {
             <header className="header">
                 <div className="header__title-container">
                     <h1 className="header__title">{currentGuild.name || 'GuildManager'}</h1>
-                    <p className="header__brief">{`${currentGuild.active_members.length} active members` || ''}</p>
+                    <p className="header__brief">{`${currentGuild.members.length} active members` || ''}</p>
                 </div>
             </header>
         )
     }
 
     return (
-        currentPath === `/guilds/${currentGuild.name}`
-            || currentPath === `/guilds/${currentGuild.name}/raid`
-            || currentPath === `/guilds/${currentGuild.name}/mythic-plus`
-            ? guildHeader()
-            : defaultHeader()
+        <>
+            {currentPath === `/guilds/${currentGuild.name.replace(/\s/g, '-').toLowerCase()}`
+                || currentPath === `/guilds/${currentGuild.name.replace(/\s/g, '-').toLowerCase()}/raid`
+                || currentPath === `/guilds/${currentGuild.name.replace(/\s/g, '-').toLowerCase()}/mythic-plus`
+                ? guildHeader()
+                : defaultHeader()}
+
+            {currentPath === '/' &&
+                <Home />
+            }
+
+            <Outlet />
+        </>
     )
 }
 
