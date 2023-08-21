@@ -36,6 +36,8 @@ const guildSchema = new mongoose.Schema({
     }],
 })
 
+guildSchema.index({ name: 1, realm: 1 }, { unique: true });
+
 // Recursive deletion of Raid and MythicPlus rosters
 // from Guild.raid and Guild.mythicPlus
 guildSchema.pre('deleteOne', { query: false, document: true }, async function () {
