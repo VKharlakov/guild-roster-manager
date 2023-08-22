@@ -7,6 +7,7 @@ import guildRMApi from "../../utils/guildRMApi";
 import { CurrentGuildContext } from "../../contexts/CurrentGuildContext";
 import Preloader from '../Preloader/Preloader';
 import raiderIoApi from '../../utils/raiderIoApi';
+import MythicPlusSkeleton from './MythicPlusSkeleton/MythicPlusSkeleton';
 
 function MythicPlus({
     sectionType,
@@ -88,7 +89,7 @@ function MythicPlus({
                 })
             })
             .finally(() => {
-                setTimeout(() => setIsPreloader(false), 200)
+                setIsPreloader(false)
 
             })
     }, [])
@@ -185,7 +186,15 @@ function MythicPlus({
                     setErrorPopupInfo={setErrorPopupInfo}
                 />
             ))}
-            {rosterList.length < rosterMaxAmount &&
+            {isPreloader &&
+                <>
+                    <MythicPlusSkeleton />
+                    <MythicPlusSkeleton />
+                    <MythicPlusSkeleton />
+                </>
+            }
+
+            {!isPreloader && rosterList.length < rosterMaxAmount &&
                 <AddRoster
                     isForm={isForm}
                     setIsForm={setIsForm}

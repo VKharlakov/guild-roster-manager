@@ -13,6 +13,7 @@ function AddPopup({
     setIsAddPopup,
     handleAddGuild,
     isUpdatingRoster,
+    isAddingGuild,
     handleAddCharacter,
 }) {
     //Using useContext to get current guild data
@@ -159,7 +160,7 @@ function AddPopup({
                         required
                     />
                 </div>
-                <button className="add-popup__submit-button" type="submit">Submit</button>
+                <button className="add-popup__submit-button" type="submit" disabled={isAddingGuild || isButtonDisabled}>{!isAddingGuild ? 'Submit' : 'Please wait...'}</button>
             </form>
         )
     }

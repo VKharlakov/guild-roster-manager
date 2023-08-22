@@ -7,6 +7,7 @@ import { CurrentGuildContext } from "../../contexts/CurrentGuildContext";
 import guildRMApi from '../../utils/guildRMApi';
 import Preloader from '../Preloader/Preloader';
 import raiderIoApi from '../../utils/raiderIoApi';
+import RaidSkeleton from './RaidSkeleton/RaidSkeleton';
 
 function Raid({
     sectionType,
@@ -90,7 +91,7 @@ function Raid({
                 })
             })
             .finally(() => {
-                setTimeout(() => setIsPreloader(false), 200)
+                setIsPreloader(false)
 
             })
     }, [])
@@ -187,7 +188,13 @@ function Raid({
                     setErrorPopupInfo={setErrorPopupInfo}
                 />
             ))}
-            {rosterList.length < rosterMaxAmount &&
+            {isPreloader &&
+                <>
+                    <RaidSkeleton />
+                    <RaidSkeleton />
+                </>
+            }
+            {!isPreloader && rosterList.length < rosterMaxAmount &&
                 <AddRoster
                     isForm={isForm}
                     setIsForm={setIsForm}

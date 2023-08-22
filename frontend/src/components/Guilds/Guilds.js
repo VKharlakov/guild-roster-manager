@@ -50,6 +50,7 @@ function Guilds({
                 isActive={isAddPopup}
                 setIsAddPopup={setIsAddPopup}
                 handleAddGuild={handleAddGuild}
+                isAddingGuild={isPreloader}
                 popupType='guild'
             />
             <Preloader isActive={isPreloader} />

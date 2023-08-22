@@ -1,9 +1,11 @@
 :root {
+    background-color: var(--dark-color);
     /*Harbor palette*/
     --dark-color: #1f2632;
     --dark-emph-color: #27303f;
     --text-emph-color: #F5DDDD;
     --highlight-color: #f27f21;
+    --highlight2-color: #EB5E28;
 
     /*Font sizes*/
     --h1-font-size: 32px;

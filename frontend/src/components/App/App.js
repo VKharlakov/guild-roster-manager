@@ -130,6 +130,13 @@ function App() {
               />}
             />
             <Route path={`guilds/:guildName`} element={<GuildProfile />}>
+              <Route path='' element={
+                <div className='guild-profile__placeholder'>
+                  <h2 className='guild-profile__placeholder-title'>There will be something soon</h2>
+                  <p className='guild-profile__placeholder-text'>... but for now, check out Raid and M+ tabs!</p>
+                  <span className='guild-profile__placeholder-image' />
+                </div>
+              } />
               <Route path='raid' element={
                 <Raid
                   sectionType='raid'
