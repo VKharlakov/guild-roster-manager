@@ -28,7 +28,6 @@ function Roster({
     const [characterList, setCharacterList] = React.useState(characters)
     const [isPreloader, setIsPreloader] = React.useState(isRosterPreloader)
     const [roles, setRoles] = React.useState({ tanks: 0, healers: 0, dps: 0, total: 0 })
-    const [isUpdatingCharacter, setIsUpdatingCharacter] = React.useState(null)
 
     const currentGuild = React.useContext(CurrentGuildContext)
 
@@ -99,7 +98,9 @@ function Roster({
     }
 
     function deleteRaidCharacter(data) {
-        setIsUpdatingCharacter(data.characterId)
+        if (rosterId === data.parentId) {
+            setIsPreloader(true)
+        }
 
         guildRMApi.deleteRaidCharacter(data)
             .then((deletedCharacter) => {
@@ -116,12 +117,14 @@ function Roster({
                 console.log('Roster deleteRaidCharacter error:', err)
             })
             .finally(() => {
-                setIsUpdatingCharacter(null)
+                setIsPreloader(false)
             })
     }
 
     function deleteMythicPlusCharacter(data) {
-        setIsUpdatingCharacter(data.characterId)
+        if (rosterId === data.parentId) {
+            setIsPreloader(true)
+        }
 
         guildRMApi.deleteMythicPlusCharacter(data)
             .then((deletedCharacter) => {
@@ -131,7 +134,7 @@ function Roster({
                 console.log('Roster deleteMythicPlusCharacter error:', err)
             })
             .finally(() => {
-                setIsUpdatingCharacter(null)
+                setIsPreloader(false)
             })
     }
 
@@ -166,7 +169,6 @@ function Roster({
                         character={character}
                         parentId={rosterId}
                         handleDeleteCharacter={handleDeleteCharacter}
-                        isUpdatingCharacter={isUpdatingCharacter === character._id}
                     />
                 ))}
                 {isUpdatingRoster &&

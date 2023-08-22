@@ -30,6 +30,10 @@
     box-shadow: 0px 0px 20px 5px rgb(0, 0, 0);
 }
 
+.character__link_no-hover {
+    scale: 1 !important;
+}
+
 .character__delete-btn {
     position: absolute;
     top: 0;
