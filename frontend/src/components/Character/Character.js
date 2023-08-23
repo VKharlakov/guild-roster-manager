@@ -7,9 +7,10 @@ function Character({
     character,
     handleDeleteCharacter,
 }) {
-    const classColor = classColorList[`${character.class}`]
-    const [isDeleting, setIsDeleting] = React.useState(false)
+    const classColor = classColorList[`${character.class}`]     //Change character color to his class color
+    const [isDeleting, setIsDeleting] = React.useState(false)   //Change element's style when it's being deleted
 
+    // Delete character
     function onDelete(event) {
         event.preventDefault()
         setIsDeleting(true)

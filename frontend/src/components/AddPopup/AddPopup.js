@@ -1,8 +1,7 @@
 import './AddPopup.css'
-import React, { useContext } from "react";
-import { euServerList as servers } from "../../utils/constants";
+import React from "react";
 import Tooltip from "../Tooltip/Tooltip";
-import { CurrentGuildContext } from "../../contexts/CurrentGuildContext";
+import { euServerList as servers } from "../../utils/constants";
 
 function AddPopup({
     isActive,
@@ -15,39 +14,37 @@ function AddPopup({
     isUpdatingRoster,
     isAddingGuild,
     handleAddCharacter,
+    guildData
 }) {
-    //Using useContext to get current guild data
-    const currentGuild = useContext(CurrentGuildContext)
-
-    //Accumulating input values
+    //Form values state
     const [formValue, setFormValue] = React.useState({ realm: "", name: "", region: "eu" })
 
-    //ToolTip-related states
-    const [isToolTipOpen, setIsToolTipOpen] = React.useState(false)
-    const [currentToolTipArray, setCurrentToolTipArray] = React.useState()
-    const [currentInputType, setCurrentInputType] = React.useState('')
-    const [memberList, setMemberList] = React.useState([])
+    // [WIP] Button state
     const [isButtonDisabled, setIsButtonDisabled] = React.useState(false)
 
-    //Function when an input is focused
+    // ToolTip-related states
+    const [memberList, setMemberList] = React.useState([])
+    const [isToolTipOpen, setIsToolTipOpen] = React.useState(false)
+    const [currentInputType, setCurrentInputType] = React.useState('')
+    const [currentToolTipArray, setCurrentToolTipArray] = React.useState()
+
+    // Open tooltip when input is focused
     function onInputFocus(toolTipArray, inputType) {
         setIsToolTipOpen(true)
         setCurrentInputType(inputType)
         setCurrentToolTipArray(toolTipArray)
     }
 
-    //Function that searches for matching names from array
+    // Search for matching name from tooltip
     function search(value, toolTipArray) {
         setCurrentToolTipArray(toolTipArray.filter(item => item.name.toLowerCase().startsWith(value.trim().toLowerCase())))
     }
 
-    //Function when typing inside of an input
+    // Change form values and search
     function onChange(e, toolTipArray) {
         const { name, value } = e.target
-        //Searching for matching items
         search(value, toolTipArray)
 
-        //Rewriting input values
         setFormValue({
             ...formValue,
             [name]: value
@@ -62,27 +59,27 @@ function AddPopup({
         }
     }
 
-    // Function when Submit
+    // Submit add character form
     function onCharacterSubmit(event) {
         event.preventDefault()
 
-        handleAddCharacter({ ...formValue, parentId: rosterId, rosterSize: rosterSize})
+        handleAddCharacter({ ...formValue, parentId: rosterId, rosterSize: rosterSize })
     }
 
-    //Function when Submit
+    // Submit add guild form
     function onGuildSubmit(event) {
         event.preventDefault()
 
         handleAddGuild(formValue)
     }
 
-    //Set array of members
+    // Set array of members
     React.useEffect(() => {
         setFormValue({ ...formValue, realm: "", name: "" })
-        if (currentGuild.members.length > 0) {
-            setMemberList(currentGuild.members.map((member) => member.character))
+        if (guildData && guildData.members.length > 0) {
+            setMemberList(guildData.members.map((member) => member.character))
         }
-    }, [currentGuild, isActive])
+    }, [guildData, isActive])
 
     function addCharacterForm() {
         return (

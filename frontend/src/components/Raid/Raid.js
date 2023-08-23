@@ -3,11 +3,12 @@ import React from "react";
 import Roster from "../Roster/Roster";
 import AddPopup from "../AddPopup/AddPopup";
 import AddRoster from "../AddRoster/AddRoster";
-import { CurrentGuildContext } from "../../contexts/CurrentGuildContext";
-import guildRMApi from '../../utils/guildRMApi';
-import Preloader from '../Preloader/Preloader';
-import raiderIoApi from '../../utils/raiderIoApi';
 import RaidSkeleton from './RaidSkeleton/RaidSkeleton';
+import { useOutletContext } from 'react-router-dom';
+
+// Api imports
+import guildRMApi from '../../utils/guildRMApi';
+import raiderIoApi from '../../utils/raiderIoApi';
 
 function Raid({
     sectionType,
@@ -16,10 +17,10 @@ function Raid({
     setErrorPopupInfo,
 }) {
     const [isForm, setIsForm] = React.useState(false)                               //Add roster form state
-    const [isPreloader, setIsPreloader] = React.useState(true)                      //Preloader state for page loading
+    const [isPageLoading, setIsPageLoading] = React.useState(false)                 //Show "skeletons" upon loading the page
+    const [isUpdatingRoster, setIsUpdatingRoster] = React.useState(null)            //Preloader state for updating roster (?)
     const [isRosterPreloader, setIsRosterPreloader] = React.useState(false)         //Preloader state for roster loading
     const [isAddRosterPreloader, setAddRosterIsPreloader] = React.useState(false)   //Preloader state for add-form loading
-    const [isUpdatingRoster, setIsUpdatingRoster] = React.useState(null)
 
     // AddPopup states
     const [isAddPopup, setIsAddPopup] = React.useState(false)
@@ -30,7 +31,7 @@ function Raid({
     })
 
     // guild context states
-    const currentGuild = React.useContext(CurrentGuildContext)
+    const guildData = useOutletContext()
     const [rosterList, setRosterList] = React.useState([])
 
     // Add roster
@@ -77,24 +78,27 @@ function Raid({
 
     // Search for rosters in the guild upon loading page
     React.useEffect(() => {
-        guildRMApi.getRaidRosters({ parentId: currentGuild._id })
-            .then((rosters) => {
-                setRosterList(rosters)
-            })
-            .catch((err) => {
-                // if can't connect to guildRMApi servers
-                setIsErrorPopup(true)
-                setErrorPopupInfo({
-                    title: 'Server is not responding',
-                    text: 'An unexpected error has occurred. Something has happened with our servers. Please, try again later.',
-                    buttonText: 'Ok',
+        setIsPageLoading(true)
+        if (guildData) {
+            guildRMApi.getRaidRosters({ parentId: guildData._id })
+                .then((rosters) => {
+                    setRosterList(rosters)
                 })
-            })
-            .finally(() => {
-                setIsPreloader(false)
+                .catch((err) => {
+                    // if can't connect to guildRMApi servers
+                    setIsErrorPopup(true)
+                    setErrorPopupInfo({
+                        title: 'Server is not responding',
+                        text: 'An unexpected error has occurred. Something has happened with our servers. Please, try again later.',
+                        buttonText: 'Ok',
+                    })
+                })
+                .finally(() => {
+                    setIsPageLoading(false)
 
-            })
-    }, [])
+                })
+        }
+    }, [guildData])
 
     // Check if the limit has been reached
     async function isCharacterLimit(parentId, rosterSize) {
@@ -211,22 +215,23 @@ function Raid({
                     setIsErrorPopup={setIsErrorPopup}
                     setErrorPopupInfo={setErrorPopupInfo}
                     handleDeleteCharacter={handleDeleteCharacter}
+                    guildData={guildData}
                 />
             ))}
-            {isPreloader &&
+            {isPageLoading &&
                 <>
                     <RaidSkeleton />
                     <RaidSkeleton />
                 </>
             }
-            {!isPreloader && rosterList.length < rosterMaxAmount &&
+            {!isPageLoading && rosterList.length < rosterMaxAmount &&
                 <AddRoster
                     isForm={isForm}
                     setIsForm={setIsForm}
-                    guildData={currentGuild}
                     rosterType={sectionType}
                     isPreloader={isAddRosterPreloader}
                     handleAddRoster={handleAddRoster}
+                    guildData={guildData}
                 />
             }
             <AddPopup
@@ -238,8 +243,8 @@ function Raid({
                 rosterSize={addPopupInfo.rosterSize}
                 handleAddCharacter={handleAddCharacter}
                 isUpdatingRoster={isUpdatingRoster !== null}
+                guildData={guildData}
             />
-            <Preloader isActive={isPreloader} />
         </section>
     )
 }

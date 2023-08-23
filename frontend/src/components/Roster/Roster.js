@@ -1,37 +1,31 @@
 import './Roster.css'
 import React from "react";
-import Character from "../Character/Character";
-import RosterInfoPanel from "../RosterInfoPanel/RosterInfoPanel";
-import { CurrentGuildContext } from '../../contexts/CurrentGuildContext';
 import Preloader from '../Preloader/Preloader';
+import Character from "../Character/Character";
 import { compareByRole } from '../../utils/utils';
 import RostersSkeleton from './RostersSkeleton/RostersSkeleton';
-import guildRMApi from '../../utils/guildRMApi';
+import RosterInfoPanel from "../RosterInfoPanel/RosterInfoPanel";
 
 function Roster({
     name,
     size,
     rosterId,
+    guildData,
     characters,
     rosterType,
-    isRosterPreloader,
     isAddPopup,
     addPopupInfo,
     setIsAddPopup,
-    handleDeleteRoster,
     setAddPopupInfo,
     isUpdatingRoster,
-    setIsErrorPopup,
-    setErrorPopupInfo,
-    handleDeleteCharacter
+    isRosterPreloader,
+    handleDeleteRoster,
+    handleDeleteCharacter,
 }) {
-    const [raiting, setRaiting] = React.useState(0)
-    const [characterList, setCharacterList] = React.useState(characters)
-    const [isPreloader, setIsPreloader] = React.useState(isRosterPreloader)
-    const [roles, setRoles] = React.useState({ tanks: 0, healers: 0, dps: 0, total: 0 })
-
-    const currentGuild = React.useContext(CurrentGuildContext)
-
+    const [raiting, setRaiting] = React.useState(0)                                         //M+ rating state
+    const [characterList, setCharacterList] = React.useState(characters)                    //Characters array state 
+    const [isPreloader, setIsPreloader] = React.useState(isRosterPreloader)                 //Preloader state
+    const [roles, setRoles] = React.useState({ tanks: 0, healers: 0, dps: 0, total: 0 })    //Raid role counter state
 
     //Count amount of each role
     function countRoles(role) {
@@ -72,7 +66,7 @@ function Roster({
     // Delete roster click
     function onDeleteRoster() {
         setIsPreloader(true)
-        handleDeleteRoster({ _id: rosterId, parentId: currentGuild._id })
+        handleDeleteRoster({ _id: rosterId, parentId: guildData._id })
     }
 
     // Add character click

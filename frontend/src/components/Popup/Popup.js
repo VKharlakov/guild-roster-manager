@@ -1,6 +1,8 @@
 import './Popup.css'
 
 function Popup({ errorPopupInfo, setIsErrorPopup, isActive }) {
+    
+    // Close popup 
     function onClose() {
         setIsErrorPopup(false)
     }

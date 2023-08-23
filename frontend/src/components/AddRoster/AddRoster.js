@@ -2,18 +2,28 @@ import './AddRoster.css'
 import React from 'react'
 import Preloader from '../Preloader/Preloader'
 
-function AddRoster({ rosterType, guildData, handleAddRoster, isPreloader, isForm, setIsForm }) {
+function AddRoster({
+    isForm,
+    guildData,
+    setIsForm,
+    rosterType,
+    isPreloader,
+    handleAddRoster,
+}) {
+    // Form values state
     const [formValue, setFormValue] = React.useState({ name: '', size: 20 })
+
+    // Change form values
     function handleChange(event) {
         const { name, value } = event.target
 
-        //Rewriting input values
         setFormValue({
             ...formValue,
             [name]: value
         })
     }
 
+    // Submit
     function onSubmit(event) {
         event.preventDefault()
 
@@ -24,14 +34,11 @@ function AddRoster({ rosterType, guildData, handleAddRoster, isPreloader, isForm
         })
     }
 
+    // Close form
     function onClose() {
         setIsForm(false)
         setFormValue({ name: '', size: 20 })
     }
-
-    React.useEffect(() => {
-        setFormValue({ name: '', size: 20 })
-    }, [isForm])
 
     return (
         <div className="add-roster">

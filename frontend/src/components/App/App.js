@@ -1,29 +1,28 @@
 import './App.css'
 import React from 'react';
-import GuildProfile from '../GuildProfile/GuildProfile';
 import Raid from '../Raid/Raid';
-import MythicPlus from '../MythicPlus/MythicPlus';
-import PageNotFound from '../PageNotFound/PageNotFound';
-import raiderIoApi from '../../utils/raiderIoApi'
-import guildRMApi from '../../utils/guildRMApi';
-import { Route, Routes } from 'react-router-dom';
-import { CurrentGuildContext } from '../../contexts/CurrentGuildContext';
-import Guilds from '../Guilds/Guilds';
-import Header from '../Header/Header';
 import Popup from '../Popup/Popup';
+import Header from '../Header/Header';
+import Guilds from '../Guilds/Guilds';
+import MythicPlus from '../MythicPlus/MythicPlus';
+import GuildProfile from '../GuildProfile/GuildProfile';
+import PageNotFound from '../PageNotFound/PageNotFound';
+import { Route, Routes } from 'react-router-dom';
+
+// Api imports
+import guildRMApi from '../../utils/guildRMApi';
+import raiderIoApi from '../../utils/raiderIoApi'
 
 function App() {
   const [guildList, setGuildList] = React.useState([])                //All guilds state array
+  const [isAddPopup, setIsAddPopup] = React.useState(false)           //Add guild popup state
   const [isPreloader, setIsPreloader] = React.useState(true)          //Preloader state
   const [isPageLoading, setIsPageLoading] = React.useState(true)      //Upon loading page "skeleton" state
   const [isGuildLoading, setIsGuildLoading] = React.useState(false)   //When adding guild "skeleton" state
 
+  // Error popup states
   const [isErrorPopup, setIsErrorPopup] = React.useState(false)
   const [errorPopupInfo, setErrorPopupInfo] = React.useState({ title: '', text: '', buttonText: '' })
-  // Add guild popup state
-  const [isAddPopup, setIsAddPopup] = React.useState(false)
-  // Current guild data for context
-  const [currentGuild, setCurrentGuild] = React.useState({ name: '', members: [], raid: [] })
 
   // Get all guilds
   React.useEffect(() => {
@@ -114,22 +113,31 @@ function App() {
 
   return (
     <section className="app">
-      <CurrentGuildContext.Provider value={currentGuild}>
-        <Routes>
-          <Route path='/' element={<Header setIsAddPopup={setIsAddPopup} />}>
-            <Route path='guilds' element={
-              <Guilds
-                isPreloader={isPreloader}
-                isPageLoading={isPageLoading}
-                isGuildLoading={isGuildLoading}
-                isAddPopup={isAddPopup}
-                setIsAddPopup={setIsAddPopup}
-                guildList={guildList}
-                handleAddGuild={handleAddGuild}
-                setCurrentGuild={setCurrentGuild}
-              />}
-            />
-            <Route path={`guilds/:guildName`} element={<GuildProfile />}>
+      <Routes>
+        <Route path='/' element={<Header setIsAddPopup={setIsAddPopup} />}>
+          <Route path='guilds' element={
+            <Guilds
+              isPreloader={isPreloader}
+              isPageLoading={isPageLoading}
+              isGuildLoading={isGuildLoading}
+              isAddPopup={isAddPopup}
+              setIsAddPopup={setIsAddPopup}
+              guildList={guildList}
+              handleAddGuild={handleAddGuild}
+            />}
+          />
+          {guildList.length > 0 && guildList.map((guild) => (
+            <Route
+              key={guild._id}
+              path={`guilds/${guild.region}/${guild.realm.replace(/\s/g, '-').toLowerCase()}/${guild.name.replace(/\s/g, '-').toLowerCase()}`}
+              element={
+                <GuildProfile
+                  guildId={guild._id}
+                  setErrorPopupInfo={setErrorPopupInfo}
+                  setIsErrorPopup={setIsErrorPopup}
+                />
+              }
+            >
               <Route path='' element={
                 <div className='guild-profile__placeholder'>
                   <h2 className='guild-profile__placeholder-title'>There will be something soon</h2>
@@ -154,15 +162,16 @@ function App() {
                 />}
               />
             </Route>
-          </Route>
-          <Route path='*' element={<PageNotFound />} />
-        </Routes>
-        <Popup
-          errorPopupInfo={errorPopupInfo}
-          setIsErrorPopup={setIsErrorPopup}
-          isActive={isErrorPopup} />
-      </CurrentGuildContext.Provider>
-    </section>
+          ))
+          }
+        </Route>
+        <Route path='*' element={<PageNotFound />} />
+      </Routes>
+      <Popup
+        errorPopupInfo={errorPopupInfo}
+        setIsErrorPopup={setIsErrorPopup}
+        isActive={isErrorPopup} />
+    </section >
   );
 }
 

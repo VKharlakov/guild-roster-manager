@@ -9,7 +9,7 @@
     justify-content: space-evenly;
     background-color: #c6c6c6;
     border-radius: 20px 20px 20px 0;
-    opacity: 1;
+    opacity: .5;
     box-sizing: border-box;
     box-shadow: 0px 10px 15px 4px rgba(0, 0, 0, 0.1);
     animation: bodyAnimation 2s infinite linear;
@@ -33,11 +33,11 @@
 @keyframes bodyAnimation {
     0%,
     100% {
-        opacity: 1;
+        opacity: .5;
     }
 
     50% {
-        opacity: .8;
+        opacity: .3;
     }
 }
 

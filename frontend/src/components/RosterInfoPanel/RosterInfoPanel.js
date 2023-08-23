@@ -1,7 +1,14 @@
 import './RosterInfoPanel.css'
 import React from "react";
 
-function RosterInfoPanel({ rosterType, counter, array, roster }) {
+function RosterInfoPanel({
+    array,
+    roster,
+    counter,
+    rosterType,
+}) {
+
+    // Change counted roles/raiting when the roster is changed
     React.useEffect(() => {
         counter()
     }, [roster])

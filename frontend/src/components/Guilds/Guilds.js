@@ -1,19 +1,18 @@
 import './Guilds.css'
 import React from 'react'
 import AddPopup from '../AddPopup/AddPopup'
-import Preloader from '../Preloader/Preloader'
 import GuildBanner from '../GuildBanner/GuildBanner'
 import GuildsSkeleton from './GuildsSkeleton/GuildsSkeleton'
 
 function Guilds({
+    guildList,
+    isAddPopup,
     isPreloader,
+    setIsAddPopup,
     isPageLoading,
     isGuildLoading,
-    guildList,
     handleAddGuild,
-    setIsAddPopup,
     setCurrentGuild,
-    isAddPopup
 }) {
 
     return (
@@ -53,7 +52,6 @@ function Guilds({
                 isAddingGuild={isPreloader}
                 popupType='guild'
             />
-            <Preloader isActive={isPreloader} />
         </main>
     )
 }

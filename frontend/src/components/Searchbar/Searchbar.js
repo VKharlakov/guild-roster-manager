@@ -1,9 +1,12 @@
 import './Searchbar.css'
 
 function Searchbar() {
+
+    // [WIP] Template for future <Searchbar/> component
+    // that would be implemented on <Guilds/> page
+
     return (
         <div>
-            <input type='text'/>
         </div>
     )
 }

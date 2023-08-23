@@ -1,23 +1,13 @@
 import './GuildBanner.css'
-import guildRMApi from '../../utils/guildRMApi'
 import { Link } from 'react-router-dom'
 
-function GuildBanner({ guildData, setCurrentGuild }) {
-
-    function handleClick() {
-        guildRMApi.getCurrentGuild(guildData)
-        .then((res) => {
-            setCurrentGuild(res)
-        })
-        .catch((err) => console.log('GuildBanner handleClick error:', err))
-    }
+function GuildBanner({ guildData }) {
 
     return (
         <li className='guild-banner'>
             <Link
                 className={`guild-banner__link guild-banner__link_type_${guildData.faction}`}
-                onClick={() => handleClick()}
-                to={`/guilds/${guildData.name.replace(/\s/g, '-').toLowerCase()}`}
+                to={`/guilds/${guildData.region}/${guildData.realm.replace(/\s/g, '-').toLowerCase()}/${guildData.name.replace(/\s/g, '-').toLowerCase()}`}
             >
                 <h2 className='guild-banner__title'>{guildData.name}</h2>
                 <div className='guild-banner__members'>
