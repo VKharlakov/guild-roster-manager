@@ -165,6 +165,29 @@ function MythicPlus({
 
     }
 
+    function handleDeleteCharacter(data) {
+        setIsUpdatingRoster(data.parentId)
+
+        guildRMApi.deleteMythicPlusCharacter(data)
+            .then((deletedCharacter) => {
+                const rosterToUpdate = rosterList.find(roster => roster._id === deletedCharacter.parentId)
+                rosterToUpdate.characters = rosterToUpdate.characters.filter(character => character._id !== deletedCharacter._id)
+            })
+            .catch((err) => {
+                // if can't connect to guildRMApi servers
+                setIsErrorPopup(true)
+                setErrorPopupInfo({
+                    title: 'Server is not responding',
+                    text: 'An unexpected error has occurred. Something has happened with our servers. Please, try again later.',
+                    buttonText: 'Ok',
+                })
+                console.log('Roster deleteRaidCharacter error:', err)
+            })
+            .finally(() => {
+                setIsUpdatingRoster(null)
+            })
+    }
+
     return (
         <section className="mythic-plus">
             {rosterList.map((roster) => (
@@ -184,6 +207,7 @@ function MythicPlus({
                     isUpdatingRoster={isUpdatingRoster === roster._id}
                     setIsErrorPopup={setIsErrorPopup}
                     setErrorPopupInfo={setErrorPopupInfo}
+                    handleDeleteCharacter={handleDeleteCharacter}
                 />
             ))}
             {isPreloader &&

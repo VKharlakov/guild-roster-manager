@@ -32,6 +32,7 @@
 
 .character__link_no-hover {
     scale: 1 !important;
+    transition: 0 !important;
 }
 
 .character__delete-btn {

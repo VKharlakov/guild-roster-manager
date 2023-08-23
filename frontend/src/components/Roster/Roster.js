@@ -23,6 +23,7 @@ function Roster({
     isUpdatingRoster,
     setIsErrorPopup,
     setErrorPopupInfo,
+    handleDeleteCharacter
 }) {
     const [raiting, setRaiting] = React.useState(0)
     const [characterList, setCharacterList] = React.useState(characters)
@@ -95,53 +96,6 @@ function Roster({
                 rosterSize: size
             })
         }
-    }
-
-    function deleteRaidCharacter(data) {
-        if (rosterId === data.parentId) {
-            setIsPreloader(true)
-        }
-
-        guildRMApi.deleteRaidCharacter(data)
-            .then((deletedCharacter) => {
-                setCharacterList(characterList.filter(character => character._id !== deletedCharacter._id))
-            })
-            .catch((err) => {
-                // if can't connect to guildRMApi servers
-                setIsErrorPopup(true)
-                setErrorPopupInfo({
-                    title: 'Server is not responding',
-                    text: 'An unexpected error has occurred. Something has happened with our servers. Please, try again later.',
-                    buttonText: 'Ok',
-                })
-                console.log('Roster deleteRaidCharacter error:', err)
-            })
-            .finally(() => {
-                setIsPreloader(false)
-            })
-    }
-
-    function deleteMythicPlusCharacter(data) {
-        if (rosterId === data.parentId) {
-            setIsPreloader(true)
-        }
-
-        guildRMApi.deleteMythicPlusCharacter(data)
-            .then((deletedCharacter) => {
-                setCharacterList(characterList.filter(character => character._id !== deletedCharacter._id))
-            })
-            .catch((err) => {
-                console.log('Roster deleteMythicPlusCharacter error:', err)
-            })
-            .finally(() => {
-                setIsPreloader(false)
-            })
-    }
-
-    function handleDeleteCharacter(data) {
-
-        rosterType === 'raid' && deleteRaidCharacter(data)
-        rosterType === 'mythic-plus' && deleteMythicPlusCharacter(data)
     }
 
     // Canceling Preloader if an error occures while deleting
