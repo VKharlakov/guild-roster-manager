@@ -18,6 +18,7 @@ function Roster({
     setIsAddPopup,
     setAddPopupInfo,
     isUpdatingRoster,
+    isAddingCharacter,
     isRosterPreloader,
     handleDeleteRoster,
     handleDeleteCharacter,
@@ -52,7 +53,7 @@ function Roster({
     function countRaiting() {
         let amount = 0
         characters.forEach((item) => {
-            amount += item.mythic_plus_raiting
+            amount += item.mythicPlusRaiting
         })
         amount = amount / characters.length
         return Math.floor(amount)
@@ -119,10 +120,10 @@ function Roster({
                         handleDeleteCharacter={handleDeleteCharacter}
                     />
                 ))}
-                {isUpdatingRoster &&
+                {isAddingCharacter &&
                     <RostersSkeleton />
                 }
-                {characterList.length < size && !isUpdatingRoster &&
+                {characterList.length < size && !isAddingCharacter &&
                     <button className='roster__add-character-button' onClick={() => onAddCharacter()} />
                 }
             </ul>

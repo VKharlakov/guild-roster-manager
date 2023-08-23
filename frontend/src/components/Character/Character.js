@@ -14,7 +14,6 @@ function Character({
     function onDelete(event) {
         event.preventDefault()
         setIsDeleting(true)
-        console.log(isDeleting)
         handleDeleteCharacter({ characterId: character._id, parentId: parentId })
     }
 

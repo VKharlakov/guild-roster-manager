@@ -19,6 +19,7 @@ function MythicPlus({
     const [isForm, setIsForm] = React.useState(false)                               //Add roster form state
     const [isPageLoading, setIsPageLoading] = React.useState(false)                 //Show "skeletons" upon loading the page
     const [isUpdatingRoster, setIsUpdatingRoster] = React.useState(null)            //Preloader state for updating roster (?)
+    const [isAddingCharacter, setIsAddingCharacter] = React.useState(false)         //Show "skeleton" when adding a new character
     const [isRosterPreloader, setIsRosterPreloader] = React.useState(false)         //Preloader state for roster loading
     const [isAddRosterPreloader, setAddRosterIsPreloader] = React.useState(false)   //Preloader state for add-form loading
 
@@ -107,6 +108,7 @@ function MythicPlus({
     // Add a character to a roster
     async function handleAddCharacter(data) {
         setIsUpdatingRoster(data.parentId)
+        setIsAddingCharacter(true)
 
         try {
             const isLimit = await isCharacterLimit(data.parentId, data.rosterSize)
@@ -119,8 +121,10 @@ function MythicPlus({
 
                 setIsAddPopup(false)
                 setIsUpdatingRoster(null)
+                setIsAddingCharacter(false)
             } else {
                 setIsUpdatingRoster(null)
+                setIsAddingCharacter(false)
 
                 // if roster has reached its limit
                 setIsErrorPopup(true)
@@ -133,6 +137,7 @@ function MythicPlus({
             }
         } catch (err) {
             setIsUpdatingRoster(null)
+            setIsAddingCharacter(false)
 
             // if realm is incorrect
             if (err.message.includes('Failed to find realm')) {
@@ -213,6 +218,7 @@ function MythicPlus({
                     setErrorPopupInfo={setErrorPopupInfo}
                     handleDeleteCharacter={handleDeleteCharacter}
                     guildData={guildData}
+                    isAddingCharacter={isAddingCharacter}
                 />
             ))}
             {isPageLoading &&
