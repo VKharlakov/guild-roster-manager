@@ -129,7 +129,7 @@ function App() {
           {guildList.length > 0 && guildList.map((guild) => (
             <Route
               key={guild._id}
-              path={`guilds/${guild.region}/${guild.realm.replace(/\s/g, '-').toLowerCase()}/${guild.name.replace(/\s/g, '-').toLowerCase()}`}
+              path={`guilds/${guild.region}/${guild.realm.replace(/\s/g, '-').toLowerCase()}/${encodeURIComponent(guild.name.replace(/\s/g, '-').toLowerCase())}`}
               element={
                 <GuildProfile
                   guildId={guild._id}
