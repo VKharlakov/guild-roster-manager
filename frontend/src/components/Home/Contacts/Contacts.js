@@ -41,7 +41,7 @@ function Contacts() {
                     </a>
                 </li>
             </ul>
-            <p className='contacts__author'>Kharlakov 2023</p>
+            <p className='contacts__author'>VKharlakov 2023</p>
         </section>
     )
 }

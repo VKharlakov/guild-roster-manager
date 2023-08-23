@@ -55,6 +55,7 @@ function App() {
         guildRMApi.createGuild(guild)
           .then((res) => {
             setGuildList([...guildList, res])
+            setIsAddPopup(false)
           })
           .catch((err) => {
             // if such guild already exists
