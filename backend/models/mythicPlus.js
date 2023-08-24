@@ -13,6 +13,10 @@ const mythicPlusSchema = new mongoose.Schema({
     parentId: {
         type: String,
         required: true
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
     }
 })
 

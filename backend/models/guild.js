@@ -34,6 +34,14 @@ const guildSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'mythicPlusRoster'
     }],
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
+    updatedAt: {
+        type: Date,
+        default: Date.now,
+    },
 })
 
 guildSchema.index({ name: 1, realm: 1 }, { unique: true });
