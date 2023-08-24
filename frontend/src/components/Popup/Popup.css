@@ -29,7 +29,7 @@
         'title close-button'
         'content content'
         'button button';
-    padding: 12px;
+    padding: 20px;
     border-radius: 6px;
     row-gap: 30px;
     min-height: 20%;
@@ -86,7 +86,7 @@
     margin: 0;
     padding: 0;
     color: white;
-    font-size: calc(var(--p-font-size) + 2px);
+    font-size: var(--p-font-size);
     word-wrap: break-word;
     max-width: 100%;
     text-align: justify;
@@ -102,10 +102,11 @@
     width: 40%;
     border-radius: 6px;
     justify-self: center;
+    color: var(--dark-color);
+    background-color: var(--highlight-color);
+    font-weight: 700;
     font-size: calc(var(--p-font-size) + 2px);
-    background-color: var(--dark-emph-color);
     transition: .3s ease;
-    color: white;
     scale: 1;
     box-shadow: 0px 5px 10px 3px rgba(0, 0, 0, .4);
     border: 1px solid rgba(255, 255, 255, .1);
@@ -114,25 +115,25 @@
 .popup__button:focus,
 .popup__button:hover {
     cursor: pointer;
-    color: var(--dark-color);
-    font-weight: 700;
+    color: white;
+    background-color: var(--dark-emph-color);
+    font-weight: unset;
     scale: .94;
-    background-color: var(--highlight-color);
 }
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 800px) {
     .popup__container {
         width: 40%;
     }
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 600px) {
     .popup__container {
         width: 45%;
     }
 }
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 400px) {
     .popup__container {
         width: 50%;
     }
