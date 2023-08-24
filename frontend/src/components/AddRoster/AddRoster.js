@@ -9,6 +9,7 @@ function AddRoster({
     rosterType,
     isPreloader,
     handleAddRoster,
+    rosterMaxAmount,
 }) {
     // Form values state
     const [formValue, setFormValue] = React.useState({ name: '', size: 20 })
@@ -30,7 +31,8 @@ function AddRoster({
         handleAddRoster({
             name: formValue.name,
             size: formValue.size,
-            parentId: guildData._id
+            parentId: guildData._id,
+            rosterMaxAmount: rosterMaxAmount
         })
     }
 

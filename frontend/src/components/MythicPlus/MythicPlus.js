@@ -35,25 +35,60 @@ function MythicPlus({
     const guildData = useOutletContext()
     const [rosterList, setRosterList] = React.useState([])
 
+    // Check if the roster limit has been reached
+    async function isRosterLimit(parentId, rosterMaxAmount) {
+        const rosters = await guildRMApi.getMythicPlusRosters({ parentId })
+        return rosters.length >= rosterMaxAmount
+    }
+
     // Add roster
-    function handleAddRoster(data) {
+    async function handleAddRoster(data) {
         setAddRosterIsPreloader(true)
-        guildRMApi.addMythicPlusRoster(data)
-            .then((newRoster) => {
-                setIsForm(false)
-                setRosterList([...rosterList, newRoster])
-            })
-            .catch((err) => {
-                // if can't connect to guildRMApi servers
+
+        try {
+            const isLimit = await isRosterLimit(data.parentId, data.rosterMaxAmount)
+            if (!isLimit) {
+                guildRMApi.addMythicPlusRoster(data)
+                    .then((newRoster) => {
+                        setAddRosterIsPreloader(false)
+
+                        setIsForm(false)
+                        setRosterList([...rosterList, newRoster])
+                    })
+                    .catch((err) => {
+                        setAddRosterIsPreloader(false)
+
+                        // if can't connect to guildRMApi servers
+                        setIsErrorPopup(true)
+                        setErrorPopupInfo({
+                            title: 'Server is not responding',
+                            text: 'An unexpected error has occurred. Something has happened with our servers. Please, try again later.',
+                            buttonText: 'Ok',
+                        })
+                        console.log('Raid handleAddRoster error:', err)
+                    })
+            } else {
+                setAddRosterIsPreloader(false)
+
+                // if section has reached its rosters' limit
                 setIsErrorPopup(true)
                 setErrorPopupInfo({
-                    title: 'Server is not responding',
-                    text: 'An unexpected error has occurred. Something has happened with our servers. Please, try again later.',
+                    title: 'Rosters limit has been hit',
+                    text: 'Failed to add roster. You may have reached the roster limit. Please try refreshing the page.',
                     buttonText: 'Ok',
                 })
-                console.log('MythicPlus handleAddRoster error:', err)
+                console.log('Roster limit has been hit')
+            }
+        } catch {
+            setAddRosterIsPreloader(false)
+
+            // if can't connect to guildRMApi servers
+            setErrorPopupInfo({
+                title: 'Server is not responding',
+                text: 'An unexpected error has occurred. Something has happened with our servers. Please, try again later.',
+                buttonText: 'Ok',
             })
-            .finally(() => setAddRosterIsPreloader(false))
+        }
     }
 
     // Delete roster
@@ -237,6 +272,7 @@ function MythicPlus({
                     isPreloader={isAddRosterPreloader}
                     handleAddRoster={handleAddRoster}
                     guildData={guildData}
+                    rosterMaxAmount={rosterMaxAmount}
                 />
             }
             <AddPopup
