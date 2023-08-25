@@ -120,7 +120,7 @@ function Roster({
                         handleDeleteCharacter={handleDeleteCharacter}
                     />
                 ))}
-                {isAddingCharacter &&
+                {isAddingCharacter && isUpdatingRoster &&
                     <RostersSkeleton />
                 }
                 {characterList.length < size && !isAddingCharacter &&
