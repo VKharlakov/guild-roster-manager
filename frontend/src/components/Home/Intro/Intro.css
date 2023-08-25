@@ -79,13 +79,13 @@
 
 }
 
-@media screen and (max-width: 1030px) {
+/* @media screen and (max-width: 1030px) {
 
     .intro__button,
     .intro__link {
         height: 100px;
     }
-}
+} */
 
 @media screen and (max-width: 800px) {
     .intro__brief {
@@ -108,7 +108,7 @@
 }
 
 @media screen and (max-width: 500px) {
-    .intro {
+    /* .intro {
         grid-template-columns: 1fr;
         grid-template-rows: 60% max-content max-content max-content;
         grid-template-areas:
@@ -117,7 +117,7 @@
             'button2'
             'button3';
         gap: 20px;
-    }
+    } */
 
     .intro__button,
     .intro__link {

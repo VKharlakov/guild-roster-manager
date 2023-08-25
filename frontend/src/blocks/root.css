@@ -20,16 +20,16 @@
     --close-button-height: 32px;
 
     /*сharacters__element width and height*/
-    --card-width: 100px;
-    --card-height: 130px;
+    --card-width: 80px;
+    --card-height: 110px;
 }
 
 @media all and (max-width: 1600px) {
     :root {
         --header-height: 90px;
 
-        --card-width: 90px;
-        --card-height: 120px;
+        --card-width: 70px;
+        --card-height: 100px;
     }
 }
 
@@ -47,8 +47,8 @@
 
         --header-height: 80px;
 
-        --card-width: 70px;
-        --card-height: 100px;
+        /* --card-width: 70px;
+        --card-height: 100px; */
     }
 }
 

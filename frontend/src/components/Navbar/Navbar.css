@@ -94,6 +94,22 @@
     background-color: var(--highlight-color);
 }
 
+@media screen and (max-width: 1600px) {
+    .navbar {
+        height: 30px;
+        margin-top: 10px;
+    }
+    .navbar__link-container {
+        width: 80px;
+    }
+
+    .navbar__back-link {
+        height: 30px;
+        width: 30px;
+    }
+    
+}
+
 @media all and (max-width: 800px) {
     .navbar {
         height: 25px;

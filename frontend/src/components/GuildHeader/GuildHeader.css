@@ -98,3 +98,25 @@
 .guild-header__button_type_link {
     background-image: url('../../images/GuildHeader-images/link-icon.svg');
 }
+
+@media screen and (max-width: 800px) {
+    .guild-header__menu {
+        gap: 20px;
+    }
+
+    .guild-header__button {
+        width: 15px;
+        height: 15px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .guild-header__menu {
+        gap: 10px;
+    }
+
+    /* .guild-header__button {
+        width: 15px;
+        height: 15px;
+    } */
+}
