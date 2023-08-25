@@ -5,6 +5,10 @@ const characterSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    region: {
+        type: String,
+        required: true
+    },
     class: {
         type: String,
         required: true
