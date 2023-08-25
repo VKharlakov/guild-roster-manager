@@ -187,6 +187,7 @@ class GuildRMApi {
             body: JSON.stringify({
                 avatar: data.thumbnail_url,
                 class: data.class,
+                region: data.region,
                 ilvl: data.gear.item_level_equipped,
                 mythicPlusRaiting: data.mythic_plus_scores_by_season[0].scores.all,
                 name: data.name,

@@ -7,7 +7,7 @@ import Guilds from '../Guilds/Guilds';
 import MythicPlus from '../MythicPlus/MythicPlus';
 import GuildProfile from '../GuildProfile/GuildProfile';
 import PageNotFound from '../PageNotFound/PageNotFound';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
 // Api imports
 import guildRMApi from '../../utils/guildRMApi';
@@ -19,10 +19,13 @@ function App() {
   const [isPreloader, setIsPreloader] = React.useState(true)          //Preloader state
   const [isPageLoading, setIsPageLoading] = React.useState(true)      //Upon loading page "skeleton" state
   const [isGuildLoading, setIsGuildLoading] = React.useState(false)   //When adding guild "skeleton" state
+  const [isGuildDeletePreloader, setIsGuildDeletePreloader] = React.useState(false)
 
   // Error popup states
   const [isErrorPopup, setIsErrorPopup] = React.useState(false)
   const [errorPopupInfo, setErrorPopupInfo] = React.useState({ title: '', text: '', buttonText: '' })
+
+  const navigate = useNavigate()
 
   // Get all guilds
   React.useEffect(() => {
@@ -112,6 +115,31 @@ function App() {
       })
   }
 
+  // Delete guild
+  function handleDeleteGuild(data) {
+    console.log(data.guildName)
+    navigate(`/guilds/${data.guildRegion}/${data.guildRealm}/${data.guildName}`)
+    setIsGuildDeletePreloader(true)
+    guildRMApi.deleteGuild(data)
+      .then((deletedGuild) => {
+        setGuildList(guildList.filter(guild => guild._id !== deletedGuild._id))
+        navigate('/guilds')
+      })
+      .catch((err) => {
+        // if can't connect to guildRMApi servers
+        setIsErrorPopup(true)
+        setErrorPopupInfo({
+          title: 'Server is not responding',
+          text: 'An unexpected error has occurred. Something has happened with our servers. Please, try again later.',
+          buttonText: 'Ok',
+        })
+        console.log('App handleDeleteGuild error:', err)
+      })
+      .finally(() => {
+        setIsGuildDeletePreloader(false)
+      })
+  }
+
   return (
     <section className="app">
       <Routes>
@@ -123,7 +151,7 @@ function App() {
               isGuildLoading={isGuildLoading}
               isAddPopup={isAddPopup}
               setIsAddPopup={setIsAddPopup}
-              guildList={guildList}
+              initialGuildList={guildList}
               handleAddGuild={handleAddGuild}
             />}
           />
@@ -136,6 +164,8 @@ function App() {
                   guildId={guild._id}
                   setErrorPopupInfo={setErrorPopupInfo}
                   setIsErrorPopup={setIsErrorPopup}
+                  handleDeleteGuild={handleDeleteGuild}
+                  isGuildDeletePreloader={isGuildDeletePreloader}
                 />
               }
             >

@@ -165,7 +165,7 @@ function MythicPlus({
                 setIsErrorPopup(true)
                 setErrorPopupInfo({
                     title: 'Roster limit has been hit',
-                    text: 'Could not add the character to the roster. You may not see it, because someone has not updated on your end. Switch to another tab and come back to see the updated roster',
+                    text: 'Failed to add character. You may have reached the roster limit. Please try refreshing the page.',
                     buttonText: 'Ok',
                 })
                 console.log('Character limit has been hit')

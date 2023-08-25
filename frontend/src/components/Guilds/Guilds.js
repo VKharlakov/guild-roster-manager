@@ -5,7 +5,6 @@ import GuildBanner from '../GuildBanner/GuildBanner'
 import GuildsSkeleton from './GuildsSkeleton/GuildsSkeleton'
 
 function Guilds({
-    guildList,
     isAddPopup,
     isPreloader,
     setIsAddPopup,
@@ -13,7 +12,13 @@ function Guilds({
     isGuildLoading,
     handleAddGuild,
     setCurrentGuild,
+    initialGuildList,
 }) {
+    const [guildList, setGuildList] = React.useState(initialGuildList)
+
+    React.useEffect(() => {
+        setGuildList(initialGuildList)
+    }, [initialGuildList])
 
     return (
         <main className="guilds">
@@ -36,7 +41,10 @@ function Guilds({
                                     <GuildsSkeleton />
                                     <GuildsSkeleton />
                                 </>
-                                : <p className='guilds__nothing-found'>Nobody has added a guild here yet</p>
+                                : isGuildLoading
+                                    ? ''
+                                    : <p className='guilds__nothing-found'>Nobody has added a guild here yet</p>
+
                             }
                         </>
                     }
