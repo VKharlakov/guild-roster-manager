@@ -10,11 +10,6 @@ Link to the website: [GuildRM.com](https://guildrm.com/)
 
 **important!** Website that is availiable on GitHub Pages is **NOT up-to-date**, it's its earliest version kept just for memories. New website with up-to-date features is avaliable by the link above!
 
-**important!** As I am currently actively working on the website, some functionality and **features are not availiable**, such as:
- - adding/removing rosters
- - adding/removing guilds
- - buttons 'about us' and 'how to use' are currently disabled
-
 ### Roadmap
 <p align="center">
   <img src="./frontend/src/images/README-images/roadmap.png" alt="project's roadmap" style="max-width: 50%; height: auto;">
@@ -49,10 +44,6 @@ GuildRM - это сайт, позволяющий отслеживать под�
 
 **ВАЖНО:** Сайт, доступный на GitHub Pages, **не обновляется**, это его самая ранняя версия, оставленная для памяти. Новый сайт с актуальными функциями доступен по ссылке выше!
 
-**ВАЖНО:** Поскольку я в настоящее время активно работаю над веб-сайтом, некоторые функции и возможности **не доступны**, такие как:
-- добавление/удаление составов
-- добавление/удаление гильдий
-- кнопки "about us" и "how to use" в настоящее время отключены
 ### Дорожная карта
 <p align="center">
   <img src="./frontend/src/images/README-images/roadmap.png" alt="дорожная карта сайта" style="max-width: 50%; height: auto;">
