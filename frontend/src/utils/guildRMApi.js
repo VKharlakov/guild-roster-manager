@@ -227,7 +227,7 @@ class GuildRMApi {
 }
 
 const guildRMApi = new GuildRMApi({
-    baseUrl: 'http://localhost:4000',
+    baseUrl: 'http://guildrm/api',
     headers: {
         'Content-Type': 'application/json',
     }
