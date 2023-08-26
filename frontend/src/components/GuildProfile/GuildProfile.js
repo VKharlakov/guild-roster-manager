@@ -8,8 +8,8 @@ import Preloader from '../Preloader/Preloader';
 
 function GuildProfile({
     guildId,
-    setIsErrorPopup,
-    setErrorPopupInfo,
+    setIsPopup,
+    setPopupInfo,
     handleDeleteGuild,
     isGuildDeletePreloader,
 }) {
@@ -26,12 +26,12 @@ function GuildProfile({
             .catch((err) => {
                 navigate('/guilds')
                 // if can't connect to guildRMApi servers
-                setErrorPopupInfo({
+                setPopupInfo({
                     title: 'Server is not responding',
                     text: 'An unexpected error has occurred. Something has happened with our servers. Please, try again later.',
                     buttonText: 'Ok',
                 })
-                setIsErrorPopup(true)
+                setIsPopup(true)
             })
     }, [guildId])
 
@@ -40,6 +40,8 @@ function GuildProfile({
             <GuildHeader
                 guildData={guildData}
                 handleDeleteGuild={handleDeleteGuild}
+                setIsPopup={setIsPopup}
+                setPopupInfo={setPopupInfo}
             />
             <main className="guild-profile" >
                 <Navbar />

@@ -5,6 +5,8 @@ import React from 'react'
 
 function GuildHeader({
     guildData,
+    setIsPopup,
+    setPopupInfo,
     handleDeleteGuild,
 }) {
     const currentPath = decodeURIComponent(window.location.href)
@@ -16,11 +18,17 @@ function GuildHeader({
     }
 
     function onDelete() {
-        handleDeleteGuild({
-            guildId: guildData._id,
-            guildName: guildData.name.replace(/\s/g, '-').toLowerCase(),
-            guildRegion: guildData.region,
-            guildRealm: guildData.realm.replace(/\s/g, '-').toLowerCase()
+        setIsPopup(true)
+        setPopupInfo({
+            title: 'Are you sure?',
+            text: `You are deleting a "${guildData.name}" guild. This action would be irreversible. Do you want to proceed?`,
+            buttonText: 'No',
+            handleConfirm: () => handleDeleteGuild({
+                guildId: guildData._id,
+                guildName: guildData.name.replace(/\s/g, '-').toLowerCase(),
+                guildRegion: guildData.region,
+                guildRealm: guildData.realm.replace(/\s/g, '-').toLowerCase()
+            })
         })
     }
 

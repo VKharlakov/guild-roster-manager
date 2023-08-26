@@ -22,6 +22,8 @@ function Roster({
     isRosterPreloader,
     handleDeleteRoster,
     handleDeleteCharacter,
+    setPopupInfo,
+    setIsPopup,
 }) {
     const [raiting, setRaiting] = React.useState(0)                                         //M+ rating state
     const [characterList, setCharacterList] = React.useState(characters)                    //Characters array state 
@@ -66,8 +68,16 @@ function Roster({
 
     // Delete roster click
     function onDeleteRoster() {
-        setIsPreloader(true)
-        handleDeleteRoster({ _id: rosterId, parentId: guildData._id })
+        setIsPopup(true)
+        setPopupInfo({
+            title: 'Are you sure?',
+            text: `You are deleting a "${name}" roster. This action would be irreversible. Do you want to proceed?`,
+            buttonText: 'No',
+            handleConfirm: () => handleDeleteRoster({
+                _id: rosterId,
+                parentId: guildData._id
+            })
+        })
     }
 
     // Add character click

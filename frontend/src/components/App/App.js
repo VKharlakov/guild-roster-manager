@@ -22,8 +22,8 @@ function App() {
   const [isGuildDeletePreloader, setIsGuildDeletePreloader] = React.useState(false)
 
   // Error popup states
-  const [isErrorPopup, setIsErrorPopup] = React.useState(false)
-  const [errorPopupInfo, setErrorPopupInfo] = React.useState({ title: '', text: '', buttonText: '' })
+  const [isPopup, setIsPopup] = React.useState(false)
+  const [popupInfo, setPopupInfo] = React.useState({ title: '', text: '', buttonText: '' })
 
   const navigate = useNavigate()
 
@@ -34,12 +34,12 @@ function App() {
         setGuildList(guilds)
       })
       .catch((err) => {
-        setErrorPopupInfo({
+        setPopupInfo({
           title: 'Server is not responding',
           text: 'An unexpected error has occurred. Something has happened with our servers. Please, try again later.',
           buttonText: 'Ok',
         })
-        setIsErrorPopup(true)
+        setIsPopup(true)
       })
       .finally(() => {
         setTimeout(() => {
@@ -63,8 +63,8 @@ function App() {
           .catch((err) => {
             // if such guild already exists
             if (err.code === 11000) {
-              setIsErrorPopup(true)
-              setErrorPopupInfo({
+              setIsPopup(true)
+              setPopupInfo({
                 title: 'Guild already exists',
                 text: 'Someone has already added your guild!',
                 buttonText: 'Ok',
@@ -74,12 +74,12 @@ function App() {
             }
 
             // if can't connect to guildRMApi servers
-            setErrorPopupInfo({
+            setPopupInfo({
               title: 'Server is not responding',
               text: 'An unexpected error has occurred. Something has happened with our servers. Please, try again later.',
               buttonText: 'Ok',
             })
-            setIsErrorPopup(true)
+            setIsPopup(true)
           })
           .finally(() => {
             setIsGuildLoading(false)
@@ -89,8 +89,8 @@ function App() {
       .catch((err) => {
         // if realm is incorrect
         if (err.message.includes('Failed to find realm')) {
-          setIsErrorPopup(true)
-          setErrorPopupInfo({
+          setIsPopup(true)
+          setPopupInfo({
             title: 'Incorrect realm',
             text: 'Could not find matching realm in the official realm list.',
             buttonText: 'Ok',
@@ -101,8 +101,8 @@ function App() {
 
         // if guild name is incorrect
         if (err.message === 'Could not find requested guild') {
-          setIsErrorPopup(true)
-          setErrorPopupInfo({
+          setIsPopup(true)
+          setPopupInfo({
             title: 'Incorrect guild name',
             text: 'Could not find requested guild in the raider.io database. It does not mean, that there is no such guild, it just means that raider.io has not recognised it potential yet!',
             buttonText: 'Ok:)',
@@ -117,7 +117,6 @@ function App() {
 
   // Delete guild
   function handleDeleteGuild(data) {
-    console.log(data.guildName)
     navigate(`/guilds/${data.guildRegion}/${data.guildRealm}/${data.guildName}`)
     setIsGuildDeletePreloader(true)
     guildRMApi.deleteGuild(data)
@@ -127,8 +126,8 @@ function App() {
       })
       .catch((err) => {
         // if can't connect to guildRMApi servers
-        setIsErrorPopup(true)
-        setErrorPopupInfo({
+        setIsPopup(true)
+        setPopupInfo({
           title: 'Server is not responding',
           text: 'An unexpected error has occurred. Something has happened with our servers. Please, try again later.',
           buttonText: 'Ok',
@@ -162,8 +161,8 @@ function App() {
               element={
                 <GuildProfile
                   guildId={guild._id}
-                  setErrorPopupInfo={setErrorPopupInfo}
-                  setIsErrorPopup={setIsErrorPopup}
+                  setPopupInfo={setPopupInfo}
+                  setIsPopup={setIsPopup}
                   handleDeleteGuild={handleDeleteGuild}
                   isGuildDeletePreloader={isGuildDeletePreloader}
                 />
@@ -180,16 +179,16 @@ function App() {
                 <Raid
                   sectionType='raid'
                   rosterMaxAmount='4'
-                  setErrorPopupInfo={setErrorPopupInfo}
-                  setIsErrorPopup={setIsErrorPopup}
+                  setPopupInfo={setPopupInfo}
+                  setIsPopup={setIsPopup}
                 />}
               />
               <Route path='mythic-plus' element={
                 <MythicPlus
                   sectionType='mythic-plus'
                   rosterMaxAmount='6'
-                  setErrorPopupInfo={setErrorPopupInfo}
-                  setIsErrorPopup={setIsErrorPopup}
+                  setPopupInfo={setPopupInfo}
+                  setIsPopup={setIsPopup}
                 />}
               />
             </Route>
@@ -199,9 +198,11 @@ function App() {
         <Route path='*' element={<PageNotFound />} />
       </Routes>
       <Popup
-        errorPopupInfo={errorPopupInfo}
-        setIsErrorPopup={setIsErrorPopup}
-        isActive={isErrorPopup} />
+        popupInfo={popupInfo}
+        setIsPopup={setIsPopup}
+        isActive={isPopup}
+        handleDeleteGuild={handleDeleteGuild}
+      />
     </section >
   );
 }

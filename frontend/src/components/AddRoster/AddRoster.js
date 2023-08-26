@@ -34,6 +34,8 @@ function AddRoster({
             parentId: guildData._id,
             rosterMaxAmount: rosterMaxAmount
         })
+
+        setFormValue({ name: '', size: 20 })
     }
 
     // Close form

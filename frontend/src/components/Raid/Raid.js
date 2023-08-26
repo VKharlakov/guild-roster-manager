@@ -13,8 +13,8 @@ import raiderIoApi from '../../utils/raiderIoApi';
 function Raid({
     sectionType,
     rosterMaxAmount,
-    setIsErrorPopup,
-    setErrorPopupInfo,
+    setIsPopup,
+    setPopupInfo,
 }) {
     const [isForm, setIsForm] = React.useState(false)                               //Add roster form state
     const [isPageLoading, setIsPageLoading] = React.useState(false)                 //Show "skeletons" upon loading the page
@@ -59,8 +59,8 @@ function Raid({
                         setAddRosterIsPreloader(false)
 
                         // if can't connect to guildRMApi servers
-                        setIsErrorPopup(true)
-                        setErrorPopupInfo({
+                        setIsPopup(true)
+                        setPopupInfo({
                             title: 'Server is not responding',
                             text: 'An unexpected error has occurred. Something has happened with our servers. Please, try again later.',
                             buttonText: 'Ok',
@@ -71,8 +71,8 @@ function Raid({
                 setAddRosterIsPreloader(false)
 
                 // if section has reached its rosters' limit
-                setIsErrorPopup(true)
-                setErrorPopupInfo({
+                setIsPopup(true)
+                setPopupInfo({
                     title: 'Rosters limit has been hit',
                     text: 'Failed to add roster. You may have reached the roster limit. Please try refreshing the page.',
                     buttonText: 'Ok',
@@ -83,7 +83,7 @@ function Raid({
             setAddRosterIsPreloader(false)
 
             // if can't connect to guildRMApi servers
-            setErrorPopupInfo({
+            setPopupInfo({
                 title: 'Server is not responding',
                 text: 'An unexpected error has occurred. Something has happened with our servers. Please, try again later.',
                 buttonText: 'Ok',
@@ -101,8 +101,8 @@ function Raid({
             })
             .catch((err) => {
                 // if can't connect to guildRMApi servers
-                setIsErrorPopup(true)
-                setErrorPopupInfo({
+                setIsPopup(true)
+                setPopupInfo({
                     title: 'Server is not responding',
                     text: 'An unexpected error has occurred. Something has happened with our servers. Please, try again later.',
                     buttonText: 'Ok',
@@ -122,8 +122,8 @@ function Raid({
                 })
                 .catch((err) => {
                     // if can't connect to guildRMApi servers
-                    setIsErrorPopup(true)
-                    setErrorPopupInfo({
+                    setIsPopup(true)
+                    setPopupInfo({
                         title: 'Server is not responding',
                         text: 'An unexpected error has occurred. Something has happened with our servers. Please, try again later.',
                         buttonText: 'Ok',
@@ -164,8 +164,8 @@ function Raid({
                 setIsAddingCharacter(false)
 
                 // if roster has reached its limit
-                setIsErrorPopup(true)
-                setErrorPopupInfo({
+                setIsPopup(true)
+                setPopupInfo({
                     title: 'Roster limit has been hit',
                     text: 'Failed to add character. You may have reached the roster limit. Please try refreshing the page.',
                     buttonText: 'Ok',
@@ -178,8 +178,8 @@ function Raid({
 
             // if realm is incorrect
             if (err.message.includes('Failed to find realm')) {
-                setIsErrorPopup(true)
-                setErrorPopupInfo({
+                setIsPopup(true)
+                setPopupInfo({
                     title: 'Incorrect realm',
                     text: 'Could not find matching realm in the official realm list.',
                     buttonText: 'Ok',
@@ -189,8 +189,8 @@ function Raid({
 
             // if character name is incorrect
             if (err.message === 'Could not find requested character') {
-                setIsErrorPopup(true)
-                setErrorPopupInfo({
+                setIsPopup(true)
+                setPopupInfo({
                     title: 'Incorrect character name',
                     text: 'Could not find requested character in the raider.io database. Remember, they have to be max level at least to be recognised by raider.io.',
                     buttonText: 'Ok',
@@ -199,13 +199,13 @@ function Raid({
             }
 
             // if can't connect to guildRMApi servers
-            setErrorPopupInfo({
+            setPopupInfo({
                 title: 'Server is not responding',
                 text: 'An unexpected error has occurred. Something has happened with our servers. Please, try again later.',
                 buttonText: 'Ok',
             })
 
-            setIsErrorPopup(true)
+            setIsPopup(true)
             console.log('Raid handleAddCharacter error:', err)
         }
 
@@ -222,8 +222,8 @@ function Raid({
             })
             .catch((err) => {
                 // if can't connect to guildRMApi servers
-                setIsErrorPopup(true)
-                setErrorPopupInfo({
+                setIsPopup(true)
+                setPopupInfo({
                     title: 'Server is not responding',
                     text: 'An unexpected error has occurred. Something has happened with our servers. Please, try again later.',
                     buttonText: 'Ok',
@@ -252,8 +252,8 @@ function Raid({
                     handleDeleteRoster={handleDeleteRoster}
                     isRosterPreloader={isRosterPreloader}
                     isUpdatingRoster={isUpdatingRoster === roster._id}
-                    setIsErrorPopup={setIsErrorPopup}
-                    setErrorPopupInfo={setErrorPopupInfo}
+                    setIsPopup={setIsPopup}
+                    setPopupInfo={setPopupInfo}
                     handleDeleteCharacter={handleDeleteCharacter}
                     guildData={guildData}
                     isAddingCharacter={isAddingCharacter}
