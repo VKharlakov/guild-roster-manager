@@ -2,23 +2,7 @@ const Character = require('../models/character');
 const axios = require('axios');
 const roles = ['tank', 'healing', 'dps'];
 
-async function updateCharactersSequentially(characters) {
-    let currentIndex = 0;
-
-    async function updateNextCharacter() {
-        if (currentIndex < characters.length) {
-            const character = characters[currentIndex];
-            await updateCharacter(character);
-            currentIndex++;
-            setTimeout(updateNextCharacter, 5000); // Запускаем следующий обновление через 5 секунд
-        } else {
-            console.log('All characters updated.');
-        }
-    }
-
-    updateNextCharacter();
-}
-
+// Update character function
 async function updateCharacter(character) {
     try {
         const response = await axios.get(`https://raider.io/api/v1/characters/profile?region=eu&realm=${character.realm}&name=${character.name}&fields=gear%2Cmythic_plus_scores_by_season%3Acurrent`);
@@ -41,6 +25,25 @@ async function updateCharacter(character) {
     }
 }
 
+// Update characters one by one
+async function updateCharactersSequentially(characters) {
+    let currentIndex = 0;
+
+    async function updateNextCharacter() {
+        if (currentIndex < characters.length) {
+            const character = characters[currentIndex];
+            await updateCharacter(character);
+            currentIndex++;
+            setTimeout(updateNextCharacter, 5000);
+        } else {
+            console.log('All characters updated.');
+        }
+    }
+
+    updateNextCharacter();
+}
+
+// Find all characters from the DB and run update
 async function updateAllCharacters() {
     try {
         const characters = await Character.find();
@@ -51,7 +54,5 @@ async function updateAllCharacters() {
 }
 
 module.exports = {
-    updateCharacter,
     updateAllCharacters,
-    updateCharactersSequentially
 };

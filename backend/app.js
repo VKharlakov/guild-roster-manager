@@ -1,9 +1,10 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
-// const cron = require('node-cron');
+const cron = require('node-cron');
 const router = require('./routes/router');
-// const { updateAllCharacters } = require('./utils/utils');
+const { updateAllCharacters } = require('./utils/updateCharacters');
+const { updateAllGuilds } = require('./utils/updateGuilds');
 
 const { PORT = 3000 } = process.env
 
@@ -13,9 +14,15 @@ mongoose.connect('mongodb://127.0.0.1/guildversedb')
     .then(() => console.log('Успешное подключение к MongoDB'))
     .catch(() => console.log('Ошибка подключения к MongoDB'))
 
-// cron.schedule('*/10 * * * * *', () => {
-//     updateAllCharacters()
-// });
+// Update characters in mongoDB on Monday and Thursday
+cron.schedule('0 0 * * 1,4', () => {
+    updateAllCharacters()
+})
+
+// Update guilds in mongoDB on Sunday
+cron.schedule('0 0 * * 0', () => {
+    updateAllGuilds()
+})
 
 app.use('*', cors([
     'localhost:3000',
