@@ -2,37 +2,46 @@ import './AddPopup.css'
 import React from "react";
 import Tooltip from "../Tooltip/Tooltip";
 import { euServerList as servers } from "../../utils/constants";
+import { checkInputsValidity } from '../../utils/utils';
 
 function AddPopup({
     isActive,
     rosterId,
+    guildData,
+    popupType,
     rosterName,
     rosterSize,
-    popupType,
     setIsAddPopup,
+    isAddingGuild,
     handleAddGuild,
     isUpdatingRoster,
-    isAddingGuild,
     handleAddCharacter,
-    guildData
 }) {
     //Form values state
     const [formValue, setFormValue] = React.useState({ realm: "", name: "", region: "eu" })
 
     // [WIP] Button state
-    const [isButtonDisabled, setIsButtonDisabled] = React.useState(false)
+    const [isButtonDisabled, setIsButtonDisabled] = React.useState(true)
+
+    const nameRef = React.useRef(null)
+    const realmRef = React.useRef(null)
 
     // ToolTip-related states
     const [memberList, setMemberList] = React.useState([])
-    const [isToolTipOpen, setIsToolTipOpen] = React.useState(false)
+    const [isTooltip, setIsTooltip] = React.useState(false)
     const [currentInputType, setCurrentInputType] = React.useState('')
     const [currentToolTipArray, setCurrentToolTipArray] = React.useState()
 
     // Open tooltip when input is focused
     function onInputFocus(toolTipArray, inputType) {
-        setIsToolTipOpen(true)
+        setIsTooltip(true)
         setCurrentInputType(inputType)
         setCurrentToolTipArray(toolTipArray)
+
+        // Run filter again when switching between inputs
+        if (formValue[inputType] !== '') {
+            search(formValue[inputType], toolTipArray)
+        }
     }
 
     // Search for matching name from tooltip
@@ -51,13 +60,21 @@ function AddPopup({
         })
     }
 
-    function handleToolTipClick(input, inputValue) {
-        if (input === 'realm') {
-            setFormValue({ ...formValue, realm: inputValue })
-        } else if (input === 'name') {
-            setFormValue({ ...formValue, name: inputValue })
+    function handleTooltipClick(item) {
+        if (currentInputType === 'realm') {
+            setFormValue({ ...formValue, realm: item.name })
+
+        } else if (currentInputType === 'name') {
+            setFormValue({ ...formValue, name: item.name, realm: item.realm })
         }
+
     }
+
+    // Set button validity every time input value changes
+    React.useEffect(() => {
+        setIsButtonDisabled(!checkInputsValidity([realmRef.current, nameRef.current]))
+
+    }, [formValue])
 
     // Submit add character form
     function onCharacterSubmit(event) {
@@ -85,28 +102,36 @@ function AddPopup({
         return (
             <form className="add-popup__form add-popup__form_type_character" name="form" onSubmit={(event) => { onCharacterSubmit(event) }}>
                 <div className="add-popup__inputs">
-                    <input
-                        onFocus={() => { onInputFocus(servers, 'realm') }}
-                        onChange={(event) => { onChange(event, servers) }}
-                        className="add-popup__input add-popup__input_type_text"
-                        name="realm"
-                        placeholder="Enter your realm"
-                        value={formValue.realm}
-                        minLength="3"
-                        required
-                        autoComplete="off"
-                    />
-                    <input
-                        onFocus={() => { onInputFocus(memberList, 'name') }}
-                        onChange={(event) => { onChange(event, memberList) }}
-                        className="add-popup__input add-popup__input_type_text"
-                        name="name"
-                        placeholder="Enter your character name"
-                        value={formValue.name}
-                        minLength="3"
-                        required
-                        autoComplete="off"
-                    />
+                    <label className='add-popup__label'>
+                        Character's name:
+                        <input
+                            ref={nameRef}
+                            onFocus={() => { onInputFocus(memberList, 'name') }}
+                            onChange={(event) => { onChange(event, memberList) }}
+                            className="add-popup__input add-popup__input_type_text"
+                            name="name"
+                            placeholder="name"
+                            value={formValue.name}
+                            minLength="3"
+                            required
+                            autoComplete="off"
+                        />
+                    </label>
+                    <label className='add-popup__label'>
+                        Character's realm:
+                        <input
+                            ref={realmRef}
+                            onFocus={() => { onInputFocus(servers, 'realm') }}
+                            onChange={(event) => { onChange(event, servers) }}
+                            className="add-popup__input add-popup__input_type_text"
+                            name="realm"
+                            placeholder="realm"
+                            value={formValue.realm}
+                            minLength="3"
+                            required
+                            autoComplete="off"
+                        />
+                    </label>
                 </div>
                 <button className="add-popup__submit-button" type="submit" disabled={isUpdatingRoster || isButtonDisabled}>{!isUpdatingRoster ? 'Submit' : 'Please wait...'}</button>
             </form>
@@ -118,7 +143,7 @@ function AddPopup({
             <form className="add-popup__form add-popup__form_type_guild" name="form" onSubmit={(event) => onGuildSubmit(event)}>
                 <div className="add-popup__inputs">
                     <div className="add-popup__radio-container">
-                        <label className="add-popup__radio-label">
+                        <label className="add-popup__label add-popup__label_type_radio">
                             EU
                             <input
                                 type="radio"
@@ -128,7 +153,7 @@ function AddPopup({
                             />
                             <span className="add-popup__radio-input-custom" />
                         </label>
-                        {/* <label className="add-popup__radio-label">
+                        {/* <label className="add-popup__label add-popup__label_type_radio">
                             US
                             <input
                                 type="radio"
@@ -138,24 +163,34 @@ function AddPopup({
                             <span className="add-popup__radio-input-custom" />
                         </label> */}
                     </div>
-                    <input
-                        className="add-popup__input add-popup__input_type_text"
-                        name="realm"
-                        value={formValue.realm}
-                        onChange={(event) => onChange(event, [])}
-                        placeholder="Enter guild realm"
-                        autoComplete="off"
-                        required
-                    />
-                    <input
-                        className='add-popup__input add-popup__input_type_text'
-                        name='name'
-                        onChange={(event) => onChange(event, [])}
-                        value={formValue.name}
-                        placeholder='Enter guild title'
-                        autoComplete='off'
-                        required
-                    />
+                    <label className='add-popup__label'>
+                        Guild's title:
+                        <input
+                            ref={nameRef}
+                            className='add-popup__input add-popup__input_type_text'
+                            name='name'
+                            onFocus={() => setIsTooltip(false)}
+                            onChange={(event) => onChange(event, [])}
+                            value={formValue.name}
+                            placeholder='title'
+                            autoComplete='off'
+                            required
+                        />
+                    </label>
+                    <label className='add-popup__label'>
+                        Guild's realm:
+                        <input
+                            ref={realmRef}
+                            className="add-popup__input add-popup__input_type_text"
+                            name="realm"
+                            value={formValue.realm}
+                            onChange={(event) => onChange(event, servers)}
+                            onFocus={() => { onInputFocus(servers, 'realm') }}
+                            placeholder="realm"
+                            autoComplete="off"
+                            required
+                        />
+                    </label>
                 </div>
                 <button className="add-popup__submit-button" type="submit" disabled={isAddingGuild || isButtonDisabled}>{!isAddingGuild ? 'Submit' : 'Please wait...'}</button>
             </form>
@@ -174,7 +209,14 @@ function AddPopup({
                 : addGuildForm()
             }
 
-            {isToolTipOpen && currentToolTipArray.length >= 1 && <Tooltip array={currentToolTipArray} input={currentInputType} onClick={handleToolTipClick} onClose={setIsToolTipOpen} />}
+            {isTooltip && currentToolTipArray.length > 0 &&
+                <Tooltip
+                    array={currentToolTipArray}
+                    input={currentInputType}
+                    handleTooltipClick={handleTooltipClick}
+                    setIsTooltip={setIsTooltip}
+                />
+            }
         </div>
     )
 }

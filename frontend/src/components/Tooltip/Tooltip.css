@@ -2,7 +2,7 @@
     list-style: none;
     margin: 0;
     padding: 5px;
-    background-color: rgba(0, 0, 0, .2);
+    background-color: rgba(0, 0, 0, .4);
     border-radius: 6px;
     height: 90%;
     width: 100%;
@@ -28,25 +28,77 @@
     font-size: var(--p-font-size);
     color: white;
     margin: 0;
-    padding: 2px;
+    padding: 3px;
+    border-radius: 3px;
     display: inline-block;
-    transition: .2s;
+    transition: .1s;
 }
 
+.tooltip__text:focus,
 .tooltip__text:hover {
     cursor: pointer;
-    color: black;
-    background-color: hsla(0, 0%, 100%, 80%);
+    color: var(--dark-color);
+    font-weight: 700;
+    background-color: white;
+}
+
+.tooltip__text_class_paladin {
+    color: #F48CBA;
+}
+
+.tooltip__text_class_druid {
+    color: #FF7C0A;
+}
+
+.tooltip__text_class_evoker {
+    color: #33937F;
+}
+
+.tooltip__text_class_hunter {
+    color: #AAD372;
+}
+
+.tooltip__text_class_mage {
+    color: #3FC7EB;
+}
+
+.tooltip__text_class_monk {
+    color: #00FF98;
+}
+
+.tooltip__text_class_priest {
+    color: #FFFFFF;
+}
+
+.tooltip__text_class_rogue {
+    color: #FFF468;
+}
+
+.tooltip__text_class_shaman {
+    color: #0070DD;
+}
+
+.tooltip__text_class_warlock {
+    color: #8788EE;
+}
+
+.tooltip__text_class_warrior {
+    color: #C69B6D;
+}
+
+.tooltip__text_class_demon-hunter {
+    color: #A330C9;
+}
+
+.tooltip__text_class_death-knight {
+    color: #C41E3A;
 }
 
 .tooltip::-webkit-scrollbar {
     width: 8px;
 }
 
-.tooltip::-webkit-scrollbar-track {
-    background-color: hsla(365, 70%, 0%, .4);
-}
-
 .tooltip::-webkit-scrollbar-thumb {
-    background-color: var(--highlight-color);
+    background-color: white;
+    border-radius: 6px;
 }
