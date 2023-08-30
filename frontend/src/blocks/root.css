@@ -24,6 +24,20 @@
     --card-height: 110px;
 }
 
+body::-webkit-scrollbar {
+    border-radius: 8px;
+    width: 6px;
+}
+
+body::-webkit-scrollbar-button {
+    display: none;
+}
+
+body::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, .6);
+}
+
 @media all and (max-width: 1600px) {
     :root {
         --header-height: 90px;
