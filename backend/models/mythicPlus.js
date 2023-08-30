@@ -4,7 +4,8 @@ const Character = require('./character')
 const mythicPlusSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        maxlength: 20
     },
     characters: [{
         type: mongoose.Schema.Types.ObjectId,

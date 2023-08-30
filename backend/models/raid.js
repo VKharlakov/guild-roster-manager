@@ -5,7 +5,7 @@ const raidSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        maxlength: 30
+        maxlength: 20
     },
     size: {
         type: Number,

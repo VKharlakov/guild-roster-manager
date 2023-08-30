@@ -88,7 +88,7 @@ function AddRoster({
                         placeholder='Enter roster title'
                         onChange={(event) => handleChange(event)}
                         value={formValue.name}
-                        maxLength={30}
+                        maxLength={20}
                         minLength={1}
                         required
                     />
