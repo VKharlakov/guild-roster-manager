@@ -92,6 +92,7 @@ function AddPopup({
 
     // Set array of members
     React.useEffect(() => {
+        setCurrentInputType('')
         setFormValue({ ...formValue, realm: "", name: "" })
         if (guildData && guildData.members.length > 0) {
             setMemberList(guildData.members.map((member) => member.character))
@@ -112,10 +113,11 @@ function AddPopup({
                             name="name"
                             placeholder="name"
                             value={formValue.name}
-                            minLength="3"
+                            minLength="1"
                             required
                             autoComplete="off"
                         />
+                        <p className='add-popup__required'>required</p>
                     </label>
                     <label className='add-popup__label'>
                         Character's realm:
@@ -127,10 +129,11 @@ function AddPopup({
                             name="realm"
                             placeholder="realm"
                             value={formValue.realm}
-                            minLength="3"
+                            minLength="1"
                             required
                             autoComplete="off"
                         />
+                        <p className='add-popup__required'>required</p>
                     </label>
                 </div>
                 <button className="add-popup__submit-button" type="submit" disabled={isUpdatingRoster || isButtonDisabled}>{!isUpdatingRoster ? 'Submit' : 'Please wait...'}</button>
@@ -176,6 +179,7 @@ function AddPopup({
                             autoComplete='off'
                             required
                         />
+                        <p className='add-popup__required'>required</p>
                     </label>
                     <label className='add-popup__label'>
                         Guild's realm:
@@ -190,6 +194,7 @@ function AddPopup({
                             autoComplete="off"
                             required
                         />
+                        <p className='add-popup__required'>required</p>
                     </label>
                 </div>
                 <button className="add-popup__submit-button" type="submit" disabled={isAddingGuild || isButtonDisabled}>{!isAddingGuild ? 'Submit' : 'Please wait...'}</button>
