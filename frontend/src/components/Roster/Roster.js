@@ -2,9 +2,9 @@ import './Roster.css'
 import React from "react";
 import Preloader from '../Preloader/Preloader';
 import Character from "../Character/Character";
-import { compareByRole } from '../../utils/utils';
 import RostersSkeleton from './RostersSkeleton/RostersSkeleton';
 import RosterInfoPanel from "../RosterInfoPanel/RosterInfoPanel";
+import { compareByRole, countAverage, countRoles } from '../../utils/utils';
 
 function Roster({
     name,
@@ -25,45 +25,25 @@ function Roster({
     setPopupInfo,
     setIsPopup,
 }) {
+    const [ilvl, setIlvl] = React.useState(0)
     const [raiting, setRaiting] = React.useState(0)                                         //M+ rating state
+    const [roles, setRoles] = React.useState({ tanks: 0, healers: 0, dps: 0, total: 0 })    //Raid role counter state
     const [characterList, setCharacterList] = React.useState(characters)                    //Characters array state 
     const [isPreloader, setIsPreloader] = React.useState(isRosterPreloader)                 //Preloader state
-    const [roles, setRoles] = React.useState({ tanks: 0, healers: 0, dps: 0, total: 0 })    //Raid role counter state
-
-    //Count amount of each role
-    function countRoles(role) {
-        let amount = 0
-        characters.forEach((item) => {
-            if (item.role === role) {
-                amount++
-            }
-        })
-        return amount
-    }
 
     //Handle add roles to roles array
     function handleSetRoles() {
         setRoles({
-            tanks: countRoles('tank'),
-            healers: countRoles('healing'),
-            dps: countRoles('dps'),
+            tanks: countRoles(characters, 'tank'),
+            healers: countRoles(characters, 'healing'),
+            dps: countRoles(characters, 'dps'),
             total: characters.length
         })
     }
 
-    //Count raiting score
-    function countRaiting() {
-        let amount = 0
-        characters.forEach((item) => {
-            amount += item.mythicPlusRaiting
-        })
-        amount = amount / characters.length
-        return Math.floor(amount)
-    }
-
     //Handle add raiting score to raiting state
     function handleSetRaiting() {
-        setRaiting(countRaiting)
+        setRaiting(countAverage(characters, 'mythicPlusRaiting'))
     }
 
     // Delete roster click
@@ -110,6 +90,7 @@ function Roster({
 
 
     React.useEffect(() => {
+        setIlvl(countAverage(characters, 'ilvl'))
         setCharacterList(characters)
     }, [characters])
 
@@ -120,6 +101,11 @@ function Roster({
     return (
         <div className={`roster roster_type_${rosterType}`}>
             <h2 className="roster__title">{name}</h2>
+            {ilvl !== 0 && !isNaN(ilvl) &&
+                <div className='roster__note-container'>
+                    <p className='roster__ilvl'>{`ilvl: ${ilvl}`}</p>
+                </div>
+            }
             <button className='roster__delete-button' onClick={() => onDeleteRoster()} />
             <ul className="roster__characters">
                 {characterList.sort(compareByRole).map((character) => (
@@ -137,7 +123,8 @@ function Roster({
                     <button className='roster__add-character-button' onClick={() => onAddCharacter()} />
                 }
             </ul>
-            {(rosterType === 'raid') &&
+            {
+                (rosterType === 'raid') &&
                 <RosterInfoPanel
                     counter={handleSetRoles}
                     array={roles}
@@ -145,7 +132,8 @@ function Roster({
                     roster={characters}>
                 </RosterInfoPanel>
             }
-            {(rosterType === 'mythic-plus') &&
+            {
+                (rosterType === 'mythic-plus') &&
                 <RosterInfoPanel
                     counter={handleSetRaiting}
                     array={raiting}
@@ -154,7 +142,7 @@ function Roster({
                 </RosterInfoPanel>
             }
             <Preloader isActive={isPreloader} />
-        </div>
+        </div >
     )
 }
 
