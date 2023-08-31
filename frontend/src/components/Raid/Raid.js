@@ -192,7 +192,7 @@ function Raid({
                 setIsPopup(true)
                 setPopupInfo({
                     title: 'Incorrect character name',
-                    text: 'Could not find requested character in the raider.io database. Remember, they have to be max level at least to be recognised by raider.io.',
+                    text: 'Could not find requested character in the raider.io database.',
                     buttonText: 'Ok',
                 })
                 return
