@@ -10,7 +10,7 @@
     display: grid;
     align-items: center;
     grid-template-columns: var(--close-button-width) 1fr var(--close-button-width);
-    grid-template-rows: var(--close-button-height) 1fr;
+    grid-template-rows: var(--close-button-height) max-content;
     grid-template-areas:
         '... title close-button'
         'form form form';
@@ -72,7 +72,7 @@
     justify-items: center;
     align-items: center;
     grid-template-columns: 1fr;
-    margin: 20px 0;
+    margin: 30px 0;
 }
 
 .add-popup__form_type_character {
@@ -181,7 +181,7 @@
 .add-popup__radio-container {
     width: 70%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .add-popup__label_type_radio {
@@ -189,7 +189,7 @@
     width: unset;
 }
 
-.add-popup__label:hover, 
+.add-popup__label:hover,
 .add-popup__label:focus {
     cursor: pointer;
     opacity: 1;
@@ -234,16 +234,10 @@
 @media all and (max-width: 1600px) {
     .add-popup {
         max-width: 300px;
-        /* max-height: 250px; */
     }
 }
 
 @media screen and (max-width: 1260px) {
-    .add-popup {
-        max-width: 250px;
-        /* max-height: 230px; */
-    }
-
     .add-popup__tooltip-container {
         max-width: 120px;
     }
@@ -251,23 +245,18 @@
 
 @media screen and (max-width: 1030px) {
     .add-popup {
-        max-width: 230px;
-        /* max-height: 200px; */
+        max-width: 270px;
     }
 
     .add-popup__inputs {
-        gap: 10px;
+        gap: 20px;
     }
 }
 
 @media all and (max-width: 800px) {
-    .add-popup {
-        max-width: 200px;
-        /* max-height: 170px; */
-    }
 
     .add-popup__form {
-        margin: 20px 0;
+        margin: 25px 0;
     }
 
     .add-popup__inputs {
@@ -276,5 +265,16 @@
 
     .add-popup__submit-btn {
         height: 30px;
+    }
+}
+
+@media all and (max-width: 500px) {
+    .add-popup {
+        max-width: unset;
+        background-color: rgba(0, 0, 0, .8);
+    }
+
+    .add-popup__form {
+        border-radius: 0;
     }
 }
