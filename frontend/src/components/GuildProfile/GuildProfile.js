@@ -46,7 +46,7 @@ function GuildProfile({
             <main className="guild-profile" >
                 <Navbar />
                 <Outlet context={guildData} />
-                <Preloader isActive={isGuildDeletePreloader}/>
+                <Preloader isActive={isGuildDeletePreloader} />
             </main>
         </>
     )

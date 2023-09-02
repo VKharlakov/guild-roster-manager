@@ -12,10 +12,9 @@
     margin: 40px 0 10px 0;
 }
 
-@media screen and (max-width:800px) {
+@media all and (max-width:800px) {
     .raid {
         margin: 20px 0;
         gap: 20px;
     }
-
 }

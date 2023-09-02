@@ -1,6 +1,7 @@
 import './AddRoster.css'
 import React from 'react'
 import Preloader from '../Preloader/Preloader'
+import { checkInputsValidity } from '../../utils/utils'
 
 function AddRoster({
     isForm,
@@ -13,6 +14,9 @@ function AddRoster({
 }) {
     // Form values state
     const [formValue, setFormValue] = React.useState({ name: '', size: 20 })
+    const [isButtonDisable, setIsButtonDisable] = React.useState(true)
+
+    const inputRef = React.useRef(null)
 
     // Change form values
     function handleChange(event) {
@@ -44,6 +48,10 @@ function AddRoster({
         setFormValue({ name: '', size: 20 })
     }
 
+    React.useEffect(() => {
+        setIsButtonDisable(!checkInputsValidity([inputRef.current]))
+    }, [formValue])
+
     return (
         <div className="add-roster">
             <button
@@ -55,7 +63,7 @@ function AddRoster({
                 <button className='add-roster__close-button' type='button' onClick={() => onClose()} />
                 {rosterType === 'raid' &&
                     <div className="add-roster__radio-container">
-                        <label className="add-roster__radio-title">Group size</label>
+                        <label className="add-roster__radio-title">Group size:</label>
                         <div className="add-roster__radio">
                             <label className="add-roster__radio-label">
                                 20
@@ -67,7 +75,7 @@ function AddRoster({
                                 />
                                 <span className="add-roster__radio-input-custom" />
                             </label>
-                            {/* <label className="add-roster__radio-label">
+                            <label className="add-roster__radio-label">
                                 40
                                 <input
                                     type="radio"
@@ -75,25 +83,36 @@ function AddRoster({
                                     className="add-roster__radio-input"
                                 />
                                 <span className="add-roster__radio-input-custom" />
-                            </label> */}
+                            </label>
                         </div>
                     </div>
                 }
                 <label className="add-roster__label">
-                    Roster title
-                    <input
-                        className="add-roster__text-input"
-                        type='text'
-                        name='name'
-                        placeholder='Enter roster title'
-                        onChange={(event) => handleChange(event)}
-                        value={formValue.name}
-                        maxLength={20}
-                        minLength={1}
-                        required
-                    />
+                    Roster title:
+                    <div className='add-roster__input-container'>
+                        <input
+                            ref={inputRef}
+                            className="add-roster__text-input"
+                            type='text'
+                            name='name'
+                            placeholder='title'
+                            onChange={(event) => handleChange(event)}
+                            value={formValue.name}
+                            maxLength={20}
+                            minLength={1}
+                            autoComplete='off'
+                            required
+                        />
+                        <p className='add-roster__required'>required</p>
+                    </div>
                 </label>
-                <button className="add-roster__submit-button" type="submit">Submit</button>
+                <button
+                    className="add-roster__submit-button"
+                    type="submit"
+                    disabled={isButtonDisable}
+                >
+                    Submit
+                </button>
             </form>
             <Preloader isActive={isPreloader} />
         </div>

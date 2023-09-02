@@ -166,8 +166,8 @@
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
     .popup__container {
-        width: 50%;
+        width: 70%;
     }
 }

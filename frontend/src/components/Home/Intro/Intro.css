@@ -18,7 +18,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    font-size: var(--h2-font-size);
+    font-size: calc(var(--h2-font-size) + 2px);
     padding: 25px;
     color: white;
     background-image: url('../../../images/Home-images/home-pic.jpg');
@@ -65,7 +65,7 @@
     align-items: center;
     justify-content: center;
     transition: .2s;
-    font-size: calc(var(--h2-font-size) - 4px);
+    font-size: calc(var(--p-font-size) + 2px);
     text-align: center;
     text-transform: uppercase;
 }
@@ -79,17 +79,9 @@
 
 }
 
-/* @media screen and (max-width: 1030px) {
-
-    .intro__button,
-    .intro__link {
-        height: 100px;
-    }
-} */
-
 @media screen and (max-width: 800px) {
     .intro__brief {
-        padding: 0;
+        background-position: 80% 20%;
     }
 
     .intro__button,
@@ -102,26 +94,13 @@
 
     .intro__button,
     .intro__link {
-        height: 50px;
-        max-width: 150px;
+        height: 60px;
+        max-width: 170px;
     }
 }
 
 @media screen and (max-width: 500px) {
-    /* .intro {
-        grid-template-columns: 1fr;
-        grid-template-rows: 60% max-content max-content max-content;
-        grid-template-areas:
-            'content'
-            'button1'
-            'button2'
-            'button3';
-        gap: 20px;
-    } */
-
-    .intro__button,
-    .intro__link {
-        height: 45px;
-        max-width: 120px;
+    .intro__brief {
+        text-align: center;
     }
 }

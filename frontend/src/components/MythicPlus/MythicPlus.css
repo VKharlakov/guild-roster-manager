@@ -19,3 +19,10 @@
         gap: 30px;
     }
 }
+
+@media all and (max-width:800px) {
+    .mythic-plus {
+        margin: 20px 0;
+        gap: 20px;
+    }
+}

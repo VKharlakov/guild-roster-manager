@@ -146,25 +146,36 @@ function AddPopup({
             <form className="add-popup__form add-popup__form_type_guild" name="form" onSubmit={(event) => onGuildSubmit(event)}>
                 <div className="add-popup__inputs">
                     <div className="add-popup__radio-container">
-                        <label className="add-popup__label add-popup__label_type_radio">
-                            EU
-                            <input
-                                type="radio"
-                                name="region"
-                                className="add-popup__radio-input"
-                                defaultChecked
-                            />
-                            <span className="add-popup__radio-input-custom" />
-                        </label>
-                        {/* <label className="add-popup__label add-popup__label_type_radio">
-                            US
-                            <input
-                                type="radio"
-                                name="region"
-                                className="add-popup__radio-input"
-                            />
-                            <span className="add-popup__radio-input-custom" />
-                        </label> */}
+                        <label className="add-popup__radio-title">Region:</label>
+                        <div className="add-popup__radio">
+                            <label className="add-popup__radio-label">
+                                EU
+                                <input
+                                    type="radio"
+                                    name="region"
+                                    value={'eu'}
+                                    className="add-popup__radio-input"
+                                    required
+                                    onChange={(event) => onChange(event, [])}
+                                    checked={formValue.region === 'eu'}
+                                    defaultChecked
+                                />
+                                <span className="add-popup__radio-input-custom" />
+                            </label>
+                            <label className="add-popup__radio-label">
+                                US
+                                <input
+                                    type="radio"
+                                    name="region"
+                                    value={'us'}
+                                    onChange={(event) => onChange(event, [])}
+                                    checked={formValue.region === 'us'}
+                                    required
+                                    className="add-popup__radio-input"
+                                />
+                                <span className="add-popup__radio-input-custom" />
+                            </label>
+                        </div>
                     </div>
                     <label className='add-popup__label'>
                         Guild's title:
