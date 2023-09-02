@@ -157,7 +157,7 @@
 
 .add-popup__submit-button {
     grid-area: submit;
-    height: 60%;
+    height: 100%;
     max-height: 35px;
     width: 70%;
     border: 1px dashed white;
@@ -170,6 +170,7 @@
     transform: translateY(0);
     user-select: none;
     transition: .2s;
+    margin-bottom: 20px;
 }
 
 .add-popup__submit-button:disabled {
@@ -280,7 +281,7 @@
 
 @media screen and (max-width: 1030px) {
     .add-popup {
-        max-width: 270px;
+        max-width: 300px;
     }
 
     .add-popup__form {
@@ -291,10 +292,6 @@
 @media all and (max-width: 800px) {
     .add-popup__inputs {
         margin: 10px 0 5px 0;
-    }
-
-    .add-popup__submit-btn {
-        height: 30px;
     }
 }
 

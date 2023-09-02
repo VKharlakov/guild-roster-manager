@@ -18,7 +18,7 @@
     grid-template-columns: 10% repeat(4, 1fr);
     grid-template-rows: 70% 30%;
     grid-template-areas:
-        '...    title   title   ...     arrow'
+        '...    title   title   title     arrow'
         '...    members info    info    arrow';
     align-items: center;
     position: relative;
@@ -74,6 +74,10 @@
     text-decoration: none;
     color: white;
     font-size: calc(var(--p-font-size) + 2px);
+    text-wrap: nowrap;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .guild-banner__members {
