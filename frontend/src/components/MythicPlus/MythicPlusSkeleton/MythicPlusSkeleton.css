@@ -1,58 +1,58 @@
 .mythic-plus-skeleton {
-    border-radius: 10px;
-    background-color: #c6c6c6;
-    width: calc(((var(--card-width) + 3px) * 5) + 12px);
-    height: calc(var(--card-height) * 1.7 + 12px);
-    opacity: .5;
-    box-shadow: 0px 10px 15px 4px rgba(0, 0, 0, .3);
-    animation: bodyAnimation 2s infinite linear;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  border-radius: 10px;
+  background-color: #c6c6c6;
+  width: calc(((var(--card-width) + 3px) * 5) + 12px);
+  height: calc(var(--card-height) * 1.7 + 12px);
+  opacity: 0.5;
+  box-shadow: 0px 10px 15px 4px rgba(0, 0, 0, 0.3);
+  animation: bodyAnimation 2s infinite linear;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .mythic-plus-skeleton__container {
-    width: 90%;
-    height: 90%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  width: 90%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .mythic-plus-skeleton__title {
-    width: 60%;
-    align-self: flex-start;
-    height: 13%;
-    border-radius: 6px;
-    background: linear-gradient(90deg, #808080, #a0a0a0, #808080);
-    background-size: 200% 100%;
-    animation: lineAnimation 1.5s infinite ease-in;
+  width: 60%;
+  align-self: flex-start;
+  height: 13%;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #808080, #a0a0a0, #808080);
+  background-size: 200% 100%;
+  animation: lineAnimation 1.5s infinite ease-in;
 }
 
 .mythic-plus-skeleton__body {
-    width: 100%;
-    height: 50%;
-    border-radius: 3px;
-    box-shadow: 0px 5px 15px 4px rgba(0, 0, 0, .2);
-    background: linear-gradient(90deg, #808080, #a0a0a0, #808080);
-    background-size: 200% 100%;
-    animation: lineAnimation 1.5s infinite ease-in;
+  width: 100%;
+  height: 50%;
+  border-radius: 3px;
+  box-shadow: 0px 5px 15px 4px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(90deg, #808080, #a0a0a0, #808080);
+  background-size: 200% 100%;
+  animation: lineAnimation 1.5s infinite ease-in;
 }
 
 .mythic-plus-skeleton__info-panel {
-    width: 100%;
-    height: 20%;
-    border-radius: 20px;
-    box-shadow: 0px 10px 15px 4px rgba(0, 0, 0, .2);
-    background: linear-gradient(90deg, #808080, #a0a0a0, #808080);
-    background-size: 200% 100%;
-    animation: lineAnimation 1.5s infinite ease-in;
+  width: 100%;
+  height: 20%;
+  border-radius: 20px;
+  box-shadow: 0px 10px 15px 4px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(90deg, #808080, #a0a0a0, #808080);
+  background-size: 200% 100%;
+  animation: lineAnimation 1.5s infinite ease-in;
 }
 
 @media screen and (max-width: 800px) {
-    .mythic-plus-skeleton {
-        width: calc(((var(--card-width) + 3px) * 5) + 6px);
-        height: calc(var(--card-height) * 1.5 + 12px);
-    }
+  .mythic-plus-skeleton {
+    width: calc(((var(--card-width) + 3px) * 5) + 6px);
+    height: calc(var(--card-height) * 1.5 + 12px);
+  }
 }

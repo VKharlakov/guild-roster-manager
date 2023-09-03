@@ -1,128 +1,128 @@
 .tooltip {
-    list-style: none;
-    margin: 0;
-    padding: 5px;
-    background-color: rgba(0, 0, 0, .8);
-    border-radius: 6px;
-    height: 90%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    white-space: nowrap;
-    overflow-x: hidden;
-    overflow-y: scroll;
+  list-style: none;
+  margin: 0;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 6px;
+  height: 90%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .tooltip__container {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 100%;
-    width: 60%;
-    z-index: 5;
-    display: flex;
-    align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 100%;
+  width: 60%;
+  z-index: 5;
+  display: flex;
+  align-items: center;
 }
 
 .tooltip__text {
-    font-size: var(--p-font-size);
-    color: white;
-    margin: 0;
-    padding: 3px;
-    border-radius: 3px;
-    display: inline-block;
-    transition: .1s;
+  font-size: var(--p-font-size);
+  color: white;
+  margin: 0;
+  padding: 3px;
+  border-radius: 3px;
+  display: inline-block;
+  transition: 0.1s;
 }
 
 .tooltip__text:focus,
 .tooltip__text:hover {
-    cursor: pointer;
-    color: var(--dark-color);
-    font-weight: 700;
-    background-color: white;
+  cursor: pointer;
+  color: var(--dark-color);
+  font-weight: 700;
+  background-color: white;
 }
 
 .tooltip__text_class_paladin {
-    color: #F48CBA;
+  color: #f48cba;
 }
 
 .tooltip__text_class_druid {
-    color: #FF7C0A;
+  color: #ff7c0a;
 }
 
 .tooltip__text_class_evoker {
-    color: #33937F;
+  color: #33937f;
 }
 
 .tooltip__text_class_hunter {
-    color: #AAD372;
+  color: #aad372;
 }
 
 .tooltip__text_class_mage {
-    color: #3FC7EB;
+  color: #3fc7eb;
 }
 
 .tooltip__text_class_monk {
-    color: #00FF98;
+  color: #00ff98;
 }
 
 .tooltip__text_class_priest {
-    color: #FFFFFF;
+  color: #ffffff;
 }
 
 .tooltip__text_class_rogue {
-    color: #FFF468;
+  color: #fff468;
 }
 
 .tooltip__text_class_shaman {
-    color: #0070DD;
+  color: #0070dd;
 }
 
 .tooltip__text_class_warlock {
-    color: #8788EE;
+  color: #8788ee;
 }
 
 .tooltip__text_class_warrior {
-    color: #C69B6D;
+  color: #c69b6d;
 }
 
 .tooltip__text_class_demon-hunter {
-    color: #A330C9;
+  color: #a330c9;
 }
 
 .tooltip__text_class_death-knight {
-    color: #C41E3A;
+  color: #c41e3a;
 }
 
 .tooltip::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
 
 .tooltip::-webkit-scrollbar-thumb {
-    background-color: white;
-    border-radius: 6px;
+  background-color: white;
+  border-radius: 6px;
 }
 
 @media all and (max-width: 500px) {
-    .tooltip {
-        text-align: center;
-        border-radius: 6px 6px 0 0;
-    }
+  .tooltip {
+    text-align: center;
+    border-radius: 6px 6px 0 0;
+  }
 
-    .tooltip__container {
-        position: absolute;
-        top: -30%;
-        right: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        height: 40%;
-        width: 70%;
-        z-index: 5;
-        display: flex;
-        align-items: center;
-    }
+  .tooltip__container {
+    position: absolute;
+    top: -30%;
+    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 40%;
+    width: 70%;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+  }
 
-    .tooltip::-webkit-scrollbar {
-        width: 6px;
-    }
+  .tooltip::-webkit-scrollbar {
+    width: 6px;
+  }
 }

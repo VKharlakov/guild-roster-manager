@@ -1,121 +1,120 @@
 :root {
-    background-color: var(--dark-color);
-    /*Harbor palette*/
-    --dark-color: #1f2632;
-    --dark-emph-color: #27303f;
-    --text-emph-color: #F5DDDD;
-    --highlight-color: #f27f21;
-    --highlight2-color: #EB5E28;
-    /*Box shadow*/
-    --box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, .2);
-    --box-shadowS: 0px 0px 5px 2px rgba(0, 0, 0, .2);
-    --box-shadowW: 0px 0px 20px 3px rgba(0, 0, 0, .4);
-    --box-shadow-button: 0px 5px 5px 2px rgba(0, 0, 0, .4);
-    --box-shadow-buttonS: 0px 3px 3px 1px rgba(0, 0, 0, .2);
+  background-color: var(--dark-color);
+  /*Harbor palette*/
+  --dark-color: #1f2632;
+  --dark-emph-color: #27303f;
+  --text-emph-color: #f5dddd;
+  --highlight-color: #f27f21;
+  --highlight2-color: #eb5e28;
+  /*Box shadow*/
+  --box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.2);
+  --box-shadowS: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
+  --box-shadowW: 0px 0px 20px 3px rgba(0, 0, 0, 0.4);
+  --box-shadow-button: 0px 5px 5px 2px rgba(0, 0, 0, 0.4);
+  --box-shadow-buttonS: 0px 3px 3px 1px rgba(0, 0, 0, 0.2);
 
+  /*Font sizes*/
+  --h1-font-size: 32px;
+  --h2-font-size: 24px;
+  --p-font-size: 16px;
 
-    /*Font sizes*/
-    --h1-font-size: 32px;
-    --h2-font-size: 24px;
-    --p-font-size: 16px;
+  /*header height*/
+  --header-height: 100px;
 
-    /*header height*/
-    --header-height: 100px;
+  /*close-button sizes*/
+  --close-button-width: 32px;
+  --close-button-height: 32px;
 
-    /*close-button sizes*/
-    --close-button-width: 32px;
-    --close-button-height: 32px;
-
-    /*сharacters__element width and height*/
-    --card-width: 80px;
-    --card-height: 110px;
+  /*сharacters__element width and height*/
+  --card-width: 80px;
+  --card-height: 110px;
 }
 
 body::-webkit-scrollbar {
-    border-radius: 8px;
-    width: 6px;
+  border-radius: 8px;
+  width: 6px;
 }
 
 body::-webkit-scrollbar-button {
-    display: none;
+  display: none;
 }
 
 body::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    background-color: rgba(255, 255, 255, .6);
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 @media all and (max-width: 1600px) {
-    :root {
-        --header-height: 90px;
+  :root {
+    --header-height: 90px;
 
-        --card-width: 70px;
-        --card-height: 100px;
-    }
+    --card-width: 70px;
+    --card-height: 100px;
+  }
 }
 
-@media all and (max-width:1360px) {
-    :root {
-        --h1-font-size: 28px;
-        --h2-font-size: 20px;
-    }
+@media all and (max-width: 1360px) {
+  :root {
+    --h1-font-size: 28px;
+    --h2-font-size: 20px;
+  }
 }
 
-@media all and (max-width:1260px) {
-    :root {
-        --h1-font-size: 24px;
-        --h2-font-size: 20px;
-        /* --p-font-size: 14px; */
+@media all and (max-width: 1260px) {
+  :root {
+    --h1-font-size: 24px;
+    --h2-font-size: 20px;
+    /* --p-font-size: 14px; */
 
-        --header-height: 80px;
+    --header-height: 80px;
 
-        /* --card-width: 70px;
+    /* --card-width: 70px;
         --card-height: 100px; */
-    }
+  }
 }
 
-@media all and (max-width:1030px) {
-    :root {
-        --h1-font-size: 22px;
-        --h2-font-size: 18px;
-        /* --p-font-size: 12px; */
+@media all and (max-width: 1030px) {
+  :root {
+    --h1-font-size: 22px;
+    --h2-font-size: 18px;
+    /* --p-font-size: 12px; */
 
-        --header-height: 70px;
+    --header-height: 70px;
 
-        --card-width: 60px;
-        --card-height: 90px;
-    }
+    --card-width: 60px;
+    --card-height: 90px;
+  }
 }
 
 @media all and (max-width: 800px) {
-    :root {
-        --h1-font-size: 20px;
-        --h2-font-size: 16px;
-        --p-font-size: 14px;
+  :root {
+    --h1-font-size: 20px;
+    --h2-font-size: 16px;
+    --p-font-size: 14px;
 
-        --header-height: 60px;
+    --header-height: 60px;
 
-        --card-width: 70px;
-        --card-height: 100px;
+    --card-width: 70px;
+    --card-height: 100px;
 
-        --close-button-width: 23px;
-        --close-button-height: 23px
-    }
+    --close-button-width: 23px;
+    --close-button-height: 23px;
+  }
 }
 
 @media all and (max-width: 500px) {
-    :root {
-        --card-width: 65px;
-        --card-height: 95px;
+  :root {
+    --card-width: 65px;
+    --card-height: 95px;
 
-        --close-button-width: 23px;
-        --close-button-height: 23px
-    }
+    --close-button-width: 23px;
+    --close-button-height: 23px;
+  }
 }
 
 @media all and (max-width: 379px) {
-    :root {
-        --card-width: 55px;
-        --card-height: 85px;
-    }
+  :root {
+    --card-width: 55px;
+    --card-height: 85px;
+  }
 }

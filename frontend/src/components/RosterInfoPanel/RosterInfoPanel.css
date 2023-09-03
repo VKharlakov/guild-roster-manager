@@ -1,77 +1,75 @@
 .roster-info-panel {
-    grid-area: infopanel;
-    margin-top: 20px;
-    width: calc(((var(--card-width) + 3px) * 5) + 12px);
-    display: flex;
-    justify-content: space-evenly;
-    background-color: var(--dark-emph-color);
-    box-shadow: var(--box-shadow);
-    border-radius: 20px;
-    padding: 10px 0;
+  grid-area: infopanel;
+  margin-top: 20px;
+  width: calc(((var(--card-width) + 3px) * 5) + 12px);
+  display: flex;
+  justify-content: space-evenly;
+  background-color: var(--dark-emph-color);
+  box-shadow: var(--box-shadow);
+  border-radius: 20px;
+  padding: 10px 0;
 }
 
 .roster-info-panel__element {
-    display: flex;
-    gap: 5px;
-    align-items: center;
+  display: flex;
+  gap: 5px;
+  align-items: center;
 }
 
 .roster-info-panel__number {
-    margin: 0;
-    padding: 0;
-    font-size: var(--p-font-size);
-    color: white;
+  margin: 0;
+  padding: 0;
+  font-size: var(--p-font-size);
+  color: white;
 }
 
 .roster-info-panel__text {
-    margin: 0;
-    padding: 0;
-    font-size: var(--p-font-size);
-    color: white;
+  margin: 0;
+  padding: 0;
+  font-size: var(--p-font-size);
+  color: white;
 }
 
 .roster-info-panel__role {
-    width: 25px;
-    height: 25px;
-    background-image: url('../../images//RosterInfoPanel-images/all-icon.svg');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    box-sizing: border-box;
+  width: 25px;
+  height: 25px;
+  background-image: url("../../images//RosterInfoPanel-images/all-icon.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
 }
 
 .roster-info-panel__role_type_tanks {
-    background-image: url('../../images/RosterInfoPanel-images/tank-icon.svg');
+  background-image: url("../../images/RosterInfoPanel-images/tank-icon.svg");
 }
 
 .roster-info-panel__role_type_healers {
-    background-image: url('../../images/RosterInfoPanel-images/healing-icon.svg');
+  background-image: url("../../images/RosterInfoPanel-images/healing-icon.svg");
 }
 
 .roster-info-panel__role_type_dps {
-    background-image: url('../../images/RosterInfoPanel-images/dps-icon.svg');
+  background-image: url("../../images/RosterInfoPanel-images/dps-icon.svg");
 }
 
 @media screen and (max-width: 1600px) {
-
-    
 }
 
 @media screen and (max-width: 800px) {
-    .roster-info-panel {
-        margin-top: 15px;
-        width: calc(((var(--card-width) + 3px) * 5) + 6px);
-    }
+  .roster-info-panel {
+    margin-top: 15px;
+    width: calc(((var(--card-width) + 3px) * 5) + 6px);
+  }
 
-    .roster-info-panel__role {
-        width: 20px;
-        height: 20px;
-    }
+  .roster-info-panel__role {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 @media screen and (max-width: 500px) {
-    .roster-info-panel {
-        margin-top: 10px;
-        padding: 6px 0;
-    }
+  .roster-info-panel {
+    margin-top: 10px;
+    padding: 6px 0;
+  }
 }

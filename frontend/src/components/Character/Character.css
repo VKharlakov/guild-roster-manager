@@ -1,190 +1,190 @@
 .character {
-    margin: 0;
-    padding: 0;
-    position: relative;
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
 
 .character__link {
-    margin: 0;
-    padding: 0;
-    color: inherit;
-    text-decoration: none;
-    width: var(--card-width);
-    height: var(--card-height);
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
-    box-sizing: border-box;
-    z-index: 2;
-    border-radius: 3px;
-    transition: .2s;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  text-decoration: none;
+  width: var(--card-width);
+  height: var(--card-height);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  z-index: 2;
+  border-radius: 3px;
+  transition: 0.2s;
 }
 
 .character__link:focus,
 .character__link:hover {
-    z-index: 3;
-    scale: 1.5;
-    border-radius: 6px;
-    outline: var(--warcraft-button-outline);
-    box-shadow: 0px 0px 20px 5px rgb(0, 0, 0);
+  z-index: 3;
+  scale: 1.5;
+  border-radius: 6px;
+  outline: var(--warcraft-button-outline);
+  box-shadow: 0px 0px 20px 5px rgb(0, 0, 0);
 }
 
 .character__link_no-hover {
-    scale: 1 !important;
-    transition: 0 !important;
+  scale: 1 !important;
+  transition: 0 !important;
 }
 
 .character__delete-btn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 20px;
-    height: 20px;
-    margin: 0;
-    padding: 0;
-    outline: none;
-    border: none;
-    background-color: unset;
-    background-image: url('../../images/remove-icon.svg');
-    background-position: center;
-    background-size: cover;
-    opacity: 0;
-    scale: 1;
-    transition: .2s linear;
-    visibility: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  background-color: unset;
+  background-image: url("../../images/remove-icon.svg");
+  background-position: center;
+  background-size: cover;
+  opacity: 0;
+  scale: 1;
+  transition: 0.2s linear;
+  visibility: hidden;
 }
 
 .character__delete-btn:focus,
 .character__delete-btn:hover {
-    cursor: pointer;
-    opacity: 1 !important;
-    scale: .8;
-    visibility: visible;
+  cursor: pointer;
+  opacity: 1 !important;
+  scale: 0.8;
+  visibility: visible;
 }
 
 .character__link:hover .character__delete-btn {
-    visibility: visible;
-    opacity: .5;
+  visibility: visible;
+  opacity: 0.5;
 }
 
 .character__link:focus .character__delete-btn {
-    visibility: visible;
-    opacity: .5;
+  visibility: visible;
+  opacity: 0.5;
 }
 
 .character__link:has(.character__delete-btn:focus) {
-    z-index: 3;
-    scale: 1.5;
-    border-radius: 6px;
-    outline: var(--warcraft-button-outline);
-    box-shadow: 0px 0px 20px 5px rgb(0, 0, 0);
+  z-index: 3;
+  scale: 1.5;
+  border-radius: 6px;
+  outline: var(--warcraft-button-outline);
+  box-shadow: 0px 0px 20px 5px rgb(0, 0, 0);
 }
 
 .character__role {
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    background-image: url('../../images/Character-images/role_undefined.png');
-    width: 25px;
-    height: 25px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: inline-block;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background-image: url("../../images/Character-images/role_undefined.png");
+  width: 25px;
+  height: 25px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: inline-block;
 }
 
 .character__role_type_tank {
-    background-image: url('../../images/Character-images/role_tank.png');
+  background-image: url("../../images/Character-images/role_tank.png");
 }
 
 .character__role_type_healing {
-    background-image: url('../../images/Character-images/role_healer.png')
+  background-image: url("../../images/Character-images/role_healer.png");
 }
 
 .character__role_type_dps {
-    background-image: url('../../images/Character-images/role_dps.png')
+  background-image: url("../../images/Character-images/role_dps.png");
 }
 
 .character__avatar {
-    object-fit: cover;
-    object-position: center;
-    width: 100%;
-    height: 70%;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 70%;
 }
 
 .character__info {
-    width: 100%;
-    height: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: unset;
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: unset;
 }
 
 .character__name {
-    margin: 0 auto;
-    padding: 0;
-    font-weight: bold;
-    font-size: calc(var(--p-font-size) + 1px);
+  margin: 0 auto;
+  padding: 0;
+  font-weight: bold;
+  font-size: calc(var(--p-font-size) + 1px);
 }
 
 .character__ilvl {
-    margin: 0 auto;
-    padding: 0;
-    font-size: calc(var(--p-font-size) - 2px);
+  margin: 0 auto;
+  padding: 0;
+  font-size: calc(var(--p-font-size) - 2px);
 }
 
-@media all and (max-width:1230px) {
-    .character__title {
-        margin-bottom: 10px;
-    }
+@media all and (max-width: 1230px) {
+  .character__title {
+    margin-bottom: 10px;
+  }
 
-    .character__add-btn {
-        width: 50px;
-    }
+  .character__add-btn {
+    width: 50px;
+  }
 
-    .character__info-role-icon {
-        width: 30px;
-        height: 30px;
-    }
+  .character__info-role-icon {
+    width: 30px;
+    height: 30px;
+  }
 }
 
-@media all and (max-width:1030px) {
-    .character__info-role-icon {
-        width: 25px;
-        height: 25px;
-    }
+@media all and (max-width: 1030px) {
+  .character__info-role-icon {
+    width: 25px;
+    height: 25px;
+  }
 
-    .character__role {
-        width: 20px;
-        height: 20px;
-    }
+  .character__role {
+    width: 20px;
+    height: 20px;
+  }
 
-    .character__delete-btn {
-        width: 18px;
-        height: 18px;
-    }
+  .character__delete-btn {
+    width: 18px;
+    height: 18px;
+  }
 }
 
 @media all and (max-width: 800px) {
-    .character__add-btn {
-        width: 35px;
-    }
+  .character__add-btn {
+    width: 35px;
+  }
 
-    .character__role {
-        width: 15px;
-        height: 15px;
-    }
+  .character__role {
+    width: 15px;
+    height: 15px;
+  }
 
-    .character__info-role-icon {
-        width: 20px;
-        height: 20px;
-    }
+  .character__info-role-icon {
+    width: 20px;
+    height: 20px;
+  }
 
-    .character__delete-btn {
-        opacity: .7;
-        visibility: visible;
-        width: 10px;
-        height: 10px;
-    }
+  .character__delete-btn {
+    opacity: 0.7;
+    visibility: visible;
+    width: 10px;
+    height: 10px;
+  }
 }

@@ -1,22 +1,22 @@
 .guild-header-skeleton {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
 }
 
 .guild-header-skeleton__line {
-    width: 200px;
-    height: var(--p-font-size);
-    border-radius: 20px;
-    background: linear-gradient(90deg, #808080, #a0a0a0, #808080);
-    background-size: 200% 100%;
-    animation: lineAnimation 1.5s infinite ease-in;
-    opacity: .5;
+  width: 200px;
+  height: var(--p-font-size);
+  border-radius: 20px;
+  background: linear-gradient(90deg, #808080, #a0a0a0, #808080);
+  background-size: 200% 100%;
+  animation: lineAnimation 1.5s infinite ease-in;
+  opacity: 0.5;
 }
 
 .guild-header-skeleton__line:first-of-type {
-    width: 170px;
-    height: var(--h1-font-size);
+  width: 170px;
+  height: var(--h1-font-size);
 }
