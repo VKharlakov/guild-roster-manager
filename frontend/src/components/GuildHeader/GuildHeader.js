@@ -38,22 +38,24 @@ function GuildHeader({
       {guildData ? (
         <>
           <div className="guild-header__title-container">
-            <h1 className="guild-header__title">{guildData.name}</h1>
+            <div className="guild-header__title-wrapper">
+              <h1 className="guild-header__title">{guildData.name}</h1>
+              <CopyToClipboard text={currentPath}>
+                <button
+                  onClick={() => {
+                    onCopy();
+                  }}
+                  className="guild-header__button guild-header__button_type_link"
+                >
+                  <p className="guild-header__tooltip">
+                    {isCopied ? "Copied!" : "Copy link"}
+                  </p>
+                </button>
+              </CopyToClipboard>
+            </div>
             <p className="guild-header__brief">{`${guildData.members.length} active members`}</p>
           </div>
           <div className="guild-header__menu">
-            <CopyToClipboard text={currentPath}>
-              <button
-                onClick={() => {
-                  onCopy();
-                }}
-                className="guild-header__button guild-header__button_type_link"
-              >
-                <p className="guild-header__tooltip">
-                  {isCopied ? "Copied!" : "Copy link"}
-                </p>
-              </button>
-            </CopyToClipboard>
             <button
               className="guild-header__button guild-header__button_type_delete"
               onClick={() => {

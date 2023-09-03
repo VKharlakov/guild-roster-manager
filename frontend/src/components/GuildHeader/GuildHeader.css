@@ -12,7 +12,13 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  align-items: center;
   gap: 5px;
+}
+
+.guild-header__title-wrapper {
+  position: relative;
+  width: max-content;
 }
 
 .guild-header__title {
@@ -20,6 +26,8 @@
   padding: 0;
   color: var(--highlight-color);
   font-size: var(--h1-font-size);
+  width: max-content;
+  line-height: 100%;
 }
 
 .guild-header__brief {
@@ -38,7 +46,6 @@
   justify-content: space-evenly;
   align-items: center;
   gap: 60px;
-  overflow: hidden;
 }
 
 .guild-header__button {
@@ -66,47 +73,64 @@
 .guild-header__tooltip {
   color: white;
   position: absolute;
-  left: 50%;
-  right: 50%;
-  transform: translateX(-50%);
-  bottom: 100%;
+  display: inline-block;
   width: max-content;
   margin: 0;
   padding: 0;
-  font-size: var(--p-font-size);
+  font-size: calc(var(--p-font-size) - 2px);
   opacity: 0;
   visibility: hidden;
   transition: 0.2s;
-}
-
-.guild-header__button:hover .guild-header__tooltip {
-  opacity: 0.7;
-  visibility: visible;
-  bottom: 110%;
-}
-
-.guild-header__button:focus .guild-header__tooltip {
-  opacity: 0.7;
-  visibility: visible;
-  bottom: 110%;
 }
 
 .guild-header__button_type_delete {
   background-image: url("../../images/GuildHeader-images/delete-icon.svg");
 }
 
+.guild-header__button_type_delete .guild-header__tooltip {
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
+  bottom: 80%;
+}
+
+.guild-header__button_type_delete:hover .guild-header__tooltip {
+  bottom: 110%;
+  opacity: 0.7;
+  visibility: visible;
+}
+
 .guild-header__button_type_link {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 105%;
   background-image: url("../../images/GuildHeader-images/link-icon.svg");
+}
+
+.guild-header__button_type_link .guild-header__tooltip {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-60%);
+  left: 80%;
+}
+
+.guild-header__button_type_link:hover .guild-header__tooltip {
+  left: 110%;
+  opacity: 0.7;
+  visibility: visible;
+}
+
+@media all and (max-width: 1030px) {
+  .guild-header__button {
+    width: 15px;
+    height: 15px;
+  }
 }
 
 @media screen and (max-width: 800px) {
   .guild-header__menu {
     gap: 20px;
-  }
-
-  .guild-header__button {
-    width: 15px;
-    height: 15px;
   }
 }
 
@@ -114,9 +138,4 @@
   .guild-header__menu {
     gap: 10px;
   }
-
-  /* .guild-header__button {
-        width: 15px;
-        height: 15px;
-    } */
 }
