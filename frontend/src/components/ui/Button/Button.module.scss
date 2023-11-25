@@ -1,0 +1,22 @@
+.button {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  width: 230px;
+  height: 80px;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+  font-size: 20px;
+  text-align: center;
+}
+
+.button_type_default {
+  background-color: #eb5e28;
+  color: #fff;
+  box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.4);
+}
