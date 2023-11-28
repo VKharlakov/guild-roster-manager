@@ -1,14 +1,37 @@
 import Button from "../components/ui/Button/Button";
 
 export default {
-  title: "Button",
+  title: "components/Button",
   component: Button,
+  argTypes: { handleClick: { action: "handleClick" } },
 };
 
-export const Primary = () => <Button label="Default" type="default" />;
+const Template = (args) => <Button {...args} />;
 
-export const Secondary = () => <Button label="Default" type="submit" />;
+export const Primary = Template.bind({});
+Primary.args = {
+  label: "Primary button",
+  type: "primary",
+  isDisabled: false,
+};
 
-export const Tetriary = () => <Button label="Default" type="submit" />;
+export const Secondary = Template.bind({});
+Secondary.args = {
+  label: "Secondary",
+  type: "secondary",
+  isDisabled: false,
+};
 
-export const Ghost = () => <Button label="Default" type="submit" />;
+export const Tetriary = Template.bind({});
+Tetriary.args = {
+  label: "Tetriary",
+  type: "tetriary",
+  isDisabled: false,
+};
+
+export const Ghost = Template.bind({});
+Ghost.args = {
+  label: "Ghost button",
+  type: "ghost",
+  isDisabled: false,
+};
