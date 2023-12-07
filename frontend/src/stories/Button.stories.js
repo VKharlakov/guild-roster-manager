@@ -15,20 +15,6 @@ Primary.args = {
   isDisabled: false,
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  label: "Button",
-  type: "secondary",
-  isDisabled: false,
-};
-
-export const Tetriary = Template.bind({});
-Tetriary.args = {
-  label: "Button",
-  type: "tetriary",
-  isDisabled: false,
-};
-
 export const Ghost = Template.bind({});
 Ghost.args = {
   label: "Button",
