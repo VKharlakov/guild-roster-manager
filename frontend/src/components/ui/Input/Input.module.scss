@@ -16,12 +16,12 @@
   }
 
   &:disabled {
-    background-color: #636363;
     border-color: #636363;
     pointer-events: none;
+    border-style: dashed;
 
     &::placeholder {
-      color: #fff;
+      opacity: 0.5;
     }
   }
 }
