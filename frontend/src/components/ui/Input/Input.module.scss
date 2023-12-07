@@ -1,0 +1,32 @@
+.input {
+  border: 1px dashed #fff;
+  outline: none;
+  border-radius: 6px;
+  background-color: transparent;
+  color: #fff;
+  padding: 10px 16px;
+  font-size: 14px;
+
+  &::placeholder {
+    color: #636363;
+  }
+
+  &:focus {
+    border-style: solid;
+  }
+
+  &:disabled {
+    background-color: #636363;
+    border-color: #636363;
+    pointer-events: none;
+
+    &::placeholder {
+      color: #fff;
+    }
+  }
+}
+
+.input_type_invalid {
+  border-color: #ff0000;
+  border-style: solid;
+}
