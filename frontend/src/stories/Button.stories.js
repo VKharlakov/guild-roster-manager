@@ -10,28 +10,14 @@ const Template = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  label: "Primary button",
+  label: "Button",
   type: "primary",
-  isDisabled: false,
-};
-
-export const Secondary = Template.bind({});
-Secondary.args = {
-  label: "Secondary",
-  type: "secondary",
-  isDisabled: false,
-};
-
-export const Tetriary = Template.bind({});
-Tetriary.args = {
-  label: "Tetriary",
-  type: "tetriary",
   isDisabled: false,
 };
 
 export const Ghost = Template.bind({});
 Ghost.args = {
-  label: "Ghost button",
+  label: "Button",
   type: "ghost",
   isDisabled: false,
 };
