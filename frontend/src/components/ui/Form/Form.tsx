@@ -3,35 +3,41 @@ import styles from "./Form.module.scss";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 
-function Form() {
+type FormProps = {
+  inputs: {
+    label: string;
+    id: string;
+    placeholder: string;
+  }[];
+  buttons: {
+    label: string;
+    type: "primary" | "ghost";
+    handleClick: () => {};
+  }[];
+};
+
+function Form({ inputs, buttons }: FormProps) {
   return (
     <form className={styles.form}>
-      <label>
-        Character's name:
-        <Input
+      {inputs?.map((input) => (
+        <label>
+          {input.label}
+          <Input
+            id={input.id}
+            placeholder={input.placeholder}
+            isDisabled={false}
+            isValid={true}
+          />
+        </label>
+      ))}
+      {buttons?.map((button) => (
+        <Button
+          label={button.label}
+          type={button.type}
+          handleClick={button.handleClick}
           isDisabled={false}
-          isValid={true}
-          id="charName"
-          placeholder="Enter your name"
         />
-      </label>
-      <label>
-        Character's realm:
-        <Input
-          isDisabled={false}
-          isValid={true}
-          id="charRealm"
-          placeholder="Enter your realm"
-        />
-      </label>
-      <Button
-        label="Submit"
-        type="primary"
-        handleClick={() => {
-          console.log("char submited");
-        }}
-        isDisabled={false}
-      />
+      ))}
     </form>
   );
 }
