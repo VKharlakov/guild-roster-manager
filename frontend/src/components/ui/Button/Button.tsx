@@ -8,9 +8,14 @@ type ButtonProps = {
 };
 
 function Button({ label, type, handleClick, isDisabled }: ButtonProps) {
+  function onClick(event: any) {
+    event.preventDefault();
+    handleClick();
+  }
+
   return (
     <button
-      onClick={() => handleClick()}
+      onClick={(event) => onClick(event)}
       disabled={isDisabled}
       className={`${styles.button} ${styles[`button_type_${type}`]}`}
     >
