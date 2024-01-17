@@ -1,29 +1,46 @@
 import Form from "./Form";
 
 export default {
-  title: "components/Form",
+  title: "components/ui/Form",
   component: Form,
 };
 
 const Template = (args) => <Form {...args} />;
-export const AddCharacterForm = Template.bind({});
-AddCharacterForm.args = {
+export const RegisterForm = Template.bind({});
+RegisterForm.args = {
   inputs: [
     {
-      label: `Character's name`,
-      id: "charName",
-      placeholder: "name",
+      label: `Name`,
+      id: "name",
+      placeholder: "Vasiliy Petrov",
     },
     {
-      label: `Character's realm`,
-      id: "charRealm",
-      placeholder: "realm",
+      label: `Country`,
+      id: "country",
+      placeholder: "Serbia",
+    },
+    {
+      label: `Date of birth`,
+      id: "dateOfBirth",
+      placeholder: "this will be done later",
+    },
+    {
+      label: `I agree with policies`,
+      id: "policyAgreement",
+      placeholder: "later",
     },
   ],
   buttons: [
     {
-      label: "Add",
+      label: "OK",
       type: "primary",
+      handleClick: () => {
+        console.log("char is added");
+      },
+    },
+    {
+      label: "Not sure?",
+      type: "ghost",
       handleClick: () => {
         console.log("char is added");
       },

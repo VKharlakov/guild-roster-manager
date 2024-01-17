@@ -20,7 +20,7 @@ function Form({ inputs, buttons }: FormProps) {
   return (
     <form className={styles.form}>
       {inputs?.map((input) => (
-        <label>
+        <label className={styles.form__label}>
           {input.label}
           <Input
             id={input.id}
@@ -30,14 +30,18 @@ function Form({ inputs, buttons }: FormProps) {
           />
         </label>
       ))}
-      {buttons?.map((button) => (
-        <Button
-          label={button.label}
-          type={button.type}
-          handleClick={button.handleClick}
-          isDisabled={false}
-        />
-      ))}
+      {buttons.length > 0 && (
+        <div className={styles["form__buttons-container"]}>
+          {buttons?.map((button) => (
+            <Button
+              label={button.label}
+              type={button.type}
+              handleClick={button.handleClick}
+              isDisabled={false}
+            />
+          ))}
+        </div>
+      )}
     </form>
   );
 }

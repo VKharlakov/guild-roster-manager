@@ -1,0 +1,41 @@
+.add-form-popup {
+  max-width: 350px;
+  display: grid;
+  grid-template-areas:
+    "... title close-button"
+    "form form form";
+  grid-template-columns: 24px 1fr 24px;
+}
+
+.add-form-popup__title {
+  margin: 0;
+  padding: 0;
+  grid-area: title;
+  color: #fff;
+  text-align: center;
+}
+
+.add-form-popup__close-button {
+  grid-area: close-button;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  background-image: url("../../../images/close-icon.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.add-form-popup__form-container {
+  grid-area: form;
+  background-color: black;
+  border-radius: 40px 40px 0 0;
+}

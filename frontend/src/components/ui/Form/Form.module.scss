@@ -1,11 +1,22 @@
 .form {
-  background-color: #0d1821;
-  border-radius: 40px;
   color: #fff;
   display: flex;
   flex-direction: column;
   gap: 20px;
   align-items: center;
-  max-width: 400px;
+  max-width: 300px;
   padding: 30px;
+}
+
+.form__label {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+}
+
+.form__buttons-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
 }
