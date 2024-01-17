@@ -54,13 +54,13 @@ function Guilds({
           {isGuildLoading && <GuildsSkeleton />}
         </ul>
       </div>
-      <AddPopup
+      {/* <AddPopup
         isActive={isAddPopup}
         setIsAddPopup={setIsAddPopup}
         handleAddGuild={handleAddGuild}
         isAddingGuild={isPreloader}
         popupType="guild"
-      />
+      /> */}
     </main>
   );
 }
