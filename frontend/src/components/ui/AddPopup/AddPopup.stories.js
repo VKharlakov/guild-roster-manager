@@ -1,11 +1,11 @@
-import AddFormPopup from "./AddFormPopup";
+import AddPopup from "./AddPopup";
 
 export default {
-  title: "components/AddFormPopup",
-  component: AddFormPopup,
+  title: "components/AddPopup",
+  component: AddPopup,
 };
 
-const Template = (args) => <AddFormPopup {...args} />;
+const Template = (args) => <AddPopup {...args} />;
 export const AddCharacter = Template.bind({});
 AddCharacter.args = {
   inputs: [
@@ -29,5 +29,6 @@ AddCharacter.args = {
       },
     },
   ],
-  title: "Add char!",
+  title: "Add char to",
+  titleSpan: "Main",
 };

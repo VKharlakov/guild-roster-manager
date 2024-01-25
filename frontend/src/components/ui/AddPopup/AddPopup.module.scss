@@ -1,21 +1,32 @@
-.add-form-popup {
+.add-popup {
   max-width: 350px;
   display: grid;
   grid-template-areas:
     "... title close-button"
     "form form form";
   grid-template-columns: 24px 1fr 24px;
+  font-family: "Lato", "Arial", sans-serif;
 }
 
-.add-form-popup__title {
+.add-popup__title {
   margin: 0;
   padding: 0;
   grid-area: title;
   color: #fff;
   text-align: center;
+  font-weight: 600;
+  font-size: 16px;
 }
 
-.add-form-popup__close-button {
+.add-popup__title-span {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  font-size: 16px;
+  color: #46725a;
+}
+
+.add-popup__close-button {
   grid-area: close-button;
   width: 24px;
   height: 24px;
@@ -34,8 +45,9 @@
   }
 }
 
-.add-form-popup__form-container {
+.add-popup__form-container {
   grid-area: form;
-  background-color: black;
+  background-color: #0d1821;
+  border: 1px dashed #fff;
   border-radius: 40px 40px 0 0;
 }
