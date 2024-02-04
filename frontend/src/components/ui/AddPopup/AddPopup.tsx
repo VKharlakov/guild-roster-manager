@@ -3,29 +3,40 @@ import styles from "./AddPopup.module.scss";
 import Form from "../Form/Form";
 
 type AddPopupProps = {
-  inputs: {
-    label: string;
-    id: string;
-    placeholder: string;
-  }[];
-  buttons: {
-    label: string;
-    type: "primary" | "ghost";
-    handleClick: () => {};
-  }[];
-  title: string;
-  titleSpan: string | null;
+  props: {
+    inputs: {
+      label: string;
+      id: string;
+      placeholder: string;
+    }[];
+
+    buttons: {
+      label: string;
+      type: "primary" | "ghost";
+      handleClick: () => {};
+    }[];
+
+    title: string;
+    titleSpan: string | null;
+  };
+  isOpen: boolean;
 };
 
-function AddPopup({ inputs, buttons, title, titleSpan }: AddPopupProps) {
+function AddPopup({ props, isOpen = false }: AddPopupProps) {
   return (
-    <div className={styles["add-popup"]}>
+    <div
+      className={
+        isOpen
+          ? styles["add-popup"]
+          : `${styles["add-popup"]} ${styles["add-popup_hidden"]}`
+      }
+    >
       <h2 className={styles["add-popup__title"]}>
-        {title}
-        {titleSpan && (
+        {props.title}
+        {props.titleSpan && (
           <span
             className={styles["add-popup__title-span"]}
-          >{` ${titleSpan}`}</span>
+          >{` ${props.titleSpan}`}</span>
         )}
       </h2>
       <button
@@ -35,7 +46,7 @@ function AddPopup({ inputs, buttons, title, titleSpan }: AddPopupProps) {
         }}
       />
       <div className={styles["add-popup__form-container"]}>
-        <Form inputs={inputs} buttons={buttons} />
+        <Form inputs={props.inputs} buttons={props.buttons} />
       </div>
     </div>
   );
