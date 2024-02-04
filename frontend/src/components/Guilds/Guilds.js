@@ -1,8 +1,10 @@
 import "./Guilds.css";
 import React from "react";
-import AddPopup from "../AddPopup/AddPopup";
 import GuildBanner from "../GuildBanner/GuildBanner";
 import GuildsSkeleton from "./GuildsSkeleton/GuildsSkeleton";
+import AddPopup from "../ui/AddPopup/AddPopup";
+import ModalContainer from "../ModalContainer/ModalContainer";
+import { addGuildProps } from "src/utils/constants";
 
 function Guilds({
   isAddPopup,
@@ -54,13 +56,9 @@ function Guilds({
           {isGuildLoading && <GuildsSkeleton />}
         </ul>
       </div>
-      <AddPopup
-        isActive={isAddPopup}
-        setIsAddPopup={setIsAddPopup}
-        handleAddGuild={handleAddGuild}
-        isAddingGuild={isPreloader}
-        popupType="guild"
-      />
+      <ModalContainer>
+        <AddPopup props={addGuildProps} />
+      </ModalContainer>
     </main>
   );
 }

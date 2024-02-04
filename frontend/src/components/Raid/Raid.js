@@ -287,7 +287,7 @@ function Raid({ sectionType, rosterMaxAmount, setIsPopup, setPopupInfo }) {
           rosterMaxAmount={rosterMaxAmount}
         />
       )}
-      <AddPopup
+      {/* <AddPopup
         popupType="character"
         isActive={isAddPopup}
         setIsAddPopup={setIsAddPopup}
@@ -297,7 +297,7 @@ function Raid({ sectionType, rosterMaxAmount, setIsPopup, setPopupInfo }) {
         handleAddCharacter={handleAddCharacter}
         isUpdatingRoster={isUpdatingRoster !== null}
         guildData={guildData}
-      />
+      /> */}
     </section>
   );
 }

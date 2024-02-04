@@ -1,0 +1,83 @@
+.button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  font-size: 16px;
+  text-align: center;
+  min-width: 128px;
+  padding: 0 16px;
+  height: 44px;
+  transition: 0.2s ease;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:disabled {
+    pointer-events: none;
+  }
+}
+
+.button_type_primary {
+  background-color: #3e6550;
+  color: #fff;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.4);
+
+  &:hover {
+    background-color: #46725a;
+  }
+
+  &:active {
+    background-color: #365946;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  }
+
+  &:disabled {
+    background-color: #636363;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+.button_type_ghost {
+  border: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 50%;
+    transform: translateX(50%);
+    width: 120%;
+    height: 300%;
+    background-color: #46725a;
+    border-radius: 50%;
+    transition: 0.2s ease-in-out;
+    z-index: -1;
+  }
+
+  &:hover {
+    &::after {
+      top: 50%;
+      transform: translate(50%, -50%);
+    }
+  }
+
+  &:active {
+    &::after {
+      background-color: #365946;
+    }
+  }
+
+  &:disabled {
+    border-color: #636363;
+    box-shadow: none;
+    color: #636363;
+  }
+}

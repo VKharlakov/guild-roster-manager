@@ -375,3 +375,28 @@ export const usServerList = [
   { name: "Goldrinn", slugName: "goldrinn" },
   { name: "Gallywix", slugName: "gallywix" },
 ];
+
+export const addGuildProps = {
+  inputs: [
+    {
+      label: `Guild's name`,
+      id: "guildName",
+      placeholder: "name",
+    },
+    {
+      label: `Guild's realm`,
+      id: "guildRealm",
+      placeholder: "realm",
+    },
+  ],
+  buttons: [
+    {
+      label: "Add guild",
+      type: "primary",
+      handleClick: () => {
+        console.log("Guild added!");
+      },
+    },
+  ],
+  title: "Add your guild",
+};

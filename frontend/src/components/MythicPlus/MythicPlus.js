@@ -291,7 +291,7 @@ function MythicPlus({
           rosterMaxAmount={rosterMaxAmount}
         />
       )}
-      <AddPopup
+      {/* <AddPopup
         popupType="character"
         isActive={isAddPopup}
         setIsAddPopup={setIsAddPopup}
@@ -301,7 +301,7 @@ function MythicPlus({
         handleAddCharacter={handleAddCharacter}
         isUpdatingRoster={isUpdatingRoster !== null}
         guildData={guildData}
-      />
+      /> */}
     </section>
   );
 }
